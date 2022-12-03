@@ -1,6 +1,7 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users, ingredients, recipes, tags, meal_plan, comments, recipes_meal_plan;
+DROP TABLE IF EXISTS recipes_tags, recipes_ingredients, users_recipes, users_comments;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -21,6 +22,7 @@ CREATE TABLE recipes(
     recipe_name varchar(100) NOT NULL,
     cook_time INT,
     blurb varchar(250),
+    instructions varchar(5000),
     CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 );
 
@@ -32,7 +34,10 @@ CREATE TABLE tags(
 
 CREATE TABLE meal_plan(
     plan_id SERIAL,
-    CONSTRAINT PK_plan PRIMARY KEY (plan_id)
+    user_id INT NOT NULL,
+    plan_name varchar(250),
+    CONSTRAINT PK_plan PRIMARY KEY (plan_id),
+    CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE comments(
@@ -42,13 +47,6 @@ CREATE TABLE comments(
     star_rating INT CHECK(star_rating > 0 AND star_rating < 6) NOT NULL,
     CONSTRAINT PK_comment_id PRIMARY KEY (comment_id),
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id)
-);
-
-CREATE TABLE user_meal_plan(
-    user_id INT NOT NULL,
-    plan_id INT NOT NULL,
-    CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
-    CONSTRAINT FK_plan_id FOREIGN KEY (plan_id) REFERENCES meal_plan(plan_id)
 );
 
 CREATE TABLE recipes_tags(
@@ -61,15 +59,15 @@ CREATE TABLE recipes_tags(
 CREATE TABLE recipes_ingredients(
     recipe_id INT NOT NULL,
     ingredient_id INT NOT NULL,
-    amount INT,
+    amount FLOAT,
     measurement varchar(50),
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
     CONSTRAINT FK_ingredient_id FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)
 );
 
 CREATE TABLE users_recipes(
-    recipe_id INT NOT NULL,
     user_id INT NOT NULL,
+    recipe_id INT NOT NULL,
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -79,6 +77,13 @@ CREATE TABLE recipes_meal_plan(
     plan_id INT NOT NULL,
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
     CONSTRAINT FK_plan_id FOREIGN KEY (plan_id) REFERENCES meal_plan(plan_id)
+);
+
+CREATE TABLE users_comments(
+    user_id INT NOT NULL,
+    comment_id INT NOT NULL,
+    CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id),
+    CONSTRAINT FK_comment_id FOREIGN KEY (comment_id) REFERENCES comments(comment_id)
 );
 
 
