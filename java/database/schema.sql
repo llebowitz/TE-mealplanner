@@ -20,6 +20,7 @@ CREATE TABLE recipes(
     recipe_id SERIAL,
     recipe_name varchar(100) NOT NULL,
     cook_time INT,
+    blurb varchar(250),
     CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 );
 
@@ -32,6 +33,15 @@ CREATE TABLE tags(
 CREATE TABLE meal_plan(
     plan_id SERIAL,
     CONSTRAINT PK_plan PRIMARY KEY (plan_id)
+);
+
+CREATE TABLE comments(
+    comment_id SERIAL,
+    recipe_id INT NOT NULL,
+    comment_text varchar(1000),
+    star_rating INT CHECK(star_rating > 0 AND star_rating < 6) NOT NULL,
+    CONSTRAINT PK_comment_id PRIMARY KEY (comment_id),
+    CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id)
 );
 
 CREATE TABLE user_meal_plan(
