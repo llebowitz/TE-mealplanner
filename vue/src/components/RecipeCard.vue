@@ -26,24 +26,41 @@
         Add button to add recipe ingredients to grocery list
 
 </div>
-</template>
+</template> -->
 
 <script>
 export default {
-    name: 'recipe-card',
-    props: ['name', 'instructions', 'ingredients']
 
-// methods: {
-//     saveRecipe()
-    // Should we set it up to automatically save a copy of the recipe here?
-
-   // unSaveRecipe()
-
-//     addToMealPlan()
-            'if Monday, add to ""'
-//     deleteFromMealPlan()
+    data() {
+        return{
+             recipe: {
+                recipeID: "",
+                recipeName: "",
+                cookTime: 0,
+                ingredients: [],
+                blurb: "",
+                instructions: "",
+                isSaved: false,
+            },
+    }
 }
-};
+
+}
+
+
+ 
+
+<!-- methods: {
+saveRecipe()
+Should we set it up to automatically save a copy of the recipe here?
+
+unSaveRecipe()
+
+ddToMealPlan()
+            'if Monday, add to ""'
+deleteFromMealPlan()
+} -->
+
 </script>
 
 <style>
