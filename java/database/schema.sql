@@ -8,12 +8,13 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
+	is_activated boolean DEFAULT TRUE,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
 CREATE TABLE ingredients (
     ingredient_id SERIAL,
-    ingredient_name varchar(100) NOT NULL,
+    ingredient_name varchar(100) NOT NULL UNIQUE,
     CONSTRAINT PK_ingredient PRIMARY KEY (ingredient_id)
 );
 
@@ -22,7 +23,9 @@ CREATE TABLE recipes(
     recipe_name varchar(100) NOT NULL,
     cook_time INT,
     blurb varchar(250),
-    instructions varchar(5000),
+    instructions varchar(30000),
+    is_published boolean DEFAUlT FALSE,
+    is_edited boolean DEFAULT FALSE,
     CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 );
 
