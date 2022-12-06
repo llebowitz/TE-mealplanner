@@ -82,6 +82,13 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
+    @Override
+    public boolean deactivate(int userId) {
+        String sql = "UPDATE users SET is_activated = FALSE WHERE user_id = ?";
+
+        return jdbcTemplate.update(sql, userId) == 1;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
