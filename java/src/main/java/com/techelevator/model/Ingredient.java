@@ -3,7 +3,16 @@ package com.techelevator.model;
 public class Ingredient {
     private String name;
     private int id;
+    private int quantity;
     private String measurement;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getName() {
         return name;

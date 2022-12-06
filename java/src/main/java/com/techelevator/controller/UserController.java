@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
+import com.techelevator.services.UserService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,19 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 //TODO: Figure out role name for @PreAuthorize
 public class UserController {
 
-    public final UserDao userDao;
+    public final UserService userService;
 
-    public UserController(UserDao userDao) {
-        this.userDao = userDao;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
-    //TODO: Figure out paths.
-    //TODO: Add addUser, login, & deactivate methods. Done.
+    //TODO: deactivate method. Done.
 
     @RequestMapping(path = "users/{id}/delete", method = RequestMethod.PUT)
     public boolean deactivate (@PathVariable int userId) {
-        return userDao.deactivate(userId);
+        return userService.deactivate(userId);
     }
-
-
-
 }
