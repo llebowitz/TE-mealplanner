@@ -3,6 +3,7 @@ package com.techelevator.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,6 +16,8 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   private List<Recipe> myRecipes;
+   private MealPlan myMealPlan;
 
    public User() { }
 
@@ -66,6 +69,22 @@ public class User {
       this.authorities = authorities;
    }
 
+   public List<Recipe> getMyRecipes() {
+      return myRecipes;
+   }
+
+   public MealPlan getMyMealPlan() {
+      return myMealPlan;
+   }
+
+   public void setMyMealPlan(MealPlan myMealPlan) {
+      this.myMealPlan = myMealPlan;
+   }
+
+   public void setMyRecipes(List<Recipe> myRecipes) {
+      this.myRecipes = myRecipes;
+   }
+
    public void setAuthorities(String authorities) {
       String[] roles = authorities.split(",");
       for(String role : roles) {
@@ -100,4 +119,5 @@ public class User {
               ", authorities=" + authorities +
               '}';
    }
+
 }
