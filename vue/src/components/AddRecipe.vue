@@ -2,7 +2,7 @@
   <div id="app">
   <v-app id="inspire">
     <v-row justify="center">
-      <v-dialog
+      <v-dialog class="recipe-form"
         v-model="dialog"
         fullscreen
         hide-overlay
@@ -130,6 +130,8 @@
 </template>
 
 <script>
+import appService from "../services/AppService";
+
 export default {
 data () {
     return {
@@ -147,6 +149,13 @@ data () {
         ,]
     }
   },
-	methods: {},
+	methods: {
+    saveNewRecipe() {
+      appService.addRecipe(this.recipe).then(response => {
+
+      })
+    }
+
+  },
 };
 </script>

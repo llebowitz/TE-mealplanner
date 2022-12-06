@@ -25,7 +25,7 @@ export default new Vuex.Store({
     
   
     
-    // savedRecipes: [],
+    savedRecipes: [],
     
     // mealPlan: {
     //   sunday: [],
@@ -53,10 +53,10 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
-    // },
-    // ADD_SAVED_RECIPE(state, recipe) {
-    //   state.savedRecipes.push(recipe);
-    // },
+    },
+    ADD_SAVED_RECIPE(state, recipe) {
+      state.savedRecipes.push(recipe);
+    },
     // REMOVE_SAVED_RECIPE(state, recipeIdToRemove){
 
     }
