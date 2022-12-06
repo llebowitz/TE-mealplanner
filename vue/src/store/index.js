@@ -19,7 +19,23 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+   
+    // currentRecipeID: null,
+    
+  
+    
+    // savedRecipes: [],
+    
+    // mealPlan: {
+    //   sunday: [],
+    //   monday: [],
+    //   tuesday: [],
+    //   wednesday: [],
+    //   thursday: [],
+    //   friday: [],
+    //   saturday: []
+    // },
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +53,12 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    // },
+    // ADD_SAVED_RECIPE(state, recipe) {
+    //   state.savedRecipes.push(recipe);
+    // },
+    // REMOVE_SAVED_RECIPE(state, recipeIdToRemove){
+
     }
   }
 })
