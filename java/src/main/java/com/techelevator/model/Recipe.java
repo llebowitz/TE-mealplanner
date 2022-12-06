@@ -12,6 +12,8 @@ public class Recipe {
     private final List<Ingredient> ingredients = new ArrayList<>();
     private final List<Comment> comments = new ArrayList<>();
     private final List<Tag> tags = new ArrayList<>();
+    private boolean isPublished;
+    private boolean isEdited;
 
     public List<Comment> getComments() {
         return comments;
@@ -87,5 +89,21 @@ public class Recipe {
 
     public void addTag(Tag t){
         this.tags.add(t);
+    }
+
+    public boolean isPublished() {
+        return isPublished;
+    }
+
+    public void setPublished(boolean published) {
+        isPublished = published;
+    }
+
+    public boolean isEdited() {
+        return isEdited;
+    }
+
+    public void setEdited(boolean edited) {
+        isEdited = edited;
     }
 }
