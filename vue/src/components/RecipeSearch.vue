@@ -1,6 +1,7 @@
 <template>
     <div>
         <recipe-card />
+        <!-- search bar -->
     </div>
 </template>
 
@@ -12,6 +13,10 @@ export default {
     components: {
         RecipeCard
     }
+
+    // methods: {
+    //     search for recipe
+    // }
 
 }
 

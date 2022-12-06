@@ -1,6 +1,6 @@
 <template>
   <div>
-      <!-- Make a table of the days of the week 
+      <!--  
       
       Button to add ingredients to Grocery List -->
   </div>
@@ -12,6 +12,7 @@ export default {
     // methods: {
         
     //     deleteRecipe ??
+          // generateGroceryList()
     // }
 }
 </script>
