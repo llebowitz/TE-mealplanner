@@ -2,6 +2,13 @@ import axios from 'axios';
 
 export default {
 
+    //getrecipes that takes the filter. Google how to send a query param for an axios request.
+    //axios.get('/recipes/', {params: {filter: filter}})
+
+    getRecipes(filter) {
+        return axios.get('/recipes/', {params: {searchWord: filter}});
+    },
+
     getRecipe(recipeID) {
         return axios.get(`/recipes/${recipeID}`);
     },
