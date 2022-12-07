@@ -14,7 +14,7 @@ public class RecipeService {
 
     private final RecipeDao recipeDao;
     private RestTemplate restTemplate = new RestTemplate();
-    private final static String API_URL = "www.themealdb.com/api/json/v1/1/random.php";
+    private final static String API_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
 
     public RecipeService(RecipeDao recipeDao) {
         this.recipeDao = recipeDao;

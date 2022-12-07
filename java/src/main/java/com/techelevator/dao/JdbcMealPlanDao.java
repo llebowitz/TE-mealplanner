@@ -18,7 +18,7 @@ public class JdbcMealPlanDao implements MealPlanDao{
 
     @Override
     public MealPlan getMealPlan(int userId) {
-        String sql = "SELECT * FROM recipes r JOIN recipe_meal_plan rmp ON r.recipe_id = rmp.recipe_id JOIN meal_plan mp ON rmp.plan_id = mp.plan_id " +
+        String sql = "SELECT * FROM recipes r JOIN recipes_meal_plan rmp ON r.recipe_id = rmp.recipe_id JOIN meal_plan mp ON rmp.plan_id = mp.plan_id " +
                 "WHERE user_id = ?";
         MealPlan mealplan = new MealPlan();
         mealplan.setRecipes(jdbcTemplate.query(sql, new RecipeMapper(), userId));
