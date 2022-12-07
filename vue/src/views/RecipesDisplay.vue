@@ -10,6 +10,7 @@ import RecipeSearch from '../components/RecipeSearch.vue';
 import AddRecipe from '../components/AddRecipe.vue'; //Take out later; just for demo
 
 export default {
+	name: 'recipes',
 	components: {
 		RecipeSearch,
 		AddRecipe, //Take out later, just for demo
