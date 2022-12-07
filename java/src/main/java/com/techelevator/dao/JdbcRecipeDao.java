@@ -30,8 +30,13 @@ public class JdbcRecipeDao implements RecipeDao{
     @Override
     public List<Recipe> searchRecipes(String searchWord) {
         String sql = "SELECT * FROM recipes WHERE recipe_name ILIKE ? OR instructions ILIKE ?";
+        String sql1 = "SELECT * FROM recipes";
         searchWord = "%" + searchWord + "%";
-        return jdbcTemplate.query(sql, new RecipeMapper(),searchWord, searchWord);
+        if (searchWord == "") {
+            return jdbcTemplate.query(sql1, new RecipeMapper());
+        } else {
+            return jdbcTemplate.query(sql, new RecipeMapper(), searchWord, searchWord);
+        }
     }
 
     @Override

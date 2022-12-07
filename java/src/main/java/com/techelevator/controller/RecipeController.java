@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-
-//TODO: Figure out paths.
 @RestController
 public class RecipeController {
 
     private final RecipeService recipeService;
-
 
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
@@ -32,6 +29,5 @@ public class RecipeController {
     public boolean importRecipe() {
         return recipeService.importRecipe();
     }
-
 
 }
