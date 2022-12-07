@@ -57,19 +57,11 @@ const router = new Router({
 		{
 			path: '/recipes',
 			name: 'recipes',
-			components: RecipesDisplay,
+			component: RecipesDisplay,
 			meta: {
 				requiresAuth: false,
 			},
 		},
-		// {
-		// 	path: '/',
-		// 	name: 'add-recipe',
-		// 	component: AddRecipe,
-		// 	meta: {
-		// 		requiresAuth: false,
-		// 	},
-		// },
 	],
 });
 
