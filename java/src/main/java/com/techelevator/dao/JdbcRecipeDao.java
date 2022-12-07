@@ -57,8 +57,8 @@ public class JdbcRecipeDao implements RecipeDao{
     public boolean addRecipe(Recipe recipe) {
         //TODO: Somehow check if these actually work..
         boolean itWorked = false;
-        String sql = "INSERT INTO recipes (recipe_name, cook_time, instructions, img_link, is_published) VALUES (?, ?, ?, ?, TRUE) RETURNING recipe_id";
-        Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getCookTime(), recipe.getInstructions(), recipe.getImgLink());
+        String sql = "INSERT INTO recipes (recipe_name, cook_time, instructions, img_link, is_published) VALUES (?, ?, ?, ?, ?) RETURNING recipe_id";
+        Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getCookTime(), recipe.getInstructions(), recipe.getImgLink(), recipe.isPublished());
         recipe.setId(recipeId);
 
         for(Ingredient thisIng : recipe.getIngredients()){

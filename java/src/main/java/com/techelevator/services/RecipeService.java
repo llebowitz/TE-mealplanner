@@ -38,6 +38,7 @@ public class RecipeService {
         recipe.setInstructions(erm.getStrInstructions());
         recipe.setImgLink(erm.getStrMealThumb());
         recipe.setIngredients(erm.getIngredientList());
+        recipe.setPublished(true);
         return recipe;
     }
 
