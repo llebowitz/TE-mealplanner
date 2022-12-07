@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <div>
+        <div class="search-bar">
             <label>Search:</label>
             <input id="search" type="text" v-model="filter" v-on:change="searchRecipes"  />
             <!-- can duplicate the event on a search button -->
@@ -50,5 +50,9 @@ export default {
 </script>
 
 <style>
+
+.search-bar {
+    border: 5px;
+}
 
 </style>
