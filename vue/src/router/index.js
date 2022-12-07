@@ -57,7 +57,7 @@ const router = new Router({
 		{
 			path: '/recipes',
 			name: 'recipes',
-			components: {RecipesDisplay},
+			components: RecipesDisplay,
 			meta: {
 				requiresAuth: false,
 			},
