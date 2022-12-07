@@ -3,6 +3,7 @@ package com.techelevator.services;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.model.ExternalRecipeModel;
 import com.techelevator.model.Ingredient;
+import com.techelevator.model.Meal;
 import com.techelevator.model.Recipe;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -26,11 +27,12 @@ public class RecipeService {
 
     public boolean importRecipe() {
         ExternalRecipeModel erm = restTemplate.getForObject(API_URL, ExternalRecipeModel.class);
-        Recipe recipe = convertToRecipe(erm);
+        Meal meal = erm.getMeals().get(0);
+        Recipe recipe = convertToRecipe(meal);
         return recipeDao.addRecipe(recipe);
     }
 
-    private Recipe convertToRecipe(ExternalRecipeModel erm) {
+    private Recipe convertToRecipe(Meal erm) {
         Recipe recipe = new Recipe();
         recipe.setName(erm.getStrMeal());
         recipe.setInstructions(erm.getStrInstructions());
