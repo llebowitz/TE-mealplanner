@@ -4,14 +4,12 @@ package com.techelevator.controller;
 import com.techelevator.model.ExternalRecipeModel;
 import com.techelevator.model.Recipe;
 import com.techelevator.services.RecipeService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 @RestController
+@CrossOrigin
 public class RecipeController {
 
     private final RecipeService recipeService;
