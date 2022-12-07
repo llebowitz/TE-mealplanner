@@ -1,8 +1,10 @@
 package com.techelevator.model;
 
-import java.util.HashMap;
-import java.util.Map;
 import javax.annotation.Generated;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Generated("jsonschema2pojo")
 public class ExternalRecipeModel {
@@ -492,6 +494,71 @@ public class ExternalRecipeModel {
 
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
+    }
+
+    public List<Ingredient> getIngredientList() {
+        List<Ingredient> ingredients = new ArrayList<>();
+        if (strIngredient1 != null && !strIngredient1.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient1, strMeasure1));
+        }
+        if (strIngredient2 != null && !strIngredient2.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient2, strMeasure2));
+        }
+        if (strIngredient3 != null && !strIngredient3.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient3, strMeasure3));
+        }
+        if (strIngredient4 != null && !strIngredient4.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient4, strMeasure4));
+        }
+        if (strIngredient5 != null && !strIngredient5.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient5, strMeasure5));
+        }
+        if (strIngredient6 != null && !strIngredient6.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient6, strMeasure6));
+        }
+        if (strIngredient7 != null && !strIngredient7.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient7, strMeasure7));
+        }
+        if (strIngredient8 != null && !strIngredient8.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient8, strMeasure8));
+        }
+        if (strIngredient9 != null && !strIngredient9.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient9, strMeasure9));
+        }
+        if (strIngredient10 != null && !strIngredient10.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient10, strMeasure10));
+        }
+        if (strIngredient11 != null && !strIngredient11.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient11, strMeasure11));
+        }
+        if (strIngredient12 != null && !strIngredient12.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient12, strMeasure12));
+        }
+        if (strIngredient13 != null && !strIngredient13.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient13, strMeasure13));
+        }
+        if (strIngredient14 != null && !strIngredient14.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient14, strMeasure14));
+        }
+        if (strIngredient15 != null && !strIngredient15.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient15, strMeasure15));
+        }
+        if (strIngredient16 != null && !strIngredient16.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient16, strMeasure16));
+        }
+        if (strIngredient17 != null && !strIngredient17.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient17, strMeasure17));
+        }
+        if (strIngredient18 != null && !strIngredient18.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient18, strMeasure18));
+        }
+        if (strIngredient19 != null && !strIngredient19.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient19, strMeasure19));
+        }
+        if (strIngredient20 != null && !strIngredient20.isBlank()) {
+            ingredients.add(new Ingredient(strIngredient20, strMeasure20));
+        }
+        return ingredients;
     }
 
 }
