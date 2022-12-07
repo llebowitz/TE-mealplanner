@@ -22,7 +22,7 @@ public class UserService {
     public User findByUsername(String username) {
         User u = userDao.findByUsername(username);
         u.setMyRecipes(recipeDao.getUserRecipes(u.getId()));
-        u.setMyMealPlan(mealPlanDao.getMealPlan(u.getId()));
+        u.setMyMealPlan(mealPlanDao.getMealPlan(u));
         return u;
     }
 

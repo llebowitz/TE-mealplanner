@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Ingredient;
 import com.techelevator.model.MealPlan;
+import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +18,11 @@ public class JdbcMealPlanDao implements MealPlanDao{
     }
 
     @Override
-    public MealPlan getMealPlan(int userId) {
+    public MealPlan getMealPlan(User user) {
         String sql = "SELECT * FROM recipes r JOIN recipes_meal_plan rmp ON r.recipe_id = rmp.recipe_id JOIN meal_plan mp ON rmp.plan_id = mp.plan_id " +
                 "WHERE user_id = ?";
         MealPlan mealplan = new MealPlan();
-        mealplan.setRecipes(jdbcTemplate.query(sql, new RecipeMapper(), userId));
+        mealplan.setRecipes(jdbcTemplate.query(sql, new RecipeMapper(), user.getId()));
         return mealplan;
     }
 
@@ -43,4 +44,5 @@ public class JdbcMealPlanDao implements MealPlanDao{
         String sql = "DELETE FROM recipes_meal_plan WHERE recipe_id = ? AND plan_id = (SELECT plan_id FROM meal_plan WHERE user_id = ?)";
         return jdbcTemplate.update(sql, recipeId, userId) == 1;
     }
+
 }
