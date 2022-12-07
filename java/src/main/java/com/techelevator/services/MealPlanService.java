@@ -24,8 +24,12 @@ public class MealPlanService {
         return mealPlanDao.createGroceryList(planId);
     }
 
-    public boolean addRecipeMealPlan (int recipe) {
-        return true;
+    public boolean addRecipeMealPlan (int recipeId, int userId) {
+        return mealPlanDao.addRecipeMealPlan(recipeId, userId);
+    }
+
+    public boolean deleteRecipeMealPlan (int recipeId, int userId) {
+        return mealPlanDao.deleteRecipeMealPlan(recipeId, userId);
     }
 
 }

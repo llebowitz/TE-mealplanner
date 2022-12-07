@@ -30,9 +30,4 @@ public class IngredientController {
         return ingredientService.getIngredientById(id);
     }
 
-    @RequestMapping(path = "/ingredients", method = RequestMethod.GET)
-    public List<Ingredient> getIngredientByRecipe(@RequestParam Recipe recipe) {
-        return ingredientService.getIngredientsByRecipe(recipe);
-    }
-
 }
