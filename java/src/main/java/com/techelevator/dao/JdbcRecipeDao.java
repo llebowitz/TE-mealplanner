@@ -57,17 +57,24 @@ public class JdbcRecipeDao implements RecipeDao{
     public boolean addRecipe(Recipe recipe) {
         //TODO: Somehow check if these actually work..
         boolean itWorked = false;
+        String sql = "INSERT INTO recipes (recipe_name, cook_time, instructions, img_link, is_published) VALUES (?, ?, ?, ?, TRUE) RETURNING recipe_id";
+        Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getCookTime(), recipe.getInstructions(), recipe.getImgLink());
+        recipe.setId(recipeId);
 
         for(Ingredient thisIng : recipe.getIngredients()){
-            String sql = "SELECT ingredient_id FROM ingredients i WHERE ingredient_name ILIKE ?";
+            sql = "SELECT ingredient_id FROM ingredients i WHERE ingredient_name ILIKE ?";
             String name = "%" + thisIng.getName() + "%";
-            Integer ingId = jdbcTemplate.queryForObject(sql, Integer.class, name);
+            Integer ingId = null;
+            try{
+                ingId = jdbcTemplate.queryForObject(sql, Integer.class, name);
+            }catch(Exception e){}
+
             if(ingId == null){
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
-                ingId =  jdbcTemplate.update(sql, Integer.class, thisIng.getName());
+                ingId =  jdbcTemplate.queryForObject(sql, Integer.class, thisIng.getName().toLowerCase());
             }
-            sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, amount, measurement) VALUES (?,?,?,?)";
-            itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
+            sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (?,?,?)";
+            itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getMeasurement()) == 1;
         }
         return itWorked;
     }
@@ -83,11 +90,11 @@ public class JdbcRecipeDao implements RecipeDao{
             if(ingId == null){
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
                 ingId =  jdbcTemplate.update(sql, Integer.class, thisIng.getName());
-                sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, amount, measurement) VALUES (?,?,?,?)";
-                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
+                sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (?,?,?)";
+                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getMeasurement()) == 1;
             } else {
-                sql = "UPDATE recipes_ingredients (recipe_id, ingredient_id, amount, measurement) VALUES (?,?,?,?)";
-                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
+                sql = "UPDATE recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (?,?,?,?)";
+                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getMeasurement()) == 1;
             }
         }
         return itWorked;

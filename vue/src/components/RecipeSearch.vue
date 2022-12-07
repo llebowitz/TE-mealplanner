@@ -18,7 +18,7 @@
 
 <script>
 import RecipeCard from './RecipeCard.vue';
-import AppService from '@/services/AppService.vue';
+import AppService from '../services/AppService';
 
 export default {
 
