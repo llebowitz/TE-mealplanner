@@ -63,13 +63,12 @@ public class JdbcRecipeDao implements RecipeDao{
 
         for(Ingredient thisIng : recipe.getIngredients()){
             sql = "SELECT ingredient_id FROM ingredients i WHERE ingredient_name ILIKE ?";
-            String name = "%" + thisIng.getName() + "%";
-            Integer ingId = null;
+            Integer ingId = 0;
             try{
-                ingId = jdbcTemplate.queryForObject(sql, Integer.class, name);
+                ingId = jdbcTemplate.queryForObject(sql, Integer.class, thisIng.getName());
             }catch(Exception e){}
 
-            if(ingId == null){
+            if(ingId == 0){
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
                 ingId =  jdbcTemplate.queryForObject(sql, Integer.class, thisIng.getName().toLowerCase());
             }
