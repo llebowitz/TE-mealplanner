@@ -63,7 +63,6 @@ CREATE TABLE recipes_tags(
 CREATE TABLE recipes_ingredients(
     recipe_id INT NOT NULL,
     ingredient_id INT NOT NULL,
-    amount FLOAT,
     measurement varchar(50),
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
     CONSTRAINT FK_ingredient_id FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)
