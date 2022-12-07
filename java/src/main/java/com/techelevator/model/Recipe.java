@@ -9,6 +9,7 @@ public class Recipe {
     private int cookTime;
     private String blurb;
     private String instructions;
+    private String imgLink;
     private final List<Ingredient> ingredients = new ArrayList<>();
     private final List<Comment> comments = new ArrayList<>();
     private final List<Tag> tags = new ArrayList<>();
@@ -105,5 +106,13 @@ public class Recipe {
 
     public void setEdited(boolean edited) {
         isEdited = edited;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
     }
 }

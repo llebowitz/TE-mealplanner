@@ -6,6 +6,10 @@ public class Ingredient {
     private int quantity;
     private String measurement;
 
+    public Ingredient(){}
+
+    public Ingredient(String name, String measurement) { this.name = name; this.measurement = measurement; }
+
     public int getQuantity() {
         return quantity;
     }

@@ -56,9 +56,9 @@ export default new Vuex.Store({
     },
     ADD_SAVED_RECIPE(state, recipe) {
       state.savedRecipes.push(recipe);
-    },
-    // REMOVE_SAVED_RECIPE(state, recipeIdToRemove){
-
     }
+    // // REMOVE_SAVED_RECIPE(state, recipeIdToRemove){
+
+    // }
   }
 })

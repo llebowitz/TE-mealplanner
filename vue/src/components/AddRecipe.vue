@@ -149,13 +149,13 @@ data () {
         ,]
     }
   },
-	methods: {
-    saveNewRecipe() {
-      appService.addRecipe(this.recipe).then(response => {
+	// methods: {
+  //   saveNewRecipe() {
+  //     appService.addRecipe(this.recipe).then(response => {
 
-      })
-    }
+  //     })
+  //   }
 
-  },
+  // },
 };
 </script>
