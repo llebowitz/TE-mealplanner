@@ -25,5 +25,10 @@ public class RecipeController {
         return recipeService.searchRecipes(searchWord);
     }
 
+    @RequestMapping(path = "/recipes/import", method = RequestMethod.GET)
+    public boolean importRecipe() {
+
+    }
+
 
 }

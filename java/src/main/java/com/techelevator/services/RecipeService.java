@@ -19,4 +19,6 @@ public class RecipeService {
         return recipeDao.searchRecipes(searchWord);
     }
 
+    public boolean importRecipe() { }
+
 }
