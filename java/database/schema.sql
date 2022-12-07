@@ -20,10 +20,11 @@ CREATE TABLE ingredients (
 
 CREATE TABLE recipes(
     recipe_id SERIAL,
-    recipe_name varchar(100) NOT NULL,
+    recipe_name varchar(300) NOT NULL,
     cook_time INT,
-    blurb varchar(250),
-    instructions varchar(30000),
+    blurb varchar(550),
+    instructions varchar(50000),
+    img_link varchar(1000),
     is_published boolean DEFAUlT FALSE,
     is_edited boolean DEFAULT FALSE,
     CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
