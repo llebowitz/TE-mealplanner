@@ -50,14 +50,14 @@
 
 	<!-- <div>
       <h3>{{ recipe.recipeName}} </h3>
-      <!-- add image 
+      add image 
         <body> 
             <div>{{ recipe.instructions }}</div>
             <div>{{ recipe.ingredients }}</div>
         </body>
-        <!-- add event: on click, save to user recipes 
+        add event: on click, save to user recipes 
         <button>Save Recipe</button>
-        <!-- add event: on click, save to user meal plan 
+        add event: on click, save to user meal plan 
 
 </div> -->
 </template>

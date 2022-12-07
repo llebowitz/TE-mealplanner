@@ -116,9 +116,9 @@
     ></v-textarea>
             </v-row>
           </v-container>
-          <small>*indicates required field</small>
+          <small>indicates required field</small>
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions />
           <v-spacer></v-spacer>
         
           </v-list>
@@ -126,11 +126,12 @@
       </v-dialog>
     </v-row>
   </v-app>
+
 </div>
 </template>
 
 <script>
-import appService from "../services/AppService";
+// import appService from "../services/AppService";
 
 export default {
 data () {
