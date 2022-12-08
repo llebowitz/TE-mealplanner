@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface IngredientDao {
 
-    List<Ingredient> getIngredientsByRecipe(Recipe recipe);
-    List<Ingredient> getIngredientByName(String name);
-    Ingredient getIngredientById(int id);
     List<Ingredient> getAllIngredients();
+    List<Ingredient> getIngredientByName(String name);
+    List<Ingredient> getIngredientsByRecipe(Recipe recipe);
+    Ingredient getIngredientById(int id);
+
 }

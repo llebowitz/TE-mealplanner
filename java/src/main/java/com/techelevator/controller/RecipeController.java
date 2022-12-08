@@ -27,7 +27,7 @@ public class RecipeController {
     public List<Recipe> recipeSearch(@RequestParam String searchWord) {
             return recipeService.searchRecipes(searchWord);
     }
-    
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/recipes/import", method = RequestMethod.GET)
     public boolean importRecipe(@RequestParam int count) throws RecipeExistsException {
