@@ -22,7 +22,7 @@ CREATE TABLE recipes(
     recipe_id SERIAL,
     recipe_name varchar(300) NOT NULL,
     cook_time INT,
-    blurb varchar(550),
+    blurb varchar(10000),
     instructions varchar(50000),
     img_link varchar(1000),
     is_published boolean DEFAUlT FALSE,
