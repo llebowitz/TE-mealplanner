@@ -67,6 +67,6 @@ INSERT INTO users_recipes (user_id, recipe_id) VALUES (3, 1);
 INSERT INTO users_recipes (user_id, recipe_id) VALUES (3, 2);
 
 --Adding a meal plan to user bigFoody
-INSERT INTO meal_plan (user_id, plan_name) VALUES (3, 'Dinner and a side, 3 nights a week');
+INSERT INTO meal_plan (user_id) VALUES (3);
 
 COMMIT TRANSACTION;
