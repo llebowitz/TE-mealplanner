@@ -19,12 +19,14 @@
 				</v-slide-item>
 			</v-slide-group>
 		</div>
+        <add-recipe />
 	</div>
 </template>
 
 <script>
 import RecipeCard from './RecipeCard.vue';
 import AppService from '../services/AppService';
+import AddRecipe from '../components/AddRecipe.vue';
 
 export default {
 	data() {
@@ -36,6 +38,7 @@ export default {
 
 	components: {
 		RecipeCard,
+        AddRecipe,
 	},
 
 	methods: {
