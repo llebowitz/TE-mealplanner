@@ -20,23 +20,23 @@ public class MealPlanService {
         this.userDao = userDao;
     }
 
-    public MealPlan getMealPlan (User user) {
+    public MealPlan getMealPlan(User user) {
         return mealPlanDao.getMealPlan(user);
     }
 
-    public List<Ingredient> createGroceryList (int planId) {
-        return mealPlanDao.createGroceryList(planId);
+    public List<Ingredient> createGroceryList(String username) {
+        return mealPlanDao.createGroceryList(userDao.findByUsername(username).getId());
     }
 
-    public boolean addRecipeMealPlan (int recipeId, int userId) {
-        return mealPlanDao.addRecipeMealPlan(recipeId, userId);
+    public boolean addRecipeMealPlan(String username, int recipeId) {
+        return mealPlanDao.addRecipeMealPlan(recipeId, userDao.findByUsername(username).getId());
     }
 
-    public boolean deleteRecipeMealPlan (int recipeId, int userId) {
-        return mealPlanDao.deleteRecipeMealPlan(recipeId, userId);
+    public boolean deleteRecipeMealPlan(String username, int recipeId) {
+        return mealPlanDao.deleteRecipeMealPlan(recipeId, userDao.findByUsername(username).getId());
     }
 
-    public MealPlan getMealPlanByUsername (String username) {
+    public MealPlan getMealPlanByUsername(String username) {
         return mealPlanDao.getMealPlan(userDao.findByUsername(username));
     }
 

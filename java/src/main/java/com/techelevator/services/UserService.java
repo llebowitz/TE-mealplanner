@@ -4,7 +4,13 @@ import com.techelevator.dao.MealPlanDao;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.security.Principal;
 
 @Component
 public class UserService {
@@ -32,6 +38,14 @@ public class UserService {
 
     public boolean deactivate (int userId) {
         return userDao.deactivate(userId);
+    }
+
+    public void saveRecipeToUserList(int recipeId, String username) {
+        recipeDao.saveRecipeToUserList(userDao.findIdByUsername(username), recipeId);
+    }
+
+    public void removeRecipeFromUserList(int recipeId, String username) {
+        recipeDao.removeRecipeFromUserList(userDao.findIdByUsername(username), recipeId);
     }
 
 }
