@@ -26,11 +26,11 @@ export default {
     },
 
     saveRecipe(recipeID) {
-        return axios.post(`users/recipes`, recipeID);
+        return axios.post('/users/recipes', recipeID);
     },
 
     unsaveRecipe(recipeID) {
-        return axios.delete(`users/recipes/${recipeID}`)
+        return axios.delete(`/users/recipes/${recipeID}`)
     }
     
 }
