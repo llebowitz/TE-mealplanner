@@ -17,6 +17,7 @@ public class RecipeMapper implements RowMapper<Recipe> {
         recipe.setInstructions(resultSet.getString("instructions"));
         recipe.setPublished(resultSet.getBoolean("is_published"));
         recipe.setEdited(resultSet.getBoolean("is_edited"));
+        recipe.setImgLink(resultSet.getString("img_link"));
         if (resultSet.getString("blurb") != null) {
             recipe.setBlurb(resultSet.getString("blurb"));
         }

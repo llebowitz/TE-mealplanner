@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 
+import com.techelevator.dao.RecipeExistsException;
 import com.techelevator.model.ExternalRecipeModel;
 import com.techelevator.model.Recipe;
 import com.techelevator.services.RecipeService;
@@ -24,8 +25,8 @@ public class RecipeController {
     }
 
     @RequestMapping(path = "/recipes/import", method = RequestMethod.GET)
-    public boolean importRecipe() {
-        return recipeService.importRecipe();
+    public boolean importRecipe(@RequestParam int count) throws RecipeExistsException {
+        return recipeService.importRecipe(count);
     }
 
 }

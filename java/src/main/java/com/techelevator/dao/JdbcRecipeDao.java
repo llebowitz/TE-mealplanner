@@ -32,7 +32,7 @@ public class JdbcRecipeDao implements RecipeDao{
         String sql = "SELECT * FROM recipes WHERE recipe_name ILIKE ? OR instructions ILIKE ?";
         String sql1 = "SELECT * FROM recipes";
         searchWord = "%" + searchWord + "%";
-        if (searchWord == "") {
+        if (searchWord.isBlank()) {
             return jdbcTemplate.query(sql1, new RecipeMapper());
         } else {
             return jdbcTemplate.query(sql, new RecipeMapper(), searchWord, searchWord);
@@ -51,6 +51,17 @@ public class JdbcRecipeDao implements RecipeDao{
     public Recipe getRecipe(int recipeId) {
         String sql = "SELECT * FROM recipes WHERE recipe_id = ?";
         return jdbcTemplate.queryForObject(sql, Recipe.class, recipeId);
+    }
+
+    @Override
+    public boolean doesRecipeExist(String recipeName){
+        String sql = "SELECT recipe_id FROM recipes WHERE recipe_name ILIKE ?";
+        Integer recipeId = 0;
+        try{
+            recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipeName);
+        }catch(Exception e){}
+
+        return recipeId != 0;
     }
 
     @Override
