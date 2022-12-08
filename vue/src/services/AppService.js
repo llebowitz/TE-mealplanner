@@ -31,6 +31,10 @@ export default {
 
     unsaveRecipe(recipeID) {
         return axios.delete(`/users/recipes/${recipeID}`)
+    },
+
+    getMyRecipes() {
+        return axios.get()
     }
     
 }
