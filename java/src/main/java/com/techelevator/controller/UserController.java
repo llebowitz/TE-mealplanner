@@ -1,13 +1,16 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Recipe;
 import com.techelevator.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
+@CrossOrigin
 //COMPLETED: Figure out role name for @PreAuthorize
 public class UserController {
 
@@ -33,6 +36,10 @@ public class UserController {
     @RequestMapping(path = "/users/recipes", method = RequestMethod.DELETE)
     public void removeRecipeFromUserList(int recipeId, Principal principal) {
         userService.removeRecipeFromUserList(recipeId, principal.getName());
+    }
+
+    public List<Recipe> getUsersRecipes(Principal principal) {
+        return userService.getUserRecipes(principal.getName());
     }
 
 }

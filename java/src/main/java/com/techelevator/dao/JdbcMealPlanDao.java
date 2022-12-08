@@ -19,8 +19,8 @@ public class JdbcMealPlanDao implements MealPlanDao {
 
     @Override
     public MealPlan getMealPlan(User user) {
-        String sql = "SELECT * FROM recipes r JOIN recipes_meal_plan rmp ON r.recipe_id = rmp.recipe_id JOIN meal_plan mp ON rmp.plan_id = mp.plan_id " +
-                "WHERE user_id = ?";
+        String sql = "SELECT * FROM recipes r JOIN recipes_meal_plan rmp ON r.recipe_id = rmp.recipe_id " +
+                "JOIN meal_plan mp ON rmp.plan_id = mp.plan_id WHERE user_id = ?";
         MealPlan mealplan = new MealPlan();
         mealplan.setRecipes(jdbcTemplate.query(sql, new RecipeMapper(), user.getId()));
         return mealplan;
@@ -28,10 +28,10 @@ public class JdbcMealPlanDao implements MealPlanDao {
 
     @Override
     public List<Ingredient> createGroceryList(int userId) {
-        String sql = "SELECT DISTINCT ingredient_name FROM ingredients i JOIN recipes_ingredients ri ON ri.ingredient_id" +
-                " = i.ingredient_id JOIN recipes_meal_plan rmp ON " +
-                "rmp.recipe_id = ri.recipe_id JOIN meal_plan mp" +
-                " ON mp.plan_id = rmp.plan_id WHERE mp.user_id = ?";
+        String sql = "SELECT DISTINCT ingredient_name FROM ingredients i " +
+                "JOIN recipes_ingredients ri ON ri.ingredient_id = i.ingredient_id " +
+                "JOIN recipes_meal_plan rmp ON rmp.recipe_id = ri.recipe_id " +
+                "JOIN meal_plan mp ON mp.plan_id = rmp.plan_id WHERE mp.user_id = ?";
         return jdbcTemplate.query(sql, new IngredientMapper(), userId);
     }
 
