@@ -2,6 +2,7 @@ package com.techelevator.services;
 
 import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.RecipeDao;
+import com.techelevator.dao.RecipeExistsException;
 import com.techelevator.model.ExternalRecipeModel;
 import com.techelevator.model.Meal;
 import com.techelevator.model.Recipe;
@@ -31,11 +32,15 @@ public class RecipeService {
         return searchedRecipes;
     }
 
-    public boolean importRecipe() {
+    public boolean importRecipe() throws RecipeExistsException {
         ExternalRecipeModel erm = restTemplate.getForObject(API_URL, ExternalRecipeModel.class);
         Meal meal = erm.getMeals().get(0);
         Recipe recipe = convertToRecipe(meal);
-        return recipeDao.addRecipe(recipe);
+        if(recipeDao.doesRecipeExist(recipe.getName())){
+            throw new RecipeExistsException("Recipe already exists in database.");
+        }else {
+            return recipeDao.addRecipe(recipe);
+        }
     }
 
     private Recipe convertToRecipe(Meal erm) {
