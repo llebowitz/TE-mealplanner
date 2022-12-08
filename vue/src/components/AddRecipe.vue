@@ -58,7 +58,7 @@
                 cols="12"
                 sm="6"
               >
-                <v-text-field
+                <v-text-field v-model="newRecipe.recipeName"
                   label="Recipe Name*"
                   required
                 ></v-text-field>
@@ -101,8 +101,7 @@
     </v-btn>
         </v-col>
 
-        <!-- Update for cooking directions -->
-             <v-textarea
+             <v-textarea v-model="newRecipe.instructions"
       name="input-7-1"
       filled
       label="Cooking Instructions"
@@ -135,7 +134,6 @@ data () {
       notifications: false,
       sound: true,
       widgets: false,
-      // select: { state: 'Florida', abbr: 'FL' },
       items: [
         { state: 'g' },
         { state: 'oz' },
@@ -143,8 +141,13 @@ data () {
         { state: 'lb' },
         { state: 'cups'},
         { state: 'tablespoons'},
-        { state: 'teaspoons'}
-        ,]
+        { state: 'teaspoons'},
+        ],
+      newRecipe: {
+        recipeName: '',
+        ingredient: '',
+        amount: '',
+      }
     }
   },
 	// methods: {
