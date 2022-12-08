@@ -10,7 +10,6 @@ public interface RecipeDao {
     boolean deleteRecipe (Recipe recipe);
     boolean doesRecipeExist(String recipeName);
     boolean updateRecipe (Recipe recipe);
-    List<Recipe> getUserRecipes (int userId);
     List<Recipe> searchRecipes (String searchWord);
     List<Recipe> searchRecipesByIngredients (String ingredients);
     Recipe getRecipe(int recipeId);

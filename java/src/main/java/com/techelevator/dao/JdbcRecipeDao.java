@@ -129,15 +129,4 @@ public class JdbcRecipeDao implements RecipeDao{
         String sql = "DELETE * FROM meal_plan WHERE user_id = ?";
         jdbcTemplate.update(sql, userId, recipeId);
     }
-
-//    @Override
-//    public List<Recipe> getUsersRecipes(int userId) {
-//        String sql = "SELECT * FROM recipes r JOIN recipes_meal_plan rmp ON r.recipe_id = rmp.recipe_id " +
-//                "JOIN meal_plan mp ON mp.plan_id = rmp.plan_id " +
-//                "JOIN users u ON mp.user_id = u.user_id WHERE user_id = ?";
-//        return jdbcTemplate.query(sql, new RecipeMapper(), userId);
-//    }
-
-
-
 }

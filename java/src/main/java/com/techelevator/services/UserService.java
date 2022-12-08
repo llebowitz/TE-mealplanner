@@ -43,15 +43,11 @@ public class UserService {
     }
 
     public void saveRecipeToUserList(int recipeId, String username) {
-        recipeDao.saveRecipeToUserList(userDao.findIdByUsername(username), recipeId);
+        recipeDao.saveRecipeToUserList(recipeId, userDao.findIdByUsername(username));
     }
 
     public void removeRecipeFromUserList(int recipeId, String username) {
-        recipeDao.removeRecipeFromUserList(userDao.findIdByUsername(username), recipeId);
-    }
-
-    public List<Recipe> getUserRecipes(String username) {
-       return recipeDao.getUserRecipes(userDao.findIdByUsername(username));
+        recipeDao.removeRecipeFromUserList(recipeId, userDao.findIdByUsername(username));
     }
 
 }
