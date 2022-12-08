@@ -1,14 +1,16 @@
 <template>
-	<v-card class="mx-auto my-12" max-width="374">
+	<v-card class="ma-12 pa-12" max-width="374" outlined tile>
 		<v-img height="250" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif"
 			><template v-slot:placeholder>
 				<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template
-		></v-img>
+		></v-img> 
+
+		<save-recipe />
 		<v-card-title class="card-title">{{ recipe.name }}</v-card-title>
 
 		<v-card-text>
-			<v-row align="center" class="mx-0">
-				<!-- <v-rating
+			<!-- <v-row align="center" class="mx-0"> -->
+			<!-- <v-rating
           :value="4.5"
           color="amber"
           dense
@@ -17,18 +19,36 @@
           size="14"
         ></v-rating> -->
 
-				<div class="grey--text ms-4">Cook Time: {{ recipe.cookTime }}</div>
-			</v-row>
-
-			<div class="my-4 text-subtitle-1">
-				{{ recipe.ingredients }}
-			</div>
-
-			<div>{{ recipe.blurb }}</div>
+			<div class="grey--text ms-4" v-if="recipe.cookTime != 0">Cook time: {{ recipe.cookTime }} mins</div>
+			<!-- </v-row> -->
+			<div class="font-italic">{{ recipe.blurb }}</div>
 		</v-card-text>
 
-		<v-divider class="mx-4"></v-divider>
+		<!-- <v-card-text>
+		</v-card-text> -->
 
+		<v-divider class="mx-4"></v-divider>
+		<v-card-actions>
+			<v-btn color="orange lighten-2" text> Ingredients </v-btn>
+
+			<v-spacer></v-spacer>
+
+			<v-btn icon @click="show = !show">
+				<v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+			</v-btn>
+		</v-card-actions>
+
+		<v-expand-transition>
+			<div v-show="show">
+				<v-divider></v-divider>
+
+				<v-card-text>
+					<div class="my-4 text-subtitle-1" v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id" v-bind:ingredient="ingredient">{{ ingredient.measurement }} {{ ingredient.name }}</div>
+				</v-card-text>
+			</div>
+		</v-expand-transition>
+
+		<v-divider class="mx-4"></v-divider>
 		<v-card-actions>
 			<v-btn color="orange lighten-2" text> Instructions </v-btn>
 
@@ -65,32 +85,20 @@
 </template>
 
 <script>
+import SaveRecipe from '../components/SaveRecipe.vue';
+
+
 export default {
-	name: 'recipe-card',
-	props: ['recipe'],
-	data: () => ({
-		show: false,
-	}),
+  name: 'recipe-card',
+  components: {
+	SaveRecipe
+  },
+  props: ['recipe'],
+  data: () => ({
+	show: false,
+  }),
+
 };
-
-// export default {
-
-//     data() {
-//         return{
-//              recipe: {
-//                 recipeID: "",
-//                 recipeName: "",
-//                  imageURL: "",
-//                 cookTime: 0,
-//                 ingredients: [],
-//                 blurb: "",
-//                 instructions: "",
-//                 isSaved: false,
-//             },
-//     }
-// }
-
-// }
 
 //  methods: {
 // saveRecipe()

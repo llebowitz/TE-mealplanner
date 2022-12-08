@@ -24,5 +24,17 @@ export default {
     deleteRecipe(recipeID) {
         return axios.delete(`/recipes/${recipeID}`);
     },
+
+    saveRecipe(recipeID) {
+        return axios.post('/users/recipes', recipeID);
+    },
+
+    unsaveRecipe(recipeID) {
+        return axios.delete(`/users/recipes/${recipeID}`)
+    },
+
+    getMyRecipes() {
+        return axios.get()
+    }
     
 }

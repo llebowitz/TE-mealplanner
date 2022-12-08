@@ -6,36 +6,42 @@
 			<!-- can duplicate the event on a search button -->
 		</div>
 
-		<div class="recipe-container">
-			<v-slide-group class="pa-4" show-arrows>
-				<v-slide-item v-for="recipe in recipes" v-bind:key="recipe.recipeID">
-					<recipe-card v-bind:recipe="recipe"
-						><v-row class="fill-height" align="center" justify="center">
-							<v-scale-transition>
-								<v-icon v-if="active" color="white" size="48" v-text="'mdi-close-circle-outline'"></v-icon>
-							</v-scale-transition>
-						</v-row>
+		<!-- <div class="recipe-container ma-12 d-flex flex-wrap"> -->
+			<v-container fluid>
+			<v-slide-group v-model="model" class="pa-12 d-flex flex-wrap" center-active show-arrows>
+				<v-slide-item v-for="recipe in recipes" v-bind:key="recipe.recipeID" v-slot="{ active, toggle }" class="ma-12 d-flex flex-wrap">
+					<recipe-card v-bind:recipe="recipe" @click="toggle" class="ma-12 pa-12">
+						<!-- <v-row class="fill-height pa-12 ma-12" align="center" justify="center"> -->
+						<v-scale-transition>
+							<v-icon v-if="active" color="white" size="48" v-text="'mdi-close-circle-outline'"></v-icon>
+						</v-scale-transition>
+						<!-- </v-row> -->
 					</recipe-card>
 				</v-slide-item>
 			</v-slide-group>
+			</v-container>
+            <add-recipe />
 		</div>
-	</div>
+	
 </template>
 
 <script>
 import RecipeCard from './RecipeCard.vue';
 import AppService from '../services/AppService';
+import AddRecipe from '../components/AddRecipe.vue';
 
 export default {
 	data() {
 		return {
 			filter: '',
 			recipes: [],
+			model: null,
 		};
 	},
 
 	components: {
 		RecipeCard,
+        AddRecipe,
 	},
 
 	methods: {

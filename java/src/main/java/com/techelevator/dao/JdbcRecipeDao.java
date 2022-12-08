@@ -41,8 +41,9 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public List<Recipe> searchRecipesByIngredients(String ingredients) {
-        String sql = "SELECT DISTINCT r.recipe_id, recipe_name, cook_time, blurb, instructions FROM recipes r JOIN recipes_ingredients ri ON r.recipe_id = ri.recipe_id JOIN ingredients i ON i.ingredient_id = ri.ingredient_id" +
-                "WHERE ingredient_name ILIKE ?";
+        String sql = "SELECT DISTINCT r.recipe_id, recipe_name, cook_time, blurb, instructions FROM recipes r " +
+                "JOIN recipes_ingredients ri ON r.recipe_id = ri.recipe_id " +
+                "JOIN ingredients i ON i.ingredient_id = ri.ingredient_id WHERE ingredient_name ILIKE ?";
         ingredients = "%" + ingredients + "%";
         return jdbcTemplate.query(sql, new RecipeMapper(), ingredients);
     }
@@ -115,5 +116,27 @@ public class JdbcRecipeDao implements RecipeDao{
         String sql = "DELETE * FROM recipes WHERE recipe_id = ?";
         return jdbcTemplate.update(sql, recipe.getId()) == 1;
     }
+
+    @Override
+    public void saveRecipeToUserList(int userId, int recipeId) {
+        String sql = "INSERT into users_recipes (user_id, recipe_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, userId, recipeId);
+    }
+
+    @Override
+    public void removeRecipeFromUserList(int userId, int recipeId) {
+        String sql = "DELETE * FROM meal_plan WHERE user_id = ?";
+        jdbcTemplate.update(sql, userId, recipeId);
+    }
+
+//    @Override
+//    public List<Recipe> getUsersRecipes(int userId) {
+//        String sql = "SELECT * FROM recipes r JOIN recipes_meal_plan rmp ON r.recipe_id = rmp.recipe_id " +
+//                "JOIN meal_plan mp ON mp.plan_id = rmp.plan_id " +
+//                "JOIN users u ON mp.user_id = u.user_id WHERE user_id = ?";
+//        return jdbcTemplate.query(sql, new RecipeMapper(), userId);
+//    }
+
+
 
 }

@@ -30,9 +30,11 @@
             >
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>New Recipe:</v-toolbar-title>
+
+            <v-toolbar-title>New Recipe</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
+              <!-- Save button -->
               <v-btn
                 dark
                 text
@@ -56,24 +58,15 @@
                 cols="12"
                 sm="6"
               >
-                <v-text-field
+                <v-text-field v-model="newRecipe.recipeName"
                   label="Recipe Name*"
                   required
                 ></v-text-field>
      
               </v-col>
-               <v-col
-                cols="12"
-                sm="6"
-              >
-                <v-text-field
-                  label="Email*"
-                  required
-                ></v-text-field>
-              </v-col>
              <v-col cols="3">
           <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
+                  :items="[]"
                   label="Ingredient"
                   multiple
                 ></v-autocomplete>
@@ -81,13 +74,13 @@
            <v-col cols="3">
           <v-text-field
             label="Amount"
-            placeholder="5"
+            placeholder="1"
           ></v-text-field>
         </v-col>
+
         <v-col cols="6">
           <v-select
             v-model="select"
-            :hint="`${select.state}, ${select.abbr}`"
             :items="items"
             item-text="state"
             item-value="abbr"
@@ -107,16 +100,17 @@
       </v-icon>
     </v-btn>
         </v-col>
-             <v-textarea
+
+             <v-textarea v-model="newRecipe.instructions"
       name="input-7-1"
       filled
-      label="Label"
+      label="Cooking Instructions"
       auto-grow
-      value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+      value=""
     ></v-textarea>
             </v-row>
           </v-container>
-          <small>indicates required field</small>
+          <small>* indicates required field</small>
         </v-card-text>
         <v-card-actions />
           <v-spacer></v-spacer>
@@ -140,14 +134,20 @@ data () {
       notifications: false,
       sound: true,
       widgets: false,
-      select: { state: 'Florida', abbr: 'FL' },
       items: [
         { state: 'g' },
         { state: 'oz' },
         { state: 'item' },
         { state: 'lb' },
-        { state: 'cups'}
-        ,]
+        { state: 'cups'},
+        { state: 'tablespoons'},
+        { state: 'teaspoons'},
+        ],
+      newRecipe: {
+        recipeName: '',
+        ingredient: '',
+        amount: '',
+      }
     }
   },
 	// methods: {

@@ -2,7 +2,7 @@ package com.techelevator.services;
 
 import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.RecipeDao;
-import com.techelevator.dao.RecipeExistsException;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.ExternalRecipeModel;
 import com.techelevator.model.Ingredient;
 import com.techelevator.model.Meal;
@@ -25,13 +25,15 @@ public class RecipeService {
 
     private final RecipeDao recipeDao;
     private final IngredientDao ingredientDao;
+    private final UserDao userDao;
     private RestTemplate restTemplate = new RestTemplate();
     private final static String API_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
     private final static String TASTY_API_URL = "https://tasty.p.rapidapi.com/recipes/list?from=%d&size=%d";
 
-    public RecipeService(RecipeDao recipeDao, IngredientDao ingredientDao) {
+    public RecipeService(RecipeDao recipeDao, IngredientDao ingredientDao, UserDao userDao) {
         this.recipeDao = recipeDao;
         this.ingredientDao = ingredientDao;
+        this.userDao = userDao;
     }
 
     public List<Recipe> searchRecipes(String searchWord) {
