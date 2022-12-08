@@ -50,4 +50,8 @@ public class UserService {
         recipeDao.removeRecipeFromUserList(recipeId, userDao.findIdByUsername(username));
     }
 
+    public List<Recipe> getUserRecipes(String username) {
+        return recipeDao.getUserRecipes(userDao.findIdByUsername(username));
+    }
+
 }

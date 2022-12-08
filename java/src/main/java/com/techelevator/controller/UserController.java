@@ -38,7 +38,9 @@ public class UserController {
         userService.removeRecipeFromUserList(recipeId, principal.getName());
     }
 
-    public List<Recipe> getUsersRecipes(Principal principal) {
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/users/recipes", method = RequestMethod.GET)
+    public List<Recipe> getUserRecipes(Principal principal) {
         return userService.getUserRecipes(principal.getName());
     }
 
