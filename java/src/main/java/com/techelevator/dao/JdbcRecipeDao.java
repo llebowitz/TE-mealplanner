@@ -116,4 +116,18 @@ public class JdbcRecipeDao implements RecipeDao{
         return jdbcTemplate.update(sql, recipe.getId()) == 1;
     }
 
+    @Override
+    public void saveRecipeToUserList(int userId, int recipeId) {
+        String sql = "INSERT into users_recipes (user_id, recipe_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, userId, recipeId);
+    }
+
+    @Override
+    public void removeRecipeFromUserList(int userId, int recipeId) {
+        String sql = "DELETE * FROM meal_plan WHERE user_id = ?";
+        jdbcTemplate.update(sql, userId, recipeId);
+    }
+
+
+
 }

@@ -2,13 +2,13 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.services.UserService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
-//TODO: Figure out role name for @PreAuthorize
+//COMPLETED: Figure out role name for @PreAuthorize
 public class UserController {
 
     public final UserService userService;
@@ -16,10 +16,25 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    //TODO: deactivate method. Done.
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "users/{id}/delete", method = RequestMethod.PUT)
-    public boolean deactivate (@PathVariable int userId) {
+    public boolean deactivate(@PathVariable int userId) {
         return userService.deactivate(userId);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/users/recipes", method = RequestMethod.POST)
+    public void saveRecipeToUserList(int recipeId, Principal principal) {
+        userService.saveRecipeToUserList(recipeId, principal.getName());
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/users/recipes", method = RequestMethod.DELETE)
+    public void removeRecipeFromUserList(int recipeId, Principal principal) {
+        userService.removeRecipeFromUserList(recipeId, principal.getName());
+    }
+
 }
+
+//COMPLETED: deactivate method. Done.

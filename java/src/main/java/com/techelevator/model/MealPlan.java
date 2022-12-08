@@ -19,11 +19,11 @@ public class MealPlan {
         return recipes;
     }
 
-    public void setRecipes(List<Recipe> recipes){
+    public void setRecipes(List<Recipe> recipes) {
         this.recipes.addAll(recipes);
     }
 
-    public void addRecipe(Recipe r){
+    public void addRecipe(Recipe r) {
         this.recipes.add(r);
     }
 }

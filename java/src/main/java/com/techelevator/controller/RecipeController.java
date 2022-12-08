@@ -5,10 +5,13 @@ import com.techelevator.dao.RecipeExistsException;
 import com.techelevator.model.ExternalRecipeModel;
 import com.techelevator.model.Recipe;
 import com.techelevator.services.RecipeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.security.Principal;
 import java.util.List;
+
 @RestController
 @CrossOrigin
 public class RecipeController {
@@ -19,11 +22,13 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/recipes", method = RequestMethod.GET)
     public List<Recipe> recipeSearch(@RequestParam String searchWord) {
-        return recipeService.searchRecipes(searchWord);
+            return recipeService.searchRecipes(searchWord);
     }
-
+    
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/recipes/import", method = RequestMethod.GET)
     public boolean importRecipe(@RequestParam int count) throws RecipeExistsException {
         return recipeService.importRecipe(count);

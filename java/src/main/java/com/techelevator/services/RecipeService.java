@@ -2,7 +2,7 @@ package com.techelevator.services;
 
 import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.RecipeDao;
-import com.techelevator.dao.RecipeExistsException;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.ExternalRecipeModel;
 import com.techelevator.model.Meal;
 import com.techelevator.model.Recipe;
@@ -16,12 +16,14 @@ public class RecipeService {
 
     private final RecipeDao recipeDao;
     private final IngredientDao ingredientDao;
+    private final UserDao userDao;
     private RestTemplate restTemplate = new RestTemplate();
     private final static String API_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
 
-    public RecipeService(RecipeDao recipeDao, IngredientDao ingredientDao) {
+    public RecipeService(RecipeDao recipeDao, IngredientDao ingredientDao, UserDao userDao) {
         this.recipeDao = recipeDao;
         this.ingredientDao = ingredientDao;
+        this.userDao = userDao;
     }
 
     public List<Recipe> searchRecipes(String searchWord) {
@@ -47,6 +49,10 @@ public class RecipeService {
             }
         }
         return true;
+    }
+
+    public void saveRecipeToUserList(String username, int recipeId) {
+        recipeDao.saveRecipeToUserList(userDao.findIdByUsername(username), recipeId);
     }
 
     private Recipe convertToRecipe(Meal erm) {

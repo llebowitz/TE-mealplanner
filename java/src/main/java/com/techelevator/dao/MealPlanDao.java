@@ -10,7 +10,7 @@ import java.util.List;
 public interface MealPlanDao {
 
     MealPlan getMealPlan (User user);
-    List<Ingredient> createGroceryList(int planId);
+    List<Ingredient> createGroceryList(int userId);
     boolean addRecipeMealPlan (int recipeId, int userId);
     boolean deleteRecipeMealPlan (int recipeId, int userId);
 }
