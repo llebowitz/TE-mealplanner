@@ -4,6 +4,11 @@
 			><template v-slot:placeholder>
 				<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template
 		></v-img>
+		
+		<div>
+		<save-recipe />
+		</div>
+
 		<v-card-title class="card-title">{{ recipe.name }}</v-card-title>
 
 		<v-card-text>
@@ -83,32 +88,20 @@
 </template>
 
 <script>
+import SaveRecipe from '../components/SaveRecipe.vue';
+
+
 export default {
-	name: 'recipe-card',
-	props: ['recipe'],
-	data: () => ({
-		show: false,
-	}),
+  name: 'recipe-card',
+  components: {
+	SaveRecipe
+  },
+  props: ['recipe'],
+  data: () => ({
+	show: false,
+  }),
+
 };
-
-// export default {
-
-//     data() {
-//         return{
-//              recipe: {
-//                 recipeID: "",
-//                 recipeName: "",
-//                  imageURL: "",
-//                 cookTime: 0,
-//                 ingredients: [],
-//                 blurb: "",
-//                 instructions: "",
-//                 isSaved: false,
-//             },
-//     }
-// }
-
-// }
 
 //  methods: {
 // saveRecipe()
