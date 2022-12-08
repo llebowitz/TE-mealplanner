@@ -25,5 +25,4 @@ public class MealPlanController {
         return mealPlanService.getMealPlanByUsername(principal.getName());
     }
 
-
 }
