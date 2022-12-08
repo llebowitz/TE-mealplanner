@@ -19,7 +19,10 @@
 
 			<v-tabs centered class="ml-n9" color="grey darken-1">
 				<v-tab v-for="link in links" :key="link">
-					{{ link }}
+					<router-link v-bind:to="{ name: '{links}' }">{{ link }}</router-link
+					>&nbsp;|&nbsp;
+
+					<!-- {{ link }} -->
 				</v-tab>
 			</v-tabs>
 			<v-avatar class="hidden-sm-and-down" color="grey darken-1 shrink" size="32"></v-avatar>
@@ -57,7 +60,7 @@ export default {
 	name: 'App',
 
 	data: () => ({
-		links: ['Dashboard', 'Messages', 'Profile', 'Updates'],
+		links: ['Home', 'Messages', 'Profile', 'Updates'],
 		//
 	}),
 };
