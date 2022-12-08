@@ -35,10 +35,10 @@
             <v-spacer></v-spacer>
             <v-toolbar-items>
               <!-- Save button -->
-              <v-btn
+              <v-btn 
                 dark
                 text
-                @click="dialog = false"
+                v-on:click="addRecipe"
               >
                 Save
               </v-btn>
@@ -125,7 +125,7 @@
 </template>
 
 <script>
-// import appService from "../services/AppService";
+import AppService from "../services/AppService";
 
 export default {
 data () {
@@ -150,13 +150,24 @@ data () {
       }
     }
   },
-	// methods: {
-  //   saveNewRecipe() {
-  //     appService.addRecipe(this.recipe).then(response => {
+	methods: {
+    addRecipe() {
+      AppService.addRecipe(this.newRecipe).then( (response) => {
+        if (response.status === 201) {
+          this.resetForm();
+          this.dialog = false;
+        }
+      })
+    },
 
-  //     })
-  //   }
+    resetForm() {
+      this.newRecipe = {
+        recipeName: '',
+        ingredient: '',
+        amount: '',
+      };
+    },
 
-  // },
+  },
 };
 </script>
