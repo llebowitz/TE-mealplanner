@@ -1,8 +1,8 @@
 package com.techelevator.services;
 
+import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.model.ExternalRecipeModel;
-import com.techelevator.model.Ingredient;
 import com.techelevator.model.Meal;
 import com.techelevator.model.Recipe;
 import org.springframework.stereotype.Component;
@@ -14,15 +14,21 @@ import java.util.List;
 public class RecipeService {
 
     private final RecipeDao recipeDao;
+    private final IngredientDao ingredientDao;
     private RestTemplate restTemplate = new RestTemplate();
     private final static String API_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
 
-    public RecipeService(RecipeDao recipeDao) {
+    public RecipeService(RecipeDao recipeDao, IngredientDao ingredientDao) {
         this.recipeDao = recipeDao;
+        this.ingredientDao = ingredientDao;
     }
 
     public List<Recipe> searchRecipes(String searchWord) {
-        return recipeDao.searchRecipes(searchWord);
+        List<Recipe> searchedRecipes = recipeDao.searchRecipes(searchWord);
+        for(Recipe r : searchedRecipes){
+            r.setIngredients(ingredientDao.getIngredientsByRecipe(r));
+        }
+        return searchedRecipes;
     }
 
     public boolean importRecipe() {
