@@ -32,15 +32,21 @@ public class RecipeService {
         return searchedRecipes;
     }
 
-    public boolean importRecipe() throws RecipeExistsException {
-        ExternalRecipeModel erm = restTemplate.getForObject(API_URL, ExternalRecipeModel.class);
-        Meal meal = erm.getMeals().get(0);
-        Recipe recipe = convertToRecipe(meal);
-        if(recipeDao.doesRecipeExist(recipe.getName())){
-            throw new RecipeExistsException("Recipe already exists in database.");
-        }else {
-            return recipeDao.addRecipe(recipe);
+    public boolean importRecipe(int count) {
+        for(int i = 0; i < count; i++) {
+            ExternalRecipeModel erm = restTemplate.getForObject(API_URL, ExternalRecipeModel.class);
+            Meal meal = erm.getMeals().get(0);
+            Recipe recipe = convertToRecipe(meal);
+            if(!recipeDao.doesRecipeExist(recipe.getName())){
+                recipeDao.addRecipe(recipe);
+            }
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        return true;
     }
 
     private Recipe convertToRecipe(Meal erm) {
