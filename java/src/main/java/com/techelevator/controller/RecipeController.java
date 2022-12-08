@@ -31,7 +31,8 @@ public class RecipeController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/recipes/import", method = RequestMethod.GET)
     public boolean importRecipe(@RequestParam int count) throws RecipeExistsException {
-        return recipeService.importRecipe(count);
+        recipeService.importTastyRecipes(count);
+        return true;
     }
 
 }
