@@ -80,7 +80,7 @@
 
         <v-col cols="6">
           <v-select
-            v-model="select"
+          
             :items="items"
             item-text="state"
             item-value="abbr"

@@ -11,6 +11,7 @@ import AppService from "../services/AppService.js";
 
 export default {
   name: "add-recipe",
+  props: ['recipe'],
   data() {
     return {
       savedRecipe: {
@@ -22,13 +23,13 @@ export default {
   methods: {
     flipStatus(savedRecipe) {
       if (savedRecipe.status == "saved") {
-        AppService.unsaveRecipe(this.$route.params.id).then((response) => {
+        AppService.unsaveRecipe(this.recipe.id).then((response) => {
           if (response.status === 200) {
               this.savedRecipe.status == "unsaved";
           }
         });
       } else if (savedRecipe.status == "unsaved") {
-        AppService.saveRecipe(this.$route.params.id).then((response) => {
+        AppService.saveRecipe(this.recipe.id).then((response) => {
           if (response.status === 201) {
             this.savedRecipe.status = "saved";
           }
