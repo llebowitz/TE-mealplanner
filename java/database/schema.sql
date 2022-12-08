@@ -39,7 +39,6 @@ CREATE TABLE tags(
 CREATE TABLE meal_plan(
     plan_id SERIAL,
     user_id INT NOT NULL,
-    plan_name varchar(250),
     CONSTRAINT PK_plan PRIMARY KEY (plan_id),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -47,7 +46,7 @@ CREATE TABLE meal_plan(
 CREATE TABLE comments(
     comment_id SERIAL,
     recipe_id INT NOT NULL,
-    comment_text varchar(1000),
+    comment_text varchar(5000),
     star_rating INT CHECK(star_rating > 0 AND star_rating < 6) NOT NULL,
     CONSTRAINT PK_comment_id PRIMARY KEY (comment_id),
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id)
@@ -78,6 +77,7 @@ CREATE TABLE users_recipes(
 CREATE TABLE recipes_meal_plan(
     recipe_id INT NOT NULL,
     plan_id INT NOT NULL,
+    day_of_week varchar(10),
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
     CONSTRAINT FK_plan_id FOREIGN KEY (plan_id) REFERENCES meal_plan(plan_id)
 );
