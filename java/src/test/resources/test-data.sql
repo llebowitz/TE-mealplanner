@@ -38,4 +38,6 @@ INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement
 
 INSERT into users_recipes (user_id, recipe_id) VALUES (2, 1);
 
+INSERT into meal_plan (plan_id, user_id) VALUES (99, 1);
+
 COMMIT TRANSACTION;
