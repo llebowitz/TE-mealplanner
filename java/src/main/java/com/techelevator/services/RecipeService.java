@@ -138,6 +138,7 @@ public class RecipeService {
                 }
             }
         }
+        recipe.setIngredients(ingredients);
 
         return recipe;
     }
