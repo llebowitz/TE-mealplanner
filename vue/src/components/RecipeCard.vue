@@ -89,11 +89,14 @@
 
 <script>
 import SaveRecipe from '../components/SaveRecipe.vue';
+import AddtoMealPlan from './AddtoMealPlan.vue';
+
 
 export default {
 	name: 'recipe-card',
 	components: {
 		SaveRecipe,
+		AddtoMealPlan,
 	},
 	props: ['recipe'],
 	data: () => ({
