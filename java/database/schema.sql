@@ -64,7 +64,6 @@ CREATE TABLE recipes_ingredients(
     ingredient_id INT NOT NULL,
     quantity FLOAT,
     measurement varchar(50),
-    CONSTRAINT PK_recipe_id_ingredient_id PRIMARY KEY (recipe_id, ingredient_id),
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
     CONSTRAINT FK_ingredient_id FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)
 );
