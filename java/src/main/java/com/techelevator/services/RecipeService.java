@@ -20,6 +20,7 @@ import java.util.List;
 
 import static net.gcardone.junidecode.Junidecode.unidecode;
 
+
 @Component
 public class RecipeService {
 
