@@ -20,22 +20,22 @@ INSERT INTO ingredients (ingredient_name) VALUES ('hazelnuts');
 INSERT INTO ingredients (ingredient_name) VALUES ('salt');
 INSERT INTO ingredients (ingredient_name) VALUES ('black pepper');
 
-INSERT INTO recipes (recipe_name, cook_time, blurb, instructions) VALUES ('Apple, Celery Root and Fennel Salad with Hazelnuts',
-20, 'A winter salad with bold and bright flavors', 'In a large bowl, combine the shallot and vinegar. Let sit for 10 minutes.  Whisk in the horseradish, oil and honey. 1 teaspoon salt and 1/2 teaspoon pepper.  Add the apple, celery root and fennel and toss. Stir in the parsley and mint then sprinkle with hazelnuts');
+INSERT INTO recipes (recipe_name, yield, blurb, instructions) VALUES ('Apple, Celery Root and Fennel Salad with Hazelnuts',
+'Serves 6', 'A winter salad with bold and bright flavors', 'In a large bowl, combine the shallot and vinegar. Let sit for 10 minutes.  Whisk in the horseradish, oil and honey. 1 teaspoon salt and 1/2 teaspoon pepper.  Add the apple, celery root and fennel and toss. Stir in the parsley and mint then sprinkle with hazelnuts');
 
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 1, '1 small, grated');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 2, '1.5 tablespoons');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 3, '3 tablespoons, grated, lightly packed');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 4, '3 tablespoons');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 5, '1 teaspoon');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 6, '1 medium size, cored and cut into matchsticks');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 7, '1/2 small root, peeled, cut into matchsticks');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 8, '1 medium bulb trimmed, thinly sliced');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 9, '1/2 cup, chopped');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 10, '1/4 cup, chopped');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 11, '1/2 cup, toasted and rough chopped');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 12, '1 teaspoon');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (1, 13, '1/2 teaspoon');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 1, 1, 'small, grated');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 2, 1.5, 'tablespoons');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 3, 3, 'tablespoons, grated, lightly packed');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 4, 3, 'tablespoons');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 5, 1, 'teaspoon');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 6, 1, 'medium size, cored and cut into matchsticks');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 7, .5, 'small root, peeled, cut into matchsticks');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 8, 1, 'medium bulb trimmed, thinly sliced');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 9, .5, 'cup, chopped');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 10, .25, 'cup, chopped');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 11, .5, 'cup, toasted and rough chopped');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 12, 1, 'teaspoon');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 13, .5, 'teaspoon');
 
 --Inserting ingredients, recipe and correlation into database for Welsh Rarebit
 INSERT INTO ingredients (ingredient_name) VALUES ('sharp cheddar cheese');
@@ -48,19 +48,19 @@ INSERT INTO ingredients (ingredient_name) VALUES ('brown ale');
 INSERT INTO ingredients (ingredient_name) VALUES ('bread');
 INSERT INTO ingredients (ingredient_name) VALUES ('chives');
 
-INSERT INTO recipes (recipe_name, cook_time, blurb, instructions) VALUES ('Welsh Rarebit', 15, 'A traditional British supper of bread and beer cheese',
+INSERT INTO recipes (recipe_name, yield, blurb, instructions) VALUES ('Welsh Rarebit', 'Serves 4', 'A traditional British supper of bread and beer cheese',
 '1. In a bowl, toss the cheese with 1 tablespoon of the flour.  In a medium saucepan over medium heat, melt the butter. Add the remaining 1 tablespoon of flour, 1/2 teaspoon black pepper and the cayenne.  Cook, whisking constantly, for 1 minute.  Stir in the mustard and Worcestershire then slowly stir in the beer.  Bring to a simmer and cook over medium-low, stirring, until thickened, about 3 minutes.\n\n 2. Reduce the heat to low and add the cheese a handful at a time, whisking until smooth after each addition.  Off heat, season with salt and pepper. To serve, spoon the sauce over the toast and sprinkle with the chives.');
 
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 14, '8 ounces, grated');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 15, '2 tablespoons');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 16, '2 tablespoons');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 13, '1/2 teaspoon');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 17, '1/4 teaspoon');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 18, '1 teaspoon');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 19, '1 teaspoon');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 20, '1 cup');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 21, '4 slices, cut thick');
-INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (2, 22, '2 tablespoons, minced');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 14, 8, 'ounces, grated');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 15, 2, 'tablespoons');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 16, 2, 'tablespoons');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 13, .5, 'teaspoon');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 17, .25, 'teaspoon');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 18, 1, 'teaspoon');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 19, 1, 'teaspoon');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 20, 1, 'cup');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 21, 4, 'slices, cut thick');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 22, 2, 'tablespoons, minced');
 
 --Adding recipes to user bigFoody
 INSERT INTO users_recipes (user_id, recipe_id) VALUES (3, 1);

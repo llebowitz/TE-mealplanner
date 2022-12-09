@@ -21,7 +21,7 @@ CREATE TABLE ingredients (
 CREATE TABLE recipes(
     recipe_id SERIAL,
     recipe_name varchar(300) NOT NULL,
-    cook_time INT,
+    yield varchar(1000),
     blurb varchar(10000),
     instructions varchar(50000),
     img_link varchar(1000),
@@ -62,6 +62,7 @@ CREATE TABLE recipes_tags(
 CREATE TABLE recipes_ingredients(
     recipe_id INT NOT NULL,
     ingredient_id INT NOT NULL,
+    quantity FLOAT,
     measurement varchar(50),
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
     CONSTRAINT FK_ingredient_id FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id)

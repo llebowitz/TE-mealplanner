@@ -14,6 +14,7 @@ public class IngredientMapper implements RowMapper<Ingredient> {
         ingredient.setId(resultSet.getInt("ingredient_id"));
         ingredient.setMeasurement(resultSet.getString("measurement"));
         ingredient.setName(resultSet.getString("ingredient_name"));
+        ingredient.setQuantity(resultSet.getDouble("quantity"));
         return ingredient;
     }
 }

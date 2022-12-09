@@ -15,6 +15,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +77,7 @@ public class RecipeService {
 
             for(TastyRecipe tr : results.getTastyRecipes()) {
                 Recipe recipe = tastyToRecipe(tr);
-                if (!recipeDao.doesRecipeExist(recipe.getName()) && !recipe.getInstructions().isBlank()) {
+                if (!recipeDao.doesRecipeExist(recipe.getName()) && !recipe.getInstructions().isBlank() && !recipe.getBlurb().isBlank()) {
                     recipeDao.addRecipe(recipe);
                 }
             }
@@ -111,6 +113,7 @@ public class RecipeService {
         recipe.setBlurb(escape(tr.getDescription()));
         recipe.setImgLink(tr.getThumbnailUrl());
         recipe.setPublished(true);
+        recipe.setYield(tr.getYields());
         StringBuilder steps = new StringBuilder();
         if(tr.getInstructions() != null)
         {
@@ -129,9 +132,10 @@ public class RecipeService {
                     if(measurements.size() > 0){
                         currentIngredient.setMeasurement(escape(measurements.get(0).getUnit().getName()));
                         try{
-                            currentIngredient.setQuantity(Fraction.getFraction(escape(measurements.get(0).getQuantity())).doubleValue());
+                            BigDecimal bd = BigDecimal.valueOf(Fraction.getFraction(escape(measurements.get(0).getQuantity())).doubleValue()).setScale(2, RoundingMode.HALF_UP);
+                            currentIngredient.setQuantity(bd.doubleValue());
                         }catch (Exception e){
-                            System.out.println("Ingredient: " + currentIngredient.getName() + " Measurement: " + measurements.get(0).getQuantity() +" Recipe:" + recipe.getName());
+                            System.out.println("Ingredient: " + currentIngredient.getName() + " Measurement: " + escape(measurements.get(0).getQuantity()) +" Recipe:" + recipe.getName());
                         }
                     }
                     ingredients.add(currentIngredient);
@@ -144,7 +148,7 @@ public class RecipeService {
     }
 
     private String escape(String s){
-        return s == null ? "" : unidecode(s).replace("'", "''");
+        return s == null ? "" : unidecode(s).replace("'", "''").strip().replace("  ", " ");
     }
 
 }

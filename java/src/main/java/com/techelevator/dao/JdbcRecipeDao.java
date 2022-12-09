@@ -41,7 +41,7 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public List<Recipe> searchRecipesByIngredients(String ingredients) {
-        String sql = "SELECT DISTINCT r.recipe_id, recipe_name, cook_time, blurb, instructions FROM recipes r " +
+        String sql = "SELECT DISTINCT r.recipe_id, recipe_name, yield, blurb, instructions FROM recipes r " +
                 "JOIN recipes_ingredients ri ON r.recipe_id = ri.recipe_id " +
                 "JOIN ingredients i ON i.ingredient_id = ri.ingredient_id WHERE ingredient_name ILIKE ?";
         ingredients = "%" + ingredients + "%";
@@ -69,8 +69,9 @@ public class JdbcRecipeDao implements RecipeDao{
     public boolean addRecipe(Recipe recipe) {
         //TODO: Somehow check if these actually work..
         boolean itWorked = false;
-        String sql = "INSERT INTO recipes (recipe_name, cook_time, blurb, instructions, img_link, is_published) VALUES (?, ?, ?, ?, ?, ?) RETURNING recipe_id";
-        Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getCookTime(), recipe.getBlurb(), recipe.getInstructions(), recipe.getImgLink(), recipe.isPublished());
+        String sql = "INSERT INTO recipes (recipe_name, yield, blurb, instructions, img_link, is_published) VALUES (?, ?, ?, ?, ?, ?) RETURNING recipe_id";
+        if(recipe.getYield().length() > 40){recipe.setYield("");}
+        Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getYield(), recipe.getBlurb(), recipe.getInstructions(), recipe.getImgLink(), recipe.isPublished());
         recipe.setId(recipeId);
 
         for(Ingredient thisIng : recipe.getIngredients()){
@@ -84,8 +85,8 @@ public class JdbcRecipeDao implements RecipeDao{
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
                 ingId =  jdbcTemplate.queryForObject(sql, Integer.class, thisIng.getName().toLowerCase());
             }
-            sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (?,?,?)";
-            itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getMeasurement()) == 1;
+            sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
+            itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
         }
         return itWorked;
     }
@@ -101,11 +102,11 @@ public class JdbcRecipeDao implements RecipeDao{
             if(ingId == null){
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
                 ingId =  jdbcTemplate.update(sql, Integer.class, thisIng.getName());
-                sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (?,?,?)";
-                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getMeasurement()) == 1;
+                sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
+                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
             } else {
-                sql = "UPDATE recipes_ingredients (recipe_id, ingredient_id, measurement) VALUES (?,?,?,?)";
-                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getMeasurement()) == 1;
+                sql = "UPDATE recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
+                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
             }
         }
         return itWorked;

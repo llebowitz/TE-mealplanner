@@ -6,7 +6,7 @@ import java.util.List;
 public class Recipe {
     private String name;
     private int id;
-    private int cookTime;
+    private String yield;
     private String blurb;
     private String instructions;
     private String imgLink;
@@ -52,12 +52,12 @@ public class Recipe {
         this.id = id;
     }
 
-    public int getCookTime() {
-        return cookTime;
+    public String getYield() {
+        return yield;
     }
 
-    public void setCookTime(int cookTime) {
-        this.cookTime = cookTime;
+    public void setYield(String yield) {
+        this.yield = yield;
     }
 
     public String getBlurb() {

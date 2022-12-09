@@ -11,7 +11,7 @@ public class RecipeMapper implements RowMapper<Recipe> {
     @Override
     public Recipe mapRow(ResultSet resultSet, int i) throws SQLException {
         Recipe recipe = new Recipe();
-        recipe.setCookTime(resultSet.getInt("cook_time"));
+        recipe.setYield(resultSet.getString("yield"));
         recipe.setEdited(resultSet.getBoolean("is_edited"));
         recipe.setId(resultSet.getInt("recipe_id"));
         recipe.setImgLink(resultSet.getString("img_link"));

@@ -7,6 +7,7 @@
 
 		<save-recipe v-bind:recipe="recipe"/>
 		<v-card-title class="card-title">{{ recipe.name }}</v-card-title>
+		<div class="grey--text ms-4" v-if="recipe.yield != ''">{{recipe.yield}} </div>
 
 		<v-card-text>
 			<!-- <v-row align="center" class="mx-0"> -->
@@ -19,7 +20,7 @@
           size="14"
         ></v-rating> -->
 
-			<div class="grey--text ms-4" v-if="recipe.cookTime != 0">Cook time: {{ recipe.cookTime }} mins</div>
+			
 			<!-- </v-row> -->
 			<div class="font-italic">{{ recipe.blurb }}</div>
 		</v-card-text>
@@ -29,7 +30,7 @@
 
 		<v-divider class="mx-4"></v-divider>
 		<v-card-actions>
-			<v-btn color="orange lighten-2" text> Ingredients </v-btn>
+			<v-btn color="orange lighten-2" text> Ingredients</v-btn>
 
 			<v-spacer></v-spacer>
 
@@ -43,7 +44,7 @@
 				<v-divider></v-divider>
 
 				<v-card-text>
-					<div class="my-4 text-subtitle-1" v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id" v-bind:ingredient="ingredient">{{ ingredient.measurement }} {{ ingredient.name }}</div>
+					<div class="my-4 text-subtitle-1" v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id" v-bind:ingredient="ingredient"> <span v-if="ingredient.quantity !== 0">{{ingredient.quantity}}</span> {{ ingredient.measurement }} {{ ingredient.name }}</div>
 				</v-card-text>
 			</div>
 		</v-expand-transition>

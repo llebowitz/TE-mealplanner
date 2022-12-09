@@ -3,18 +3,18 @@ package com.techelevator.model;
 public class Ingredient {
     private String name;
     private int id;
-    private double quantity;
+    private Double quantity;
     private String measurement;
 
     public Ingredient(){}
 
     public Ingredient(String name, String measurement) { this.name = name; this.measurement = measurement; }
 
-    public double getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
