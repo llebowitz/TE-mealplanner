@@ -24,8 +24,8 @@ export default {
     flipStatus(savedRecipe) {
       if (savedRecipe.status == "saved") {
         AppService.unsaveRecipe(this.recipe.id).then((response) => {
-          if (response.status === 200) {
-              this.savedRecipe.status == "unsaved";
+          if (response.status === 204) {
+              this.savedRecipe.status = "unsaved";
           }
         });
       } else if (savedRecipe.status == "unsaved") {
