@@ -13,55 +13,6 @@ import static org.junit.Assert.*;
 public class JdbcRecipeDaoTest extends BaseDaoTests{
 
     @Test
-    public void getUserRecipes() {
-    }
-
-    @Test
-    public void searchRecipes() {
-    }
-
-    @Test
-    public void searchRecipesByIngredients() {
-    }
-
-    @Test
-    public void getRecipe() {
-    }
-
-    @Test
-    public void doesRecipeExist() {
-    }
-
-    @Test
-    public void addRecipe() {
-        RecipeDao recipeDao = getRecipeDao();
-        RecipeService recipeService = getRecipeService();
-        Recipe recipe = recipeDao.getRecipe(1);;
-
-        recipeDao.addRecipe(recipe);
-
-        recipe = recipeDao.getRecipe(1);
-        Assert.assertEquals(1, recipe);
-    }
-
-    @Test
-    public void updateRecipe_quantity_returns_success() {
-        RecipeService recipeService = getRecipeService();
-        Recipe recipe = recipeService.getRecipeById(1);
-        recipe.getIngredients().get(0).setQuantity(5.0);
-
-        recipeService.updateRecipe(recipe);
-
-        recipe = recipeService.getRecipeById(1);
-        Assert.assertEquals(5.0, recipe.getIngredients().get(0).getQuantity(), .01);
-    }
-
-// Not necessary
-//    @Test
-//    public void deleteRecipe() {
-//    }
-
-    @Test
     public void saveRecipeToUserList_valid_recipe_returns_success() {
         RecipeDao recipeDao = getRecipeDao();
 
@@ -89,6 +40,55 @@ public class JdbcRecipeDaoTest extends BaseDaoTests{
         recipes = recipeDao.getUserRecipes(2);
         Assert.assertEquals(0, recipes.size());
     }
+    @Test
+    public void addRecipe() {
+        RecipeDao recipeDao = getRecipeDao();
+        Recipe recipe = new Recipe();
+        recipe.setName("Banana");
+        recipe.setYield("Y");
+
+        int newRecipeId = recipeDao.addRecipe(recipe);
+
+        recipe = recipeDao.getRecipe(newRecipeId);
+        Assert.assertEquals("Banana", recipe.getName());
+        Assert.assertEquals("Y", recipe.getYield());
+    }
+
+    @Test
+    public void updateRecipe_quantity_returns_success() {
+        RecipeService recipeService = getRecipeService();
+        Recipe recipe = recipeService.getRecipeById(1);
+        recipe.getIngredients().get(0).setQuantity(5.0);
+
+        recipeService.updateRecipe(recipe);
+
+        recipe = recipeService.getRecipeById(1);
+        Assert.assertEquals(5.0, recipe.getIngredients().get(0).getQuantity(), .01);
+    }
+
+//    @Test
+//    public void getUserRecipes() {
+//    }
+//
+//    @Test
+//    public void searchRecipes() {
+//    }
+//
+//    @Test
+//    public void searchRecipesByIngredients() {
+//    }
+//
+//    @Test
+//    public void getRecipe() {
+//    }
+//
+//    @Test
+//    public void doesRecipeExist() {
+//    }
+//
+//    @Test
+//    public void deleteRecipe() {
+//    }
 
     private RecipeDao getRecipeDao() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);

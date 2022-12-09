@@ -1,45 +1,27 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.MealPlan;
-import com.techelevator.model.Recipe;
-import com.techelevator.model.User;
 import com.techelevator.services.RecipeService;
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.util.List;
-
 import static org.junit.Assert.*;
 
-public class JdbcMealPlanDaoTest extends BaseDaoTests{
-
-    @Test
-    public void addRecipeMealPlan() {
-        MealPlanDao mealPlanDao = getMealPlanDao();
-
-        mealPlanDao.addRecipeMealPlan(1, 1);
-
-        User user = new User();
-        user.setId(1);
-        MealPlan mealPlan = mealPlanDao.getMealPlan(user);
-        List<Recipe> recipes = mealPlan.getRecipes();
-        Assert.assertEquals(1, recipes.size());
-
-        Recipe recipe = recipes.get(0);
-        Assert.assertEquals(1, recipe.getId());
-    }
+public class JdbcIngredientDaoTest extends BaseDaoTests{
 
 //    @Test
-//    public void getMealPlan() {
+//    public void getIngredientsByRecipe() {
 //    }
 //
 //    @Test
-//    public void createGroceryList() {
+//    public void getIngredientByName() {
 //    }
 //
 //    @Test
-//    public void deleteRecipeMealPlan() {
+//    public void getIngredientById() {
+//    }
+//
+//    @Test
+//    public void getAllIngredients() {
 //    }
 
     private UserDao getUserDao() {
