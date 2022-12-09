@@ -34,7 +34,7 @@ export default {
     },
 
     getMyRecipes() {
-        return axios.get()
+        return axios.get('/users/recipes')
     },
 
     addToMealPlan(mealPlan) {
