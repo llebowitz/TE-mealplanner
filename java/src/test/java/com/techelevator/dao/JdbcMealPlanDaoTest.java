@@ -14,15 +14,15 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
 
     @Test
     public void addRecipeMealPlan() {
-        MealPlanDao mealPlanDao = getMealPlan();
-
-        Meal
-
-        List<Recipe> recipes = recipeDao.getUserRecipes(1);
-        Assert.assertEquals(1, recipes.size());
-
-        Recipe recipe = recipes.get(0);
-        Assert.assertEquals(1, recipe.getId());
+//        MealPlanDao mealPlanDao = getMealPlanDao();
+//
+//        Meal
+//
+//        List<Recipe> recipes = recipeDao.getUserRecipes(1);
+//        Assert.assertEquals(1, recipes.size());
+//
+//        Recipe recipe = recipes.get(0);
+//        Assert.assertEquals(1, recipe.getId());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
 
     private MealPlanDao getMealPlanDao() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        MealPlanDao mealPlanDao = new JdbcTemplate(jdbcTemplate);
+        MealPlanDao mealPlanDao = new JdbcMealPlanDao(jdbcTemplate);
         return mealPlanDao;
     }
 
