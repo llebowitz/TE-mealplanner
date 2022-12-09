@@ -38,6 +38,20 @@ public class RecipeService {
         this.userDao = userDao;
     }
 
+    public Recipe getRecipeById(int recipeId) {
+        Recipe recipe = recipeDao.getRecipe(recipeId);
+        recipe.setIngredients(ingredientDao.getIngredientsByRecipe(recipe));
+        return recipe;
+    }
+
+    public void updateRecipe(Recipe recipe) {
+        recipeDao.updateRecipe(recipe);
+    }
+
+    public void deleteRecipe(Recipe recipe) {
+        recipeDao.deleteRecipe(recipe);
+    }
+
     public List<Recipe> searchRecipes(String searchWord) {
         List<Recipe> searchedRecipes = recipeDao.searchRecipes(searchWord);
         for(Recipe r : searchedRecipes){
