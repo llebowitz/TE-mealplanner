@@ -40,5 +40,9 @@ export default {
     addToMealPlan(mealPlan) {
         return axios.post('/users/mealplan/', mealPlan)
     },
+
+    removeFromMealPlan(mealPlan) {
+        return axios.delete('/users/mealPlan/', mealPlan)
+    }
     
 }

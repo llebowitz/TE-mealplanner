@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.model.Ingredient;
 import com.techelevator.model.MealPlan;
+import com.techelevator.model.MealPlanDto;
 import com.techelevator.model.Recipe;
 import com.techelevator.services.MealPlanService;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.List;
 
+
 @RestController
+@CrossOrigin
 @PreAuthorize("isAuthenticated()")
 public class MealPlanController {
 
@@ -30,14 +33,15 @@ public class MealPlanController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/users/mealplan", method = RequestMethod.POST)
-    public void addRecipe(Principal principal, @RequestBody Recipe recipe) {
-        mealPlanService.addRecipeMealPlan(principal.getName(), recipe.getId());
+    public void addRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
+        mealPlanService.addRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeID());
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/users/mealplan", method = RequestMethod.DELETE)
-    public void deleteRecipe(Principal principal, @RequestBody Recipe recipe) {
-        mealPlanService.deleteRecipeMealPlan(principal.getName(), recipe.getId());
+    public void deleteRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
+        System.out.println("!!!!!!" + mealPlanDto.getRecipeID() + "!!!!!!!");
+        mealPlanService.deleteRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeID());
     }
 
     @ResponseStatus(HttpStatus.OK)

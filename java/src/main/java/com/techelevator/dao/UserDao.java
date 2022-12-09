@@ -8,7 +8,7 @@ public interface UserDao {
 
     List<User> findAll();
     int findIdByUsername(String username);
-    boolean create(String username, String password, String role);
+    int create(String username, String password, String role);
     boolean deactivate(int userId);
     User getUserById(int userId);
     User findByUsername(String username);
