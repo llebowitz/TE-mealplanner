@@ -35,6 +35,10 @@ export default {
 
     getMyRecipes() {
         return axios.get()
-    }
+    },
+
+    addToMealPlan(mealPlan) {
+        return axios.post('/users/mealplan/', mealPlan)
+    },
     
 }
