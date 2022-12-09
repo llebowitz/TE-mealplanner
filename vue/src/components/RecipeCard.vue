@@ -6,6 +6,7 @@
 		></v-img> 
 
 		<save-recipe v-bind:recipe="recipe"/>
+		<addto-meal-plan v-bind:recipe="recipe" />
 		<v-card-title class="card-title">{{ recipe.name }}</v-card-title>
 		<div class="grey--text ms-4" v-if="recipe.yield != ''">{{recipe.yield}} </div>
 
@@ -87,12 +88,15 @@
 
 <script>
 import SaveRecipe from '../components/SaveRecipe.vue';
+import AddtoMealPlan from './AddtoMealPlan.vue';
+
 
 
 export default {
   name: 'recipe-card',
   components: {
-	SaveRecipe
+	SaveRecipe,
+    AddtoMealPlan
   },
   props: ['recipe'],
   data: () => ({

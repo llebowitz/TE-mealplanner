@@ -1,17 +1,19 @@
 <template>
   <div>
-      <button id='add-to-meal-plan' v-on:click="toggleSelect()">Add to Meal Plan</button>
-        <div v-show="!showSelect" >
-            <select v-on:click="addToMealPlan" id='select-day' class="select">
-                <option value='1'>Sunday</option>
-                <option value='2'>Monday</option>
-                <option value='3'>Tuesday</option>
-                <option value='4'>Wednesday</option>
-                <option value='5'>Thursday</option>
-                <option value='6'>Friday</option>
-                <option value='7'>Saturday</option>
+
+        <button>Add to Meal Plan</button>
+        <div>
+            <select v-model="mealPlan.dayOfWeek">
+                <option value="1">Sunday</option>
+                <option value="2">Monday</option>
+                <option value="3">Tuesday</option>
+                <option value="4">Wednesday</option>
+                <option value="5">Thursday</option>
+                <option value="6">Friday</option>
+                <option value="7">Saturday</option>
             </select>
         </div>
+        
   </div>
 </template>
 
@@ -23,11 +25,14 @@ export default {
     data() {
         return {
             mealPlan: {
-                dayOfWeek: 0,
-                recipeID: this.recipe.recipeID,
+                dayOfWeek: "1",
+                recipeID: "",
             },
-            showSelect: false,
+            
         }
+    },
+    created() {
+        this.mealPlan.recipeID = this.recipe.recipeID;
     },
     methods: {
         addToMealPlan() {
