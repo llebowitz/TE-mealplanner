@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.model.Ingredient;
 import com.techelevator.model.MealPlan;
+import com.techelevator.model.MealPlanDto;
 import com.techelevator.model.Recipe;
 import com.techelevator.services.MealPlanService;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,8 @@ public class MealPlanController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/users/mealplan", method = RequestMethod.POST)
-    public void addRecipe(Principal principal, @RequestBody Recipe recipe) {
-        mealPlanService.addRecipeMealPlan(principal.getName(), recipe.getId());
+    public void addRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
+        mealPlanService.addRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeId());
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
