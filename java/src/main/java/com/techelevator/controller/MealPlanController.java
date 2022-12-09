@@ -37,8 +37,8 @@ public class MealPlanController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/users/mealplan", method = RequestMethod.DELETE)
-    public void deleteRecipe(Principal principal, @RequestBody Recipe recipe) {
-        mealPlanService.deleteRecipeMealPlan(principal.getName(), recipe.getId());
+    public void deleteRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
+        mealPlanService.deleteRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeId());
     }
 
     @ResponseStatus(HttpStatus.OK)
