@@ -23,25 +23,25 @@ public class MealPlanController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/mealplan", method = RequestMethod.GET)
+    @RequestMapping(path = "/users/mealplan", method = RequestMethod.GET)
     public MealPlan getMealPlan(Principal principal) {
         return mealPlanService.getMealPlanByUsername(principal.getName());
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/mealplan", method = RequestMethod.POST)
+    @RequestMapping(path = "/users/mealplan", method = RequestMethod.POST)
     public void addRecipe(Principal principal, @RequestBody Recipe recipe) {
         mealPlanService.addRecipeMealPlan(principal.getName(), recipe.getId());
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/mealplan", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/users/mealplan", method = RequestMethod.DELETE)
     public void deleteRecipe(Principal principal, @RequestBody Recipe recipe) {
         mealPlanService.deleteRecipeMealPlan(principal.getName(), recipe.getId());
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/mealplan/grocerylist", method = RequestMethod.GET)
+    @RequestMapping(path = "/users/mealplan/grocerylist", method = RequestMethod.GET)
     public List<Ingredient> createGroceryList(Principal principal) {
         return mealPlanService.createGroceryList(principal.getName());
     }

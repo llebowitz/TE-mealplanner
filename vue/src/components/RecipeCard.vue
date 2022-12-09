@@ -7,6 +7,7 @@
 		></v-img></router-link>
 
 		<save-recipe v-bind:recipe="recipe" />
+		<addto-meal-plan v-bind:recipe="recipe" />
 		<router-link v-bind:to="{ name: 'singleRecipe', params: {recipeId: recipe.id} }"><v-card-title class="card-title">{{ recipe.name }}</v-card-title></router-link>
 		<div class="grey--text ms-4" v-if="recipe.yield != ''">{{ recipe.yield }}</div>
 
