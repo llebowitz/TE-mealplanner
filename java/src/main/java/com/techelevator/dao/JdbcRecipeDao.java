@@ -51,7 +51,7 @@ public class JdbcRecipeDao implements RecipeDao{
     @Override
     public Recipe getRecipe(int recipeId) {
         String sql = "SELECT * FROM recipes WHERE recipe_id = ?";
-        return jdbcTemplate.queryForObject(sql, Recipe.class, recipeId);
+        return jdbcTemplate.queryForObject(sql, new RecipeMapper(), recipeId);
     }
 
     @Override
@@ -105,21 +105,19 @@ public class JdbcRecipeDao implements RecipeDao{
                 sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
                 itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
             } else {
-                sql = "UPDATE recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
-                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
+                sql = "UPDATE recipes_ingredients SET quantity = ?, measurement = ? WHERE recipe_id = ? AND ingredient_id = ?";
+                itWorked = jdbcTemplate.update(sql, thisIng.getQuantity(), thisIng.getMeasurement(), recipe.getId(), ingId) == 1;
             }
         }
         return itWorked;
     }
 
     @Override
-    //TO DO: update SQL statement
     public boolean deleteRecipe(Recipe recipe) {
-        String sql = "DELETE * FROM recipes WHERE recipe_id = ?";
+        String sql = "DELETE FROM recipes WHERE recipe_id = ?";
         return jdbcTemplate.update(sql, recipe.getId()) == 1;
     }
 
-    @Override
     public void saveRecipeToUserList(int userId, int recipeId) {
         String sql = "INSERT into users_recipes (user_id, recipe_id) VALUES (?, ?)";
         jdbcTemplate.update(sql, userId, recipeId);
