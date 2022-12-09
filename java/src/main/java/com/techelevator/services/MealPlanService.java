@@ -39,5 +39,4 @@ public class MealPlanService {
     public MealPlan getMealPlanByUsername(String username) {
         return mealPlanDao.getMealPlan(userDao.findByUsername(username));
     }
-
 }
