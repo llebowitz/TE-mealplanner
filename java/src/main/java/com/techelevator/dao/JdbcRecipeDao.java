@@ -112,6 +112,7 @@ public class JdbcRecipeDao implements RecipeDao{
     }
 
     @Override
+    //TO DO: update SQL statement
     public boolean deleteRecipe(Recipe recipe) {
         String sql = "DELETE * FROM recipes WHERE recipe_id = ?";
         return jdbcTemplate.update(sql, recipe.getId()) == 1;
@@ -125,7 +126,7 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public void removeRecipeFromUserList(int userId, int recipeId) {
-        String sql = "DELETE * FROM meal_plan WHERE user_id = ?";
+        String sql = "DELETE FROM users_recipes WHERE user_id = ? AND recipe_id = ?";
         jdbcTemplate.update(sql, userId, recipeId);
     }
 }

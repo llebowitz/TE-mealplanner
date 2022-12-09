@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Recipe;
+import com.techelevator.model.RecipeDto;
 import com.techelevator.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -28,14 +29,14 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/users/recipes", method = RequestMethod.POST)
-    public void saveRecipeToUserList(int recipeId, Principal principal) {
-        userService.saveRecipeToUserList(recipeId, principal.getName());
+    public void saveRecipeToUserList(@RequestBody RecipeDto recipeDto, Principal principal) {
+        userService.saveRecipeToUserList(recipeDto.getId(), principal.getName());
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/users/recipes", method = RequestMethod.DELETE)
-    public void removeRecipeFromUserList(int recipeId, Principal principal) {
-        userService.removeRecipeFromUserList(recipeId, principal.getName());
+    @RequestMapping(path = "/users/recipes/{id}", method = RequestMethod.DELETE)
+    public void removeRecipeFromUserList(@PathVariable int id, Principal principal) {
+        userService.removeRecipeFromUserList(id, principal.getName());
     }
 
     @ResponseStatus(HttpStatus.OK)

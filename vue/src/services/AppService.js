@@ -26,7 +26,7 @@ export default {
     },
 
     saveRecipe(recipeID) {
-        return axios.post('/users/recipes', recipeID);
+        return axios.post('/users/recipes', {id: recipeID});
     },
 
     unsaveRecipe(recipeID) {
