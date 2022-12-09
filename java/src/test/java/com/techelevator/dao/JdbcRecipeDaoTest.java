@@ -108,9 +108,15 @@ public class JdbcRecipeDaoTest extends BaseDaoTests{
         return ingredientDao;
     }
 
+    private TagDao getTagDao() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        TagDao tagDao = new JdbcTagDao(jdbcTemplate);
+        return tagDao;
+    }
+
     private RecipeService getRecipeService() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        RecipeService recipeService = new RecipeService(getRecipeDao(), getIngredientDao(), getUserDao());
+        RecipeService recipeService = new RecipeService(getRecipeDao(), getIngredientDao(), getTagDao(), getUserDao());
         return recipeService;
     }
 
