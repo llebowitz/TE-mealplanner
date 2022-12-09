@@ -29,13 +29,15 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public List<Recipe> searchRecipes(String searchWord) {
-        String sql = "SELECT * FROM recipes WHERE recipe_name ILIKE ? OR instructions ILIKE ?";
+        String sql = "SELECT DISTINCT r.recipe_id, r.recipe_name, r.yield, r.blurb, r.instructions, r.img_link, r.is_published, r.is_edited FROM recipes r " +
+                "JOIN recipes_tags rt ON r.recipe_id = rt.recipe_id JOIN tags t ON rt.tag_id = t.tag_id " +
+                "WHERE recipe_name ILIKE ? OR instructions ILIKE ? OR tag_name ILIKE ? ORDER BY recipe_name";
         String sql1 = "SELECT * FROM recipes";
         searchWord = "%" + searchWord + "%";
         if (searchWord.isBlank()) {
             return jdbcTemplate.query(sql1, new RecipeMapper());
         } else {
-            return jdbcTemplate.query(sql, new RecipeMapper(), searchWord, searchWord);
+            return jdbcTemplate.query(sql, new RecipeMapper(), searchWord, searchWord, searchWord);
         }
     }
 
@@ -66,9 +68,7 @@ public class JdbcRecipeDao implements RecipeDao{
     }
 
     @Override
-    public boolean addRecipe(Recipe recipe) {
-        //TODO: Somehow check if these actually work..
-        boolean itWorked = false;
+    public int addRecipe(Recipe recipe) {
         String sql = "INSERT INTO recipes (recipe_name, yield, blurb, instructions, img_link, is_published) VALUES (?, ?, ?, ?, ?, ?) RETURNING recipe_id";
         if(recipe.getYield().length() > 40){recipe.setYield("");}
         Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getYield(), recipe.getBlurb(), recipe.getInstructions(), recipe.getImgLink(), recipe.isPublished());
@@ -86,9 +86,9 @@ public class JdbcRecipeDao implements RecipeDao{
                 ingId =  jdbcTemplate.queryForObject(sql, Integer.class, thisIng.getName().toLowerCase());
             }
             sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
-            itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
+            jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement());
         }
-        return itWorked;
+        return recipe.getId();
     }
 
     @Override
