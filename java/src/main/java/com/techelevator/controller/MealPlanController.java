@@ -34,13 +34,14 @@ public class MealPlanController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/users/mealplan", method = RequestMethod.POST)
     public void addRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
-        mealPlanService.addRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeId());
+        mealPlanService.addRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeID());
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/users/mealplan", method = RequestMethod.DELETE)
     public void deleteRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
-        mealPlanService.deleteRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeId());
+        System.out.println("!!!!!!" + mealPlanDto.getRecipeID() + "!!!!!!!");
+        mealPlanService.deleteRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeID());
     }
 
     @ResponseStatus(HttpStatus.OK)

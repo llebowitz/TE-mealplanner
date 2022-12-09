@@ -35,7 +35,8 @@ public class UserService {
     }
 
     public boolean create(String username, String password, String role) {
-        return userDao.create(username, password, role);
+        int userId = userDao.create(username, password, role);
+        return mealPlanDao.createMealPlan(userId);
     }
 
     public boolean deactivate(int userId) {

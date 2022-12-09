@@ -27,6 +27,12 @@ public class JdbcMealPlanDao implements MealPlanDao {
     }
 
     @Override
+    public boolean createMealPlan(int userId){
+        String sql = "INSERT INTO meal_plan (user_id) VALUES (?) RETURNING plan_id";
+        return jdbcTemplate.queryForObject(sql, Integer.class, userId) > 0;
+    }
+
+    @Override
     public List<Ingredient> createGroceryList(int userId) {
         String sql = "SELECT DISTINCT ingredient_name FROM ingredients i " +
                 "JOIN recipes_ingredients ri ON ri.ingredient_id = i.ingredient_id " +

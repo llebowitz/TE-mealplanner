@@ -13,4 +13,7 @@ public interface MealPlanDao {
     boolean deleteRecipeMealPlan (int recipeId, int userId);
     List<Ingredient> createGroceryList(int userId);
     MealPlan getMealPlan (User user);
+
+    boolean createMealPlan(int userId);
 }
+
