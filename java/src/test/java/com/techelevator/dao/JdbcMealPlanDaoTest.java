@@ -59,7 +59,7 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
 
     private MealPlanDao getMealPlanDao() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        MealPlanDao mealPlanDao = JdbcTemplate(jdbcTemplate);
+        MealPlanDao mealPlanDao = new JdbcTemplate(jdbcTemplate);
         return mealPlanDao;
     }
 
