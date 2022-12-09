@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "id",
     "sections",
     "video_id",
-    "tags",
+    "tastyTags",
     "draft_status",
     "inspired_by_url",
     "approved_at",
@@ -108,8 +108,8 @@ public class TastyRecipe {
     private List<Section> sections = new ArrayList<>();
     @JsonProperty("video_id")
     private Object videoId;
-    @JsonProperty("tags")
-    private List<Tag> tags = null;
+    @JsonProperty("tastyTags")
+    private List<TastyTag> tastyTags = null;
     @JsonProperty("draft_status")
     private String draftStatus;
     @JsonProperty("inspired_by_url")
@@ -365,14 +365,14 @@ public class TastyRecipe {
         this.videoId = videoId;
     }
 
-    @JsonProperty("tags")
-    public List<Tag> getTags() {
-        return tags;
+    @JsonProperty("tastyTags")
+    public List<TastyTag> getTags() {
+        return tastyTags;
     }
 
-    @JsonProperty("tags")
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
+    @JsonProperty("tastyTags")
+    public void setTags(List<TastyTag> tastyTags) {
+        this.tastyTags = tastyTags;
     }
 
     @JsonProperty("draft_status")

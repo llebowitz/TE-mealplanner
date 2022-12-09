@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface RecipeDao {
 
-    boolean addRecipe (Recipe recipe);
+    int addRecipe (Recipe recipe);
     boolean deleteRecipe (Recipe recipe);
     boolean doesRecipeExist(String recipeName);
     boolean updateRecipe (Recipe recipe);

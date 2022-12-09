@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "type"
 })
 @Generated("jsonschema2pojo")
-public class Tag {
+public class TastyTag {
 
     @JsonProperty("name")
     private String name;
