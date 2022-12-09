@@ -43,7 +43,7 @@
 				<v-divider></v-divider>
 
 				<v-card-text>
-					<div class="my-4 text-subtitle-1" v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id" v-bind:ingredient="ingredient">
+					<div class="my-4 text-subtitle-1" v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id + ' ' + recipe.id" v-bind:ingredient="ingredient">
 						<span v-if="ingredient.quantity !== 0">{{ ingredient.quantity }}</span> {{ ingredient.measurement }} {{ ingredient.name }}
 					</div>
 				</v-card-text>

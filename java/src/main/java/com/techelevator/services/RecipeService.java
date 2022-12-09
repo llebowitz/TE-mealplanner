@@ -2,11 +2,9 @@ package com.techelevator.services;
 
 import com.techelevator.dao.IngredientDao;
 import com.techelevator.dao.RecipeDao;
+import com.techelevator.dao.TagDao;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.ExternalRecipeModel;
-import com.techelevator.model.Ingredient;
-import com.techelevator.model.Meal;
-import com.techelevator.model.Recipe;
+import com.techelevator.model.*;
 import com.techelevator.tasty.model.*;
 import org.apache.commons.lang3.math.Fraction;
 import org.springframework.http.HttpEntity;
@@ -27,14 +25,16 @@ public class RecipeService {
 
     private final RecipeDao recipeDao;
     private final IngredientDao ingredientDao;
+    private final TagDao tagDao;
     private final UserDao userDao;
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
     private final static String API_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
     private final static String TASTY_API_URL = "https://tasty.p.rapidapi.com/recipes/list?from=%d&size=%d";
 
-    public RecipeService(RecipeDao recipeDao, IngredientDao ingredientDao, UserDao userDao) {
+    public RecipeService(RecipeDao recipeDao, IngredientDao ingredientDao, TagDao tagDao, UserDao userDao) {
         this.recipeDao = recipeDao;
         this.ingredientDao = ingredientDao;
+        this.tagDao = tagDao;
         this.userDao = userDao;
     }
 
@@ -52,7 +52,7 @@ public class RecipeService {
             Meal meal = erm.getMeals().get(0);
             Recipe recipe = convertToRecipe(meal);
             if(!recipeDao.doesRecipeExist(recipe.getName())){
-                recipeDao.addRecipe(recipe);
+                recipe.setId(recipeDao.addRecipe(recipe));
             }
             try {
                 Thread.sleep(200);
@@ -78,7 +78,8 @@ public class RecipeService {
             for(TastyRecipe tr : results.getTastyRecipes()) {
                 Recipe recipe = tastyToRecipe(tr);
                 if (!recipeDao.doesRecipeExist(recipe.getName()) && !recipe.getInstructions().isBlank() && !recipe.getBlurb().isBlank()) {
-                    recipeDao.addRecipe(recipe);
+                    recipe.setId(recipeDao.addRecipe(recipe));
+                    tagDao.addTags(recipe);
                 }
             }
 
@@ -114,6 +115,8 @@ public class RecipeService {
         recipe.setImgLink(tr.getThumbnailUrl());
         recipe.setPublished(true);
         recipe.setYield(tr.getYields());
+
+        //Gets instructions for recipe
         StringBuilder steps = new StringBuilder();
         if(tr.getInstructions() != null)
         {
@@ -122,6 +125,19 @@ public class RecipeService {
             }
         }
         recipe.setInstructions(escape(steps.toString()));
+
+        //Adds a tag list to the Recipe
+        List<Tag> tags = new ArrayList<>();
+        if(tr.getTopics() != null){
+            for(Topic t : tr.getTopics()){
+                Tag currentTag = new Tag();
+                currentTag.setName(escape(t.getName()));
+                tags.add(currentTag);
+            }
+        }
+        recipe.setTags(tags);
+
+        //Iterates through the ingredients to add the name, quantity and measurement
         List<Ingredient> ingredients = new ArrayList<>();
         if(tr.getSections() != null){
             for(Section s : tr.getSections()){

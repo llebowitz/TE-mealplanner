@@ -7,6 +7,7 @@ import Register from '../views/Register.vue';
 import store from '../store/index';
 import RecipesDisplay from '../views/RecipesDisplay.vue';
 import Recipe from '../views/Recipe.vue';
+import UserPortal from '../views/UserPortal.vue';
 
 Vue.use(Router);
 
@@ -69,6 +70,14 @@ const router = new Router({
 			component: Recipe,
 			meta: {
 				requiresAuth: false,
+			},
+		},
+		{
+			path: '/users',
+			name: 'user-portal',
+			component: UserPortal,
+			meta: {
+				requiresAuth: true,
 			},
 		},
 	],
