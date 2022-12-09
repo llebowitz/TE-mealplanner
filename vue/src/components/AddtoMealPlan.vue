@@ -3,7 +3,7 @@
 
         <button>Add to Meal Plan</button>
         <div>
-            <select v-model="mealPlan.dayOfWeek">
+            <select v-on:click="addToMealPlan" v-model="mealPlan.dayOfWeek">
                 <option value="1">Sunday</option>
                 <option value="2">Monday</option>
                 <option value="3">Tuesday</option>
@@ -25,8 +25,8 @@ export default {
     data() {
         return {
             mealPlan: {
-                dayOfWeek: "1",
-                recipeID: "",
+                dayOfWeek: 0,
+                recipeID: 0,
             },
             
         }
