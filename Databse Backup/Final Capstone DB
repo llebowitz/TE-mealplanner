@@ -6154,60 +6154,6 @@ Garnish the mac ''''''''n'''''''' cheese with the parsley, then serve.
 
 Enjoy!', 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/347190.jpg', true, false);
 
---
--- TOC entry 2910 (class 0 OID 46400)
--- Dependencies: 209
--- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.tags VALUES (1, 'Best Vegetarian');
-INSERT INTO public.tags VALUES (2, 'Bread Lovers');
-INSERT INTO public.tags VALUES (3, 'Lunch');
-INSERT INTO public.tags VALUES (4, 'American');
-INSERT INTO public.tags VALUES (5, 'Desserts');
-INSERT INTO public.tags VALUES (6, 'Mexican');
-INSERT INTO public.tags VALUES (7, 'Baked Goods');
-INSERT INTO public.tags VALUES (8, 'Christmas');
-INSERT INTO public.tags VALUES (9, 'Romantic Dinners');
-INSERT INTO public.tags VALUES (10, 'Winter Recipes');
-INSERT INTO public.tags VALUES (11, 'Fall Recipes');
-INSERT INTO public.tags VALUES (12, 'No Bake Desserts');
-INSERT INTO public.tags VALUES (13, 'Sunday Brunch');
-INSERT INTO public.tags VALUES (14, 'Dinner');
-INSERT INTO public.tags VALUES (15, '5 Ingredients or Less');
-INSERT INTO public.tags VALUES (16, 'Snacks');
-INSERT INTO public.tags VALUES (17, 'Vegan');
-INSERT INTO public.tags VALUES (18, 'Italian');
-INSERT INTO public.tags VALUES (19, 'Breakfast');
-INSERT INTO public.tags VALUES (20, 'Pasta');
-INSERT INTO public.tags VALUES (21, 'Halloween');
-INSERT INTO public.tags VALUES (22, 'Thanksgiving');
-INSERT INTO public.tags VALUES (23, 'BBQ Season');
-INSERT INTO public.tags VALUES (24, 'One-Pot Recipes');
-INSERT INTO public.tags VALUES (25, 'New Years Party');
-INSERT INTO public.tags VALUES (26, 'Easy Dinner');
-INSERT INTO public.tags VALUES (27, 'Healthy Eating');
-INSERT INTO public.tags VALUES (28, 'Keto');
-INSERT INTO public.tags VALUES (29, 'Latinx Heritage Month');
-INSERT INTO public.tags VALUES (30, 'Chinese');
-INSERT INTO public.tags VALUES (31, 'Fourth of July');
-INSERT INTO public.tags VALUES (32, 'Weekend Meal Prep');
-INSERT INTO public.tags VALUES (33, 'Kid Friendly');
-INSERT INTO public.tags VALUES (34, 'Low Carb Meals');
-INSERT INTO public.tags VALUES (35, 'Japanese');
-INSERT INTO public.tags VALUES (36, 'Spring Recipes');
-INSERT INTO public.tags VALUES (37, 'Pride Month');
-INSERT INTO public.tags VALUES (38, 'Asian Pacific American Heritage Month');
-INSERT INTO public.tags VALUES (39, 'Community Recipes');
-INSERT INTO public.tags VALUES (40, 'Cinco de Mayo');
-INSERT INTO public.tags VALUES (41, 'Passover');
-INSERT INTO public.tags VALUES (42, 'Easter');
-INSERT INTO public.tags VALUES (43, 'Light Bites');
-INSERT INTO public.tags VALUES (44, 'Mother''''s Day');
-INSERT INTO public.tags VALUES (45, 'Lunar New Year');
-INSERT INTO public.tags VALUES (46, 'Tasty Spice Recipes');
-INSERT INTO public.tags VALUES (47, 'Christmas Cookies');
-
 
 --
 -- TOC entry 2916 (class 0 OID 46449)
@@ -11237,6 +11183,61 @@ INSERT INTO public.recipes_tags VALUES (297, 20);
 
 
 --
+-- TOC entry 2910 (class 0 OID 46400)
+-- Dependencies: 209
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.tags VALUES (1, 'Best Vegetarian');
+INSERT INTO public.tags VALUES (2, 'Bread Lovers');
+INSERT INTO public.tags VALUES (3, 'Lunch');
+INSERT INTO public.tags VALUES (4, 'American');
+INSERT INTO public.tags VALUES (5, 'Desserts');
+INSERT INTO public.tags VALUES (6, 'Mexican');
+INSERT INTO public.tags VALUES (7, 'Baked Goods');
+INSERT INTO public.tags VALUES (8, 'Christmas');
+INSERT INTO public.tags VALUES (9, 'Romantic Dinners');
+INSERT INTO public.tags VALUES (10, 'Winter Recipes');
+INSERT INTO public.tags VALUES (11, 'Fall Recipes');
+INSERT INTO public.tags VALUES (12, 'No Bake Desserts');
+INSERT INTO public.tags VALUES (13, 'Sunday Brunch');
+INSERT INTO public.tags VALUES (14, 'Dinner');
+INSERT INTO public.tags VALUES (15, '5 Ingredients or Less');
+INSERT INTO public.tags VALUES (16, 'Snacks');
+INSERT INTO public.tags VALUES (17, 'Vegan');
+INSERT INTO public.tags VALUES (18, 'Italian');
+INSERT INTO public.tags VALUES (19, 'Breakfast');
+INSERT INTO public.tags VALUES (20, 'Pasta');
+INSERT INTO public.tags VALUES (21, 'Halloween');
+INSERT INTO public.tags VALUES (22, 'Thanksgiving');
+INSERT INTO public.tags VALUES (23, 'BBQ Season');
+INSERT INTO public.tags VALUES (24, 'One-Pot Recipes');
+INSERT INTO public.tags VALUES (25, 'New Years Party');
+INSERT INTO public.tags VALUES (26, 'Easy Dinner');
+INSERT INTO public.tags VALUES (27, 'Healthy Eating');
+INSERT INTO public.tags VALUES (28, 'Keto');
+INSERT INTO public.tags VALUES (29, 'Latinx Heritage Month');
+INSERT INTO public.tags VALUES (30, 'Chinese');
+INSERT INTO public.tags VALUES (31, 'Fourth of July');
+INSERT INTO public.tags VALUES (32, 'Weekend Meal Prep');
+INSERT INTO public.tags VALUES (33, 'Kid Friendly');
+INSERT INTO public.tags VALUES (34, 'Low Carb Meals');
+INSERT INTO public.tags VALUES (35, 'Japanese');
+INSERT INTO public.tags VALUES (36, 'Spring Recipes');
+INSERT INTO public.tags VALUES (37, 'Pride Month');
+INSERT INTO public.tags VALUES (38, 'Asian Pacific American Heritage Month');
+INSERT INTO public.tags VALUES (39, 'Community Recipes');
+INSERT INTO public.tags VALUES (40, 'Cinco de Mayo');
+INSERT INTO public.tags VALUES (41, 'Passover');
+INSERT INTO public.tags VALUES (42, 'Easter');
+INSERT INTO public.tags VALUES (43, 'Light Bites');
+INSERT INTO public.tags VALUES (44, 'Mother''''s Day');
+INSERT INTO public.tags VALUES (45, 'Lunar New Year');
+INSERT INTO public.tags VALUES (46, 'Tasty Spice Recipes');
+INSERT INTO public.tags VALUES (47, 'Christmas Cookies');
+
+
+--
 -- TOC entry 2904 (class 0 OID 46366)
 -- Dependencies: 203
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -11245,6 +11246,24 @@ INSERT INTO public.recipes_tags VALUES (297, 20);
 INSERT INTO public.users VALUES (1, 'user', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_USER', true);
 INSERT INTO public.users VALUES (2, 'admin', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_ADMIN', true);
 INSERT INTO public.users VALUES (3, 'bigFoody', '$2a$10$TdHW3cUNn0FMa3U2kR22Vu28C72TPjDE/9pOaYdMehgANPNeaFWLa', 'ROLE_USER', true);
+
+
+--
+-- TOC entry 2919 (class 0 OID 46488)
+-- Dependencies: 218
+-- Data for Name: users_comments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2917 (class 0 OID 46462)
+-- Dependencies: 216
+-- Data for Name: users_recipes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.users_recipes VALUES (3, 1);
+INSERT INTO public.users_recipes VALUES (3, 2);
 
 
 --
@@ -11300,4 +11319,10 @@ SELECT pg_catalog.setval('public.tags_tag_id_seq', 47, true);
 
 SELECT pg_catalog.setval('public.users_user_id_seq', 3, true);
 
+
+-- Completed on 2022-12-09 14:07:50
+
+--
+-- PostgreSQL database dump complete
+--
 
