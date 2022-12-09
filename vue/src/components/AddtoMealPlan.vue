@@ -32,7 +32,7 @@ export default {
         }
     },
     created() {
-        this.mealPlan.recipeID = this.recipe.recipeID;
+        this.mealPlan.recipeID = this.recipe.id;
     },
     methods: {
         addToMealPlan() {

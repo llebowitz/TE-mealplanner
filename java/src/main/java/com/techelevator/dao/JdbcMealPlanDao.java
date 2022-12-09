@@ -28,7 +28,7 @@ public class JdbcMealPlanDao implements MealPlanDao {
 
     @Override
     public boolean createMealPlan(int userId){
-        String sql = "INSERT INTO meal_plan (user_id) VALUES (?) RETURN plan_id";
+        String sql = "INSERT INTO meal_plan (user_id) VALUES (?) RETURNING plan_id";
         return jdbcTemplate.queryForObject(sql, Integer.class, userId) > 0;
     }
 
