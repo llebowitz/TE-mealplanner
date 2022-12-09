@@ -1,12 +1,13 @@
 <template>
 	<v-card class="ma-12 pa-12" max-width="374" outlined tile>
-		<v-img height="250" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif" router-link v-bind:to="{ name: `${singleRecipe}` }"
-			><template v-slot:placeholder>
+		<router-link v-bind:to="{ name: 'singleRecipe', params: {recipeId : recipe.id} }">
+		<v-img height="250" max-width="250" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
+		<template v-slot:placeholder>
 				<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template
-		></v-img>
+		></v-img></router-link>
 
 		<save-recipe v-bind:recipe="recipe" />
-		<v-card-title class="card-title" router-link v-bind:to="{ name: `${singleRecipe}` }">{{ recipe.name }}</v-card-title>
+		<router-link v-bind:to="{ name: 'singleRecipe', params: {recipeId: recipe.id} }"><v-card-title class="card-title">{{ recipe.name }}</v-card-title></router-link>
 		<div class="grey--text ms-4" v-if="recipe.yield != ''">{{ recipe.yield }}</div>
 
 		<v-card-text>
@@ -43,7 +44,7 @@
 				<v-divider></v-divider>
 
 				<v-card-text>
-					<div class="my-4 text-subtitle-1" v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id + ' ' + recipe.id" v-bind:ingredient="ingredient">
+					<div class="my-4 text-subtitle-1" v-for="(ingredient, index) in recipe.ingredients" v-bind:key="index" v-bind:ingredient="ingredient">
 						<span v-if="ingredient.quantity !== 0">{{ ingredient.quantity }}</span> {{ ingredient.measurement }} {{ ingredient.name }}
 					</div>
 				</v-card-text>
