@@ -47,10 +47,11 @@ public class JdbcMealPlanDao implements MealPlanDao {
         return jdbcTemplate.update(sql, recipeId, dayOfWeek, userId) == 1;
     }
 
+    //TO DO: look into day_of_week type as string in database
     @Override
-    public boolean deleteRecipeMealPlan(int recipeId, int userId) {
-        String sql = "DELETE FROM recipes_meal_plan WHERE recipe_id = ? AND plan_id = (SELECT plan_id FROM meal_plan WHERE user_id = ?)";
-        return jdbcTemplate.update(sql, recipeId, userId) == 1;
+    public boolean deleteRecipeMealPlan(int recipeId, Integer dayOfWeek, int userId) {
+        String sql = "DELETE FROM recipes_meal_plan WHERE recipe_id = ? AND day_of_week = ? AND plan_id = (SELECT plan_id FROM meal_plan WHERE user_id = ?)";
+        return jdbcTemplate.update(sql, recipeId, dayOfWeek.toString(), userId) == 1;
     }
 
 }

@@ -33,16 +33,20 @@ export default {
         return axios.delete(`/users/recipes/${recipeID}`)
     },
 
-    getMyRecipes() {
+    getSavedRecipes() {
         return axios.get('/users/recipes')
     },
 
     addToMealPlan(mealPlan) {
-        return axios.post('/users/mealplan/', mealPlan)
+        return axios.post('/users/mealplan', mealPlan)
     },
 
     removeFromMealPlan(mealPlan) {
-        return axios.delete('/users/mealPlan/', mealPlan)
+        return axios.delete(`/users/mealplan/recipe/${mealPlan.recipeID}/day/${mealPlan.dayOfWeek}`)
+    },
+
+    getMealPlanRecipes(){
+        return axios.get('/users/mealplan')
     }
     
 }
