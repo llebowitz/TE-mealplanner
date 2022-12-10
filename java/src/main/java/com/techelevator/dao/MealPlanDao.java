@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MealPlanDao {
 
-    boolean addRecipeMealPlan (int recipeId, int userId);
+    boolean addRecipeMealPlan (int recipeId, int dayOfWeek, int userId);
     boolean deleteRecipeMealPlan (int recipeId, int userId);
     List<Ingredient> createGroceryList(int userId);
     MealPlan getMealPlan (User user);

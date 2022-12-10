@@ -28,8 +28,8 @@ public class MealPlanService {
         return mealPlanDao.createGroceryList(userDao.findByUsername(username).getId());
     }
 
-    public boolean addRecipeMealPlan(String username, int recipeId) {
-        return mealPlanDao.addRecipeMealPlan(recipeId, userDao.findByUsername(username).getId());
+    public boolean addRecipeMealPlan(String username, int dayOfWeek, int recipeId) {
+        return mealPlanDao.addRecipeMealPlan(recipeId, dayOfWeek, userDao.findByUsername(username).getId());
     }
 
     public boolean deleteRecipeMealPlan(String username, int recipeId) {

@@ -34,7 +34,7 @@ public class MealPlanController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/users/mealplan", method = RequestMethod.POST)
     public void addRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
-        mealPlanService.addRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeID());
+       boolean r = mealPlanService.addRecipeMealPlan(principal.getName(), mealPlanDto.getDayOfWeek(), mealPlanDto.getRecipeID());
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
