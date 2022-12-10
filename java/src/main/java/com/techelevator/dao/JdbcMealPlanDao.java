@@ -42,9 +42,9 @@ public class JdbcMealPlanDao implements MealPlanDao {
     }
 
     @Override
-    public boolean addRecipeMealPlan(int recipeId, int userId) {
-        String sql = "INSERT into recipes_meal_plan (recipe_id, plan_id) VALUES (?, (SELECT plan_id FROM meal_plan WHERE user_id = ?))";
-        return jdbcTemplate.update(sql, recipeId, userId) == 1;
+    public boolean addRecipeMealPlan(int recipeId, int dayOfWeek, int userId) {
+        String sql = "INSERT into recipes_meal_plan (recipe_id, day_of_week, plan_id) VALUES (?, ?, (SELECT plan_id FROM meal_plan WHERE user_id = ?))";
+        return jdbcTemplate.update(sql, recipeId, dayOfWeek, userId) == 1;
     }
 
     @Override

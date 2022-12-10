@@ -18,7 +18,7 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
     public void addRecipeMealPlan() {
         MealPlanDao mealPlanDao = getMealPlanDao();
 
-        mealPlanDao.addRecipeMealPlan(1, 1);
+        mealPlanDao.addRecipeMealPlan(1, 2,1);
 
         User user = new User();
         user.setId(1);
