@@ -14,6 +14,8 @@
             <button v-on:click="addToMealPlan">Add to Meal Plan</button>
 
         </div>
+
+        <button v-on:click="removeFromMealPlan">Remove from Meal Plan</button>
         
   </div>
 </template>
@@ -42,6 +44,17 @@ export default {
                     alert("Success!");
                 }
             })
+        },
+
+        removeFromMealPlan() {
+            AppService.removeFromMealPlan(this.mealPlan).then( (response) => {
+                if (response.status === 204) {
+                    alert("Removed from meal plan.")
+                }
+            })
+
+
+
         },
 
         toggleSelect() {
