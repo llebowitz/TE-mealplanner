@@ -18,14 +18,17 @@
 			</v-tabs>
 			<router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
 			<router-link v-bind:to="{ name: 'login' }" v-else>Login</router-link>
-			<v-avatar class="hidden-sm-and-down" color="grey darken-1 shrink" size="32"></v-avatar>
+			<v-avatar class="hidden-sm-and-down" color="grey darken-1 shrink" size="32"><img src="./assets/cartoonfood1.jpg" /></v-avatar>
 		</v-app-bar>
 
 		<v-main class="grey lighten-3">
 			<v-container>
 				<v-row>
-					<v-col cols="12" sm="2">
-						<v-sheet rounded="lg" min-height="268">
+					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHomeOrUserPortal()">
+						<v-sheet id="featured-recipe-parent" rounded="lg" min-height="268">
+							<h1>Featured Recipe</h1>
+							<!-- <featured-recipe /> -->
+
 							<!--  -->
 							<!-- <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp; -->
 							<!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
@@ -33,14 +36,22 @@
 						</v-sheet>
 					</v-col>
 
-					<v-col cols="12" sm="8">
+					<v-col cols="12" sm="8" class="mx-auto" v-if="isHomeOrUserPortal()">
 						<v-sheet min-height="70vh" rounded="lg" class="fill-height">
 							<!--  -->
-							<router-view />
+
+							<router-view :key="$route.fullPath" />
+						</v-sheet>
+					</v-col>
+					<v-col v-else class="ma-auto">
+						<v-sheet min-height="70vh" rounded="lg" class="fill-height">
+							<!--  -->
+
+							<router-view :key="$route.fullPath" />
 						</v-sheet>
 					</v-col>
 
-					<v-col cols="12" sm="2">
+					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHomeOrUserPortal()">
 						<v-sheet rounded="lg" min-height="268">
 							<!--  -->
 						</v-sheet>
@@ -52,9 +63,20 @@
 </template>
 
 <script>
+// import FeaturedRecipe from './components/FeaturedRecipe.vue';
+
 export default {
 	name: 'App',
-
+	components: {
+		// FeaturedRecipe,
+	},
+	methods: {
+		isHomeOrUserPortal() {
+			let routeName = this.$route.name;
+			let isHomeOrUP = routeName == 'home' || routeName == 'user-portal';
+			return isHomeOrUP;
+		},
+	},
 	data: () => ({
 		links: [
 			{
@@ -82,3 +104,15 @@ export default {
 .hidden-sm-and-down {
 	margin-left: 12px;
 }
+#featured-recipe-parent {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+/* v-avatar {
+	background-color: white;
+	background-image: url('./assets/cartoonfood1.jpg');
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+} */
+</style>
