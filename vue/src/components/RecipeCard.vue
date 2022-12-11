@@ -130,7 +130,7 @@ export default {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	align-items: stretch;
+	align-items: center;
 	flex-wrap: wrap;
 }
 
