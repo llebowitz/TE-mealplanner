@@ -24,9 +24,9 @@
 		<v-main class="grey lighten-3">
 			<v-container>
 				<v-row>
-					<v-col cols="12" sm="2">
+					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHomeOrUserPortal()">
 						<v-sheet id="featured-recipe-parent" rounded="lg" min-height="268">
-							<h1 v-if="isNotHomeOrUserPortal()">Featured Recipe</h1>
+							<h1>Featured Recipe</h1>
 							<!-- <featured-recipe /> -->
 
 							<!--  -->
@@ -36,7 +36,14 @@
 						</v-sheet>
 					</v-col>
 
-					<v-col cols="12" sm="8">
+					<v-col cols="12" sm="8" class="mx-auto" v-if="isHomeOrUserPortal()">
+						<v-sheet min-height="70vh" rounded="lg" class="fill-height">
+							<!--  -->
+
+							<router-view :key="$route.fullPath" />
+						</v-sheet>
+					</v-col>
+					<v-col v-else class="ma-auto">
 						<v-sheet min-height="70vh" rounded="lg" class="fill-height">
 							<!--  -->
 
@@ -44,7 +51,7 @@
 						</v-sheet>
 					</v-col>
 
-					<v-col cols="12" sm="2">
+					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHomeOrUserPortal()">
 						<v-sheet rounded="lg" min-height="268">
 							<!--  -->
 						</v-sheet>
@@ -64,10 +71,10 @@ export default {
 		// FeaturedRecipe,
 	},
 	methods: {
-		isNotHomeOrUserPortal() {
+		isHomeOrUserPortal() {
 			let routeName = this.$route.name;
-			let homeRoute = routeName !== 'home' && routeName !== 'user-portal';
-			return homeRoute;
+			let isHomeOrUP = routeName == 'home' || routeName == 'user-portal';
+			return isHomeOrUP;
 		},
 	},
 	data: () => ({
