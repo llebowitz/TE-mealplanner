@@ -26,6 +26,7 @@
 				<v-row>
 					<v-col cols="12" sm="2">
 						<v-sheet rounded="lg" min-height="268">
+							<featured-recipe />
 							<!--  -->
 							<!-- <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp; -->
 							<!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
@@ -52,9 +53,13 @@
 </template>
 
 <script>
+import FeaturedRecipe from './components/FeaturedRecipe.vue';
+
 export default {
 	name: 'App',
-
+	components: {
+		FeaturedRecipe,
+	},
 	data: () => ({
 		links: [
 			{
