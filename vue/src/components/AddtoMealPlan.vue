@@ -57,12 +57,13 @@ export default {
 
         },
 
-        toggleSelect() {
-            this.showSelect = !this.showSelect;
+        flipStatus() {
+
+        },
          }
     }
 
-}
+
 </script>
 
 <style>
