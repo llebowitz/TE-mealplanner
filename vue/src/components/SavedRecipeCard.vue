@@ -24,6 +24,15 @@ export default {
     width: 33%;
 }
 .saved-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "";
+    height: auto;
     width: 33%;
+}
+
+img {
+    width: 25%;
+    height: auto;
 }
 </style>
