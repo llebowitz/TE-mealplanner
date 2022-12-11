@@ -15,6 +15,15 @@ public class Recipe {
     private final List<Tag> tags = new ArrayList<>();
     private boolean isPublished;
     private boolean isEdited;
+    private int planDayOfWeek;
+
+    public int getPlanDayOfWeek() {
+        return planDayOfWeek;
+    }
+
+    public void setPlanDayOfWeek(int planDayOfWeek) {
+        this.planDayOfWeek = planDayOfWeek;
+    }
 
     public List<Comment> getComments() {
         return comments;

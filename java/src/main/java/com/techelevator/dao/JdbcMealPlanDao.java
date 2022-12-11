@@ -22,7 +22,7 @@ public class JdbcMealPlanDao implements MealPlanDao {
         String sql = "SELECT * FROM recipes r JOIN recipes_meal_plan rmp ON r.recipe_id = rmp.recipe_id " +
                 "JOIN meal_plan mp ON rmp.plan_id = mp.plan_id WHERE user_id = ?";
         MealPlan mealplan = new MealPlan();
-        mealplan.setRecipes(jdbcTemplate.query(sql, new RecipeMapper(), user.getId()));
+        mealplan.setRecipes(jdbcTemplate.query(sql, new MealPlanRecipeMapper(), user.getId()));
         return mealplan;
     }
 
@@ -34,7 +34,7 @@ public class JdbcMealPlanDao implements MealPlanDao {
 
     @Override
     public List<Ingredient> createGroceryList(int userId) {
-        String sql = "SELECT DISTINCT ingredient_name FROM ingredients i " +
+        String sql = "SELECT DISTINCT i.ingredient_name, i.ingredient_id, ri.measurement, ri.quantity FROM ingredients i " +
                 "JOIN recipes_ingredients ri ON ri.ingredient_id = i.ingredient_id " +
                 "JOIN recipes_meal_plan rmp ON rmp.recipe_id = ri.recipe_id " +
                 "JOIN meal_plan mp ON mp.plan_id = rmp.plan_id WHERE mp.user_id = ?";
@@ -51,7 +51,7 @@ public class JdbcMealPlanDao implements MealPlanDao {
     @Override
     public boolean deleteRecipeMealPlan(int recipeId, Integer dayOfWeek, int userId) {
         String sql = "DELETE FROM recipes_meal_plan WHERE recipe_id = ? AND day_of_week = ? AND plan_id = (SELECT plan_id FROM meal_plan WHERE user_id = ?)";
-        return jdbcTemplate.update(sql, recipeId, dayOfWeek.toString(), userId) == 1;
+        return jdbcTemplate.update(sql, recipeId, dayOfWeek, userId) == 1;
     }
 
 }

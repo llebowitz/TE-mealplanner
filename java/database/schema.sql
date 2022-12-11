@@ -78,7 +78,7 @@ CREATE TABLE users_recipes(
 CREATE TABLE recipes_meal_plan(
     recipe_id INT NOT NULL,
     plan_id INT NOT NULL,
-    day_of_week varchar(10),
+    day_of_week INTEGER,
     CONSTRAINT FK_recipe_id FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id),
     CONSTRAINT FK_plan_id FOREIGN KEY (plan_id) REFERENCES meal_plan(plan_id)
 );
