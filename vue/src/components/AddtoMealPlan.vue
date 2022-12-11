@@ -2,7 +2,7 @@
   <div>
         <div>
             <select v-model="mealPlan.dayOfWeek">
-                <option value="1" selected >Sunday</option>
+                <option value="1">Sunday</option>
                 <option value="2">Monday</option>
                 <option value="3">Tuesday</option>
                 <option value="4">Wednesday</option>
