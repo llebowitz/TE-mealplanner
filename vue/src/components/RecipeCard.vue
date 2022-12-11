@@ -1,7 +1,7 @@
 <template>
-	<v-card class="ma-1 pa-1 rounded-xl" max-width="550" outlined elevation="3">
+	<v-card class="ma-1 pa-1 rounded-xl" max-width="425" outlined elevation="3">
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }">
-			<v-img height="450" max-width="450" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
+			<v-img height="300" max-width="300" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
 				<template v-slot:placeholder>
 					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img
 		></router-link>
@@ -29,10 +29,10 @@
 		</v-card-text>
 
 		<div class="tags">
-			<p v-for="(tag, index) in recipe.tags" :key="index">{{tag.name}}</p>
+			<p v-for="(tag, index) in recipe.tags" :key="index"><strong>{{tag.name}}</strong></p>
 		</div>
 
-		<v-divider class="mx-4"></v-divider>
+		<!-- <v-divider class="mx-4"></v-divider> -->
 		<v-card-actions>
 			<v-btn color="orange lighten-2" text> Ingredients</v-btn>
 
@@ -55,7 +55,7 @@
 			</div>
 		</v-expand-transition>
 
-		<v-divider class="mx-4"></v-divider>
+		<!-- <v-divider class="mx-4"></v-divider> -->
 		<v-card-actions>
 			<v-btn color="orange lighten-2" text> Instructions </v-btn>
 
@@ -130,14 +130,20 @@ export default {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	align-items: stretch;
+	align-items: center;
 	flex-wrap: wrap;
+	flex-basis: 300px;
+	padding: 10px;
+	margin: 10px;
 }
 
 .tags p{
 	border: solid;
-	border-color: darkgreen;
-	border-radius: 15%;
-	background-color: lightgreen;
+	border-color: lightseagreen;
+	border-radius: 10%;
+	background-color:lightseagreen;
+	font-size: 10pt;
+	color: darkslategray;
+	
 }
 </style>
