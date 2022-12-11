@@ -23,7 +23,7 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
         User user = new User();
         user.setId(1);
         MealPlan mealPlan = mealPlanDao.getMealPlan(user);
-        List<Recipe> recipes = mealPlan.getRecipes();
+        List<Recipe> recipes = mealPlan.getMonday();
         Assert.assertEquals(1, recipes.size());
 
         Recipe recipe = recipes.get(0);

@@ -1424,15 +1424,6 @@ INSERT INTO public.ingredients VALUES (1389, 'chicharrones');
 
 
 --
--- TOC entry 2912 (class 0 OID 46408)
--- Dependencies: 211
--- Data for Name: meal_plan; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.meal_plan VALUES (1, 3);
-
-
---
 -- TOC entry 2908 (class 0 OID 46387)
 -- Dependencies: 207
 -- Data for Name: recipes; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -11246,6 +11237,13 @@ INSERT INTO public.users VALUES (1, 'user', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3
 INSERT INTO public.users VALUES (2, 'admin', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_ADMIN', true);
 INSERT INTO public.users VALUES (3, 'bigFoody', '$2a$10$TdHW3cUNn0FMa3U2kR22Vu28C72TPjDE/9pOaYdMehgANPNeaFWLa', 'ROLE_USER', true);
 
+--
+-- TOC entry 2912 (class 0 OID 46408)
+-- Dependencies: 211
+-- Data for Name: meal_plan; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.meal_plan VALUES (1, 3);
 
 --
 -- TOC entry 2948 (class 0 OID 0)

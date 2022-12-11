@@ -2,11 +2,16 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MealPlanDto {
     @JsonProperty("recipeID")
     private int recipeID;
+
     @JsonProperty("dayOfWeek")
     private int dayOfWeek;
+
 
     public int getRecipeID() {
         return recipeID;
