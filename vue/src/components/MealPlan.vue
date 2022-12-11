@@ -2,7 +2,7 @@
   <div>
       <h2>Sunday</h2>
       <ul>
-        <li v-for="recipe in mealPlanRecipes.recipes" v-bind:key="recipe.id">{{recipe.name}}</li>
+        <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</li>
       </ul>
 
      <tr>
@@ -38,10 +38,10 @@
 import AppService from '../services/AppService'
 export default {
 
-    props: ['recipe', 'mealplan'],
     data() {
       return {
-        mealPlanRecipes: [],
+        mealPlanRecipes: [
+        ],
 
       };
     },

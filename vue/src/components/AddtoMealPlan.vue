@@ -11,12 +11,9 @@
                 <option value="7">Saturday</option>
             </select>
 
-            <button id="add-to-meal-plan" v-on:click="addToMealPlan">Add to Meal Plan</button>
+            <button id="add-to-meal-plan" v-on:click="flipStatus(mealPlan)">{{ mealPlan.status === "added" ? "Remove from Meal Plan" :"Add to Meal Plan" }}</button>
 
         </div>
-
-        <button id="remove-from-meal-plan" v-on:click="removeFromMealPlan">Remove from Meal Plan</button>
-        
   </div>
 </template>
 
@@ -30,6 +27,7 @@ export default {
             mealPlan: {
                 dayOfWeek: 0,
                 recipeID: 0,
+                status: 'notAdded',
             },
         
         }
@@ -38,30 +36,24 @@ export default {
         this.mealPlan.recipeID = this.recipe.id;
     },
     methods: {
-        addToMealPlan() {
-            AppService.addToMealPlan(this.mealPlan).then( (response) => {
+
+        flipStatus(mealPlan) {
+            if (mealPlan.status == 'notAdded') {
+                AppService.addToMealPlan(this.mealPlan).then( (response) => {
                 if (response.status === 201) {
-                    alert("Success!");
-                }
-            })
-        },
-
-        removeFromMealPlan() {
-            AppService.removeFromMealPlan(this.mealPlan).then( (response) => {
+                    this.mealPlan.status = "added";
+                } 
+        });
+         } else if (mealPlan.status == "added") {
+             AppService.removeFromMealPlan(this.mealPlan).then( (response) => {
                 if (response.status === 204) {
-                    alert("Removed from meal plan.")
+                    this.mealPlan.status = "notAdded";
                 }
-            })
-
-
-
-        },
-
-        flipStatus() {
-
-        },
-         }
+         });
+            }
+        }
     }
+}
 
 
 </script>
