@@ -42,6 +42,7 @@ public class RecipeService {
     public Recipe getRecipeById(int recipeId) {
         Recipe recipe = recipeDao.getRecipe(recipeId);
         recipe.setIngredients(ingredientDao.getIngredientsByRecipe(recipe));
+        recipe.setTags(tagDao.getTagsForRecipe(recipe));
         return recipe;
     }
 
@@ -57,10 +58,12 @@ public class RecipeService {
         List<Recipe> searchedRecipes = recipeDao.searchRecipes(searchWord);
         for(Recipe r : searchedRecipes){
             r.setIngredients(ingredientDao.getIngredientsByRecipe(r));
+            r.setTags(tagDao.getTagsForRecipe(r));
         }
         return searchedRecipes;
     }
 
+    //DEPRECATED!
     public boolean importRecipe(int count) {
         for(int i = 0; i < count; i++) {
             ExternalRecipeModel erm = restTemplate.getForObject(API_URL, ExternalRecipeModel.class);
