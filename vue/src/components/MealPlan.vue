@@ -50,9 +50,9 @@ export default {
       getMealPlanRecipes(){
         AppService.getMealPlanRecipes().then((response) => {
           if(response.status === 200){
-            alert("Here are your recipes");
+            this.mealPlanRecipes = response.data;
           }
-          this.mealPlanRecipes = response.data;
+          
         })
       }
 

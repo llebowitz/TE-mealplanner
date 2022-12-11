@@ -1,8 +1,10 @@
 <template>
   <div>
-      <div class="saved-recipe-card">
+        
+          <div class="saved-recipe-card">
+          
           <div class="saved-container">
-              <img v-bind:src="`${recipe.imgLink}`">
+              <img v-bind:src="`${recipe.imgLink}`" >
               <router-link v-bind:to="{ name : 'singleRecipe', params: { recipeId: recipe.id } }">
               <h3>{{recipe.name}}</h3> </router-link>
               <p>{{recipe.yield}}</p>
@@ -21,9 +23,44 @@ export default {
 
 <style>
 .saved-recipe-card {
-    width: 33%;
+    border: 2px black solid;
+    width: 25%;
+    height: auto;
+    border-radius: 25px;
+    margin: 5px;
+    padding: 8px;
+    padding-top: 15px;
+    
 }
+ .saved-recipe-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
 .saved-container {
-    width: 33%;
+
+    height: auto;
+    width: 100%;
+ 
+    
 }
+h3 {
+    font-size: 14px;
+    text-align: center
+}
+
+p{
+    font-size: 12px;
+    text-align: center
+}
+
+img {
+    width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: auto
+}
+
+
 </style>
