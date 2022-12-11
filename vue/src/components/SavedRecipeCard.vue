@@ -22,8 +22,12 @@ export default {
 <style>
 .saved-recipe-card {
     width: 33%;
+    border: 1px black solid
+
 }
 .saved-container {
     width: 33%;
+    border: 1px black solid
+   
 }
 </style>
