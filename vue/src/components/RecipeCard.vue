@@ -29,10 +29,10 @@
 		</v-card-text>
 
 		<div class="tags">
-			<p v-for="(tag, index) in recipe.tags" :key="index">{{tag.name}}</p>
+			<p v-for="(tag, index) in recipe.tags" :key="index"><strong>{{tag.name}}</strong></p>
 		</div>
 
-		<v-divider class="mx-4"></v-divider>
+		<!-- <v-divider class="mx-4"></v-divider> -->
 		<v-card-actions>
 			<v-btn color="orange lighten-2" text> Ingredients</v-btn>
 
@@ -55,7 +55,7 @@
 			</div>
 		</v-expand-transition>
 
-		<v-divider class="mx-4"></v-divider>
+		<!-- <v-divider class="mx-4"></v-divider> -->
 		<v-card-actions>
 			<v-btn color="orange lighten-2" text> Instructions </v-btn>
 
@@ -132,12 +132,18 @@ export default {
 	justify-content: space-around;
 	align-items: center;
 	flex-wrap: wrap;
+	flex-basis: 300px;
+	padding: 10px;
+	margin: 10px;
 }
 
 .tags p{
 	border: solid;
-	border-color: darkgreen;
-	border-radius: 15%;
-	background-color: lightgreen;
+	border-color: lightseagreen;
+	border-radius: 10%;
+	background-color:lightseagreen;
+	font-size: 10pt;
+	color: darkslategray;
+	
 }
 </style>
