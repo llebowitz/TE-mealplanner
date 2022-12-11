@@ -2,7 +2,7 @@
   <div>
         <div>
             <select v-model="mealPlan.dayOfWeek">
-                <option value="1">Sunday</option>
+                <option value="1" >Sunday</option>
                 <option value="2">Monday</option>
                 <option value="3">Tuesday</option>
                 <option value="4">Wednesday</option>
@@ -14,6 +14,8 @@
             <button v-on:click="addToMealPlan">Add to Meal Plan</button>
 
         </div>
+
+        <button v-on:click="removeFromMealPlan">Remove from Meal Plan</button>
         
   </div>
 </template>
@@ -44,6 +46,17 @@ export default {
             })
         },
 
+        removeFromMealPlan() {
+            AppService.removeFromMealPlan(this.mealPlan).then( (response) => {
+                if (response.status === 204) {
+                    alert("Removed from meal plan.")
+                }
+            })
+
+
+
+        },
+
         toggleSelect() {
             this.showSelect = !this.showSelect;
          }
@@ -53,7 +66,9 @@ export default {
 </script>
 
 <style>
-
+#select {
+    border: solid, black
+}
 
 
 </style>

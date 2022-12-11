@@ -34,14 +34,13 @@ public class MealPlanController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/users/mealplan", method = RequestMethod.POST)
     public void addRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
-        mealPlanService.addRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeID());
+       boolean r = mealPlanService.addRecipeMealPlan(principal.getName(), mealPlanDto.getDayOfWeek(), mealPlanDto.getRecipeID());
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/users/mealplan", method = RequestMethod.DELETE)
-    public void deleteRecipe(Principal principal, @RequestBody MealPlanDto mealPlanDto) {
-        System.out.println("!!!!!!" + mealPlanDto.getRecipeID() + "!!!!!!!");
-        mealPlanService.deleteRecipeMealPlan(principal.getName(), mealPlanDto.getRecipeID());
+    @RequestMapping(path = "/users/mealplan/recipe/{recipeId}/day/{dayOfWeek}", method = RequestMethod.DELETE)
+    public void deleteRecipe(Principal principal, @PathVariable int recipeId, @PathVariable int dayOfWeek) {
+        boolean r = mealPlanService.deleteRecipeMealPlan(principal.getName(), dayOfWeek, recipeId);
     }
 
     @ResponseStatus(HttpStatus.OK)

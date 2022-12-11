@@ -67,7 +67,7 @@ export default {
 			},
 			{
 				title: 'User Portal',
-				routeName: 'user',
+				routeName: 'user-portal',
 			},
 		],
 		//

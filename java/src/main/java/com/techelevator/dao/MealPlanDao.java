@@ -9,8 +9,9 @@ import java.util.List;
 
 public interface MealPlanDao {
 
-    boolean addRecipeMealPlan (int recipeId, int userId);
-    boolean deleteRecipeMealPlan (int recipeId, int userId);
+    boolean addRecipeMealPlan (int recipeId, int dayOfWeek, int userId);
+    //TO DO: look into day_of_week type as string in database
+    boolean deleteRecipeMealPlan (int recipeId, Integer dayOfWeek, int userId);
     List<Ingredient> createGroceryList(int userId);
     MealPlan getMealPlan (User user);
 
