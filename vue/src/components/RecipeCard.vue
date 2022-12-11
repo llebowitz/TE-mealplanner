@@ -1,7 +1,7 @@
 <template>
-	<v-card class="ma-1 pa-1 rounded-xl" max-width="374" outlined elevation="3">
+	<v-card class="ma-1 pa-1 rounded-xl" max-width="550" outlined elevation="3">
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }">
-			<v-img height="250" max-width="250" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
+			<v-img height="450" max-width="450" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
 				<template v-slot:placeholder>
 					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img
 		></router-link>
@@ -28,8 +28,9 @@
 			<div class="font-italic">{{ recipe.blurb }}</div>
 		</v-card-text>
 
-		<!-- <v-card-text>
-		</v-card-text> -->
+		<div class="tags">
+			<p v-for="(tag, index) in recipe.tags" :key="index">{{tag.name}}</p>
+		</div>
 
 		<v-divider class="mx-4"></v-divider>
 		<v-card-actions>
@@ -120,8 +121,23 @@ export default {
 // }
 </script>
 
-<style>
+<style scoped>
 .card-title {
 	word-break: break-word;
+}
+
+.tags{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: stretch;
+	flex-wrap: wrap;
+}
+
+.tags p{
+	border: solid;
+	border-color: darkgreen;
+	border-radius: 15%;
+	background-color: lightgreen;
 }
 </style>

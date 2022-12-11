@@ -5,6 +5,8 @@ import com.techelevator.model.Tag;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class JdbcTagDao implements TagDao{
     private final JdbcTemplate jdbcTemplate;
@@ -35,5 +37,11 @@ public class JdbcTagDao implements TagDao{
     @Override
     public void removeTags(Recipe recipe) {
 
+    }
+
+    @Override
+    public List<Tag> getTagsForRecipe(Recipe recipe) {
+        String sql = "SELECT * FROM tags t JOIN recipes_tags rt ON t.tag_id = rt.tag_id WHERE recipe_id = ?";
+        return jdbcTemplate.query(sql, new TagMapper(), recipe.getId());
     }
 }

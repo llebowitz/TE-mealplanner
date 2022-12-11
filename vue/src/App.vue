@@ -82,4 +82,3 @@ export default {
 .hidden-sm-and-down {
 	margin-left: 12px;
 }
-</style>
