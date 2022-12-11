@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #register {
 	background-color: #c8e6c9;
 }
