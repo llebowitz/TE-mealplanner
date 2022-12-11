@@ -26,8 +26,17 @@ export default {
 
 }
 .saved-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "";
+    height: auto;
     width: 33%;
     border: 1px black solid
    
+}
+
+img {
+    width: 25%;
+    height: auto;
 }
 </style>
