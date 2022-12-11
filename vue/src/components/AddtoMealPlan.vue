@@ -11,11 +11,11 @@
                 <option value="7">Saturday</option>
             </select>
 
-            <button v-on:click="addToMealPlan">Add to Meal Plan</button>
+            <button id="add-to-meal-plan" v-on:click="addToMealPlan">Add to Meal Plan</button>
 
         </div>
 
-        <button v-on:click="removeFromMealPlan">Remove from Meal Plan</button>
+        <button id="remove-from-meal-plan" v-on:click="removeFromMealPlan">Remove from Meal Plan</button>
         
   </div>
 </template>
@@ -66,8 +66,16 @@ export default {
 </script>
 
 <style>
-select {
-    border: 3px, solid, black
+#add-to-meal-plan {
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+#remove-from-meal-plan {
+    border: 2px;
+    border-color: black;
+    border-style: solid;
 }
 
 </style>
