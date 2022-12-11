@@ -28,7 +28,8 @@ export default {
     height: auto;
     border-radius: 25px;
     margin: 5px;
-    padding: 8px
+    padding: 8px;
+    padding-top: 15px;
     
 }
  .saved-recipe-card:hover {
@@ -44,16 +45,21 @@ export default {
     
 }
 h3 {
-    font-size: 14px
+    font-size: 14px;
+    text-align: center
 }
 
 p{
     font-size: 12px;
+    text-align: center
 }
 
 img {
-    width: 100%;
-    width: 100%
+    width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+    margin: auto
 }
 
 
