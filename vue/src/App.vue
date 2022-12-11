@@ -11,12 +11,13 @@
 	<v-app id="inspire">
 		<v-app-bar app color="white" flat>
 			<v-avatar :color="$vuetify.breakpoint.smAndDown ? 'grey darken-1' : 'transparent'" size="32"></v-avatar>
-
 			<v-tabs centered class="ml-n9" color="grey darken-1">
 				<v-tab v-for="link in links" :key="link.title" router-link v-bind:to="{ name: `${link.routeName}` }">
 					{{ link.title }}
 				</v-tab>
 			</v-tabs>
+			<router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+			<router-link v-bind:to="{ name: 'login' }" v-else>Login</router-link>
 			<v-avatar class="hidden-sm-and-down" color="grey darken-1 shrink" size="32"></v-avatar>
 		</v-app-bar>
 
@@ -27,13 +28,13 @@
 						<v-sheet rounded="lg" min-height="268">
 							<!--  -->
 							<!-- <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp; -->
-							<router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+							<!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
 							<!-- <router-link v-bind:to="{ name: 'recipes' }"> Display Recipes</router-link> -->
 						</v-sheet>
 					</v-col>
 
 					<v-col cols="12" sm="8">
-						<v-sheet min-height="70vh" rounded="lg">
+						<v-sheet min-height="70vh" rounded="lg" class="fill-height">
 							<!--  -->
 							<router-view />
 						</v-sheet>
@@ -73,3 +74,12 @@ export default {
 	}),
 };
 </script>
+
+<style scoped>
+/* #inspire {
+	background-color: #c8e6c9;
+} */
+.hidden-sm-and-down {
+	margin-left: 12px;
+}
+</style>
