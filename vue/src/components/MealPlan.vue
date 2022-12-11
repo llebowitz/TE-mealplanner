@@ -1,9 +1,9 @@
 <template>
   <div>
-      <h2>Sunday</h2>
+      <!-- <h2>Sunday</h2>
       <ul>
         <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</li>
-      </ul>
+      </ul> -->
 
      <tr>
           <th>Sun</th>
@@ -16,13 +16,13 @@
           
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</td>
+        <td v-for="(recipe, index) in mealPlanRecipes.monday" v-bind:key="index">{{recipe.name}}</td>
+        <td v-for="(recipe, index) in mealPlanRecipes.tuesday" v-bind:key="index">{{recipe.name}}</td>
+        <td v-for="(recipe, index) in mealPlanRecipes.wednesday" v-bind:key="index">{{recipe.name}}</td>
+        <td v-for="(recipe, index) in mealPlanRecipes.thursday" v-bind:key="index">{{recipe.name}}</td>
+        <td v-for="(recipe, index) in mealPlanRecipes.friday" v-bind:key="index">{{recipe.name}}</td>
+        <td v-for="(recipe, index) in mealPlanRecipes.saturday" v-bind:key="index">{{recipe.name}}</td>
       </tr>
 
 
