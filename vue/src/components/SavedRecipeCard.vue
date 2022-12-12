@@ -42,7 +42,7 @@ export default {
 }
 
 .saved-recipe-card {
-    border: 2px navy solid;
+    border: 2px black solid;
     width: 260px;
     height: 260px;
     border-radius: 25px;

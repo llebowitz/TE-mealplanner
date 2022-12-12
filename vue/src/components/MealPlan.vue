@@ -5,31 +5,52 @@
         <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</li>
       </ul> -->
       <h1>My Meal Plan</h1>
-    <div class="table">
-      <table>
-        <thead>
-     <tr>
-          <th>Sunday</th>
-          <th>Monday</th>
-          <th>Tuesday</th>
-          <th>Wednesday</th>
-          <th>Thursday</th>
-          <th>Friday</th>
-          <th>Saturday</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</td>
-        <td v-for="(recipe, index) in mealPlanRecipes.monday" v-bind:key="index">{{recipe.name}}</td>
-        <td v-for="(recipe, index) in mealPlanRecipes.tuesday" v-bind:key="index">{{recipe.name}}</td>
-        <td v-for="(recipe, index) in mealPlanRecipes.wednesday" v-bind:key="index">{{recipe.name}}</td>
-        <td v-for="(recipe, index) in mealPlanRecipes.thursday" v-bind:key="index">{{recipe.name}}</td>
-        <td v-for="(recipe, index) in mealPlanRecipes.friday" v-bind:key="index">{{recipe.name}}</td>
-        <td v-for="(recipe, index) in mealPlanRecipes.saturday" v-bind:key="index">{{recipe.name}}</td>
-      </tr>
-      </tbody>
-      </table>
+    <div class="day-of-week">
+     
+      <div>Sun</div>
+      <div>Mon</div>
+      <div>Tues</div>
+      <div>Wed</div>
+      <div>Thurs</div>
+      <div>Fri</div>
+      <div>Sat</div>
+
+    <div class="day-grid">
+     <ul>
+       <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</li>
+     </ul>
+    
+         </div>
+     <ul>
+       <li v-for="(recipe, index) in mealPlanRecipes.monday" v-bind:key="index">{{recipe.name}}</li>
+     </ul>
+
+     <ul>
+       <li v-for="(recipe, index) in mealPlanRecipes.tuesday" v-bind:key="index">{{recipe.name}}</li>
+     </ul>
+
+       <ul>
+       <li v-for="(recipe, index) in mealPlanRecipes.wednesday" v-bind:key="index">{{recipe.name}}</li>
+     </ul>
+
+     <ul>
+       <li v-for="(recipe, index) in mealPlanRecipes.thursday" v-bind:key="index">{{recipe.name}}</li>
+     </ul>
+
+      <ul>
+       <li v-for="(recipe, index) in mealPlanRecipes.friday" v-bind:key="index">{{recipe.name}}</li>
+     </ul>
+
+      <ul>
+       <li v-for="(recipe, index) in mealPlanRecipes.saturday" v-bind:key="index">{{recipe.name}}</li>
+     </ul>
+   
+
+    
+
+   
+
+   
 
 </div>
 
@@ -81,9 +102,13 @@ export default {
 </script>
 
 <style>
-table, th, td{
-  height: 50vh;
-  border:1px black solid
+.day-of-week,
+.day-grid{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
 
+.day-grid{
+  font-size: 12px
 }
 </style>
