@@ -10,7 +10,7 @@
 
     <main>
         <div><img v-bind:src="`${recipe.imgLink}`"  alt=""></div>
-        {{recipe.instructions}}
+        <div class="instructions">{{recipe.instructions}}</div>
     </main>
 </div>
   
@@ -58,6 +58,10 @@ export default {
 
 .container main{
     grid-area: main;
+}
+
+.instructions{
+    white-space: pre-wrap;
 }
 
 </style>
