@@ -30,10 +30,14 @@
 </template>
 
 <script>
-import AppService from '../services/AppService'
+import AppService from '../services/AppService';
+import MealPlanDay from '../components/MealPlanDay.vue';
 
 
 export default {
+    components: {
+      MealPlanDay,
+    },
     data() {
       return {
         mealPlanRecipes: [
