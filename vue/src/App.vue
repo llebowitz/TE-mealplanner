@@ -18,10 +18,11 @@
 			</v-tabs>
 			<router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
 			<router-link v-bind:to="{ name: 'login' }" v-else>Login</router-link>
-			<v-avatar class="hidden-sm-and-down" color="grey darken-1 shrink" size="32"><img src="./assets/cartoonfood1.jpg" /></v-avatar>
+			<v-avatar class="hidden-sm-and-down" color="grey darken-1 shrink" size="32"><img src="./assets/crossed-utensils.jpg" /></v-avatar>
 		</v-app-bar>
 
-		<v-main class="grey lighten-3">
+		<!-- <v-main class="grey lighten-3"> -->
+		<v-main class="green lighten-4">
 			<v-container>
 				<v-row>
 					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHome()">
@@ -43,7 +44,7 @@
 							<router-view :key="$route.fullPath" />
 						</v-sheet>
 					</v-col>
-					<v-col v-else class="ma-auto">
+					<v-col v-else grow>
 						<v-sheet min-height="70vh" rounded="lg" class="fill-height">
 							<!--  -->
 
@@ -101,6 +102,9 @@ export default {
 /* #inspire {
 	background-color: #c8e6c9;
 } */
+v-main {
+	background-color: #c8e6c9;
+}
 .hidden-sm-and-down {
 	margin-left: 12px;
 }
