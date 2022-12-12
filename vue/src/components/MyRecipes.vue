@@ -44,7 +44,7 @@ methods: {
 }
 </script>
 
-<style>
+<style scoped>
 
 .flex-grid {
   display: flex;

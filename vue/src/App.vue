@@ -12,7 +12,7 @@
 		<v-app-bar app color="white" flat>
 			<v-avatar :color="$vuetify.breakpoint.smAndDown ? 'grey darken-1' : 'transparent'" size="32"></v-avatar>
 			<v-tabs centered class="ml-n9" color="grey darken-1">
-				<v-tab v-for="link in links" :key="link.title" router-link v-bind:to="{ name: `${link.routeName}` }">
+				<v-tab class="hide-slider" v-for="link in links" :key="link.title" router-link v-bind:to="{ name: `${link.routeName}` }">
 					{{ link.title }}
 				</v-tab>
 			</v-tabs>

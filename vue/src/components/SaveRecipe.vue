@@ -40,7 +40,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #save-button {
     border: 2px;
     border-color: black;
