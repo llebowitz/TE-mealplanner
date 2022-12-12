@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +47,16 @@ public class RecipeService {
         return recipe;
     }
 
-    public void updateRecipe(Recipe recipe) {
-        recipeDao.updateRecipe(recipe);
+    public void updateRecipe(Recipe recipe, String username) {
+        if(username != null && !username.isBlank()){
+            recipe.setName(recipe.getName() + " made by " + username);
+        }
+
+        if(recipeDao.doesRecipeExist(recipe.getName())){
+            recipeDao.updateRecipe(recipe);
+        }else{
+            recipeDao.addRecipe(recipe);
+        }
     }
 
     public void deleteRecipe(Recipe recipe) {
