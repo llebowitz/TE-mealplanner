@@ -86,10 +86,10 @@ const router = new Router({
 		},
 		{
 			path: '/grocerylist',
-			name: 'groceryList',
+			name: 'grocery-list',
 			component: GroceryList,
 			meta: {
-				requiresAuth: false,
+				requiresAuth: true,
 			},
 		}
 	],
