@@ -54,6 +54,20 @@
 
 					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHome()">
 						<v-sheet rounded="lg" min-height="268">
+							<h4>Helpful links to up your cooking game:</h4>
+							<a href="https://www.seriouseats.com/">Serious Eats</a>
+							<v-spacer></v-spacer>
+							<a href="https://nymag.com/strategist/article/best-cookware-sets.html">Cookware Recommendations</a>
+							<v-spacer></v-spacer>
+
+							<a
+								href="https://www.masterclass.com/?campaignid=16375017014&adgroupid=135152788313&adid=634414682315&utm_term=masterclass%20cooking&utm_campaign=%5BMC%5C+%7C+Search+%7C+Brand+%7C+Topic+%7C+USA+%7C+EN+%7C+MAX+%7C+EG%7CPP+%7C+BRD+%7C+US&utm_source=google&utm_medium=cpc&utm_content=634414682315&hsa_acc=9801000675&hsa_cam=16375017014&hsa_grp=135152788313&hsa_ad=634414682315&hsa_src=g&hsa_tgt=kwd-306566196910&hsa_kw=masterclass%20cooking&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAiAv9ucBhBXEiwA6N8nYAScvo90J4NKfu1F-oFm-tPqhz9kmfP5Z0BUp-er79W4tcuizq5g9BoCeB0QAvD_BwE"
+								>Master Class</a
+							>
+							<v-spacer></v-spacer>
+
+							<a href="https://www.fox.com/masterchef/">Master Chef</a>
+
 							<!--  -->
 						</v-sheet>
 					</v-col>
