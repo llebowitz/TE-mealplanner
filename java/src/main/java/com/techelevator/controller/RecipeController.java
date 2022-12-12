@@ -35,6 +35,12 @@ public class RecipeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/recipes/random", method = RequestMethod.GET)
+    public Recipe getRandomRecipe(){
+        return recipeService.getRandomRecipe();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/recipes/{recipeId}", method = RequestMethod.PUT)
     public void updateRecipe(@RequestBody Recipe recipe, Principal principal){
         recipeService.updateRecipe(recipe, principal.getName());
