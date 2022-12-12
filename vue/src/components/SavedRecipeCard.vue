@@ -14,6 +14,7 @@
               <p> </p>
               </div>
               <addto-meal-plan v-bind:recipe="recipe" />
+              <button id="unsave-recipe">Unsave</button>
               <save-recipe v-bind:recipe="recipe" />
           </div>
     </div>
