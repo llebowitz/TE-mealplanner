@@ -6,34 +6,36 @@
 					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img
 		></router-link>
 		<div>
-		<save-recipe v-bind:recipe="recipe" />
-		<addto-meal-plan v-bind:recipe="recipe" />
+			<save-recipe v-bind:recipe="recipe" />
+			<addto-meal-plan v-bind:recipe="recipe" />
 		</div>
-		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"><v-card-title class="card-title mb-n5 align-self-start">{{ recipe.name }}</v-card-title></router-link>
-		<div class="grey--text ms-4" v-if="recipe.yield != ''"><p>{{ recipe.yield }}</p></div>
+		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
+			><v-card-title class="card-title mb-n5 align-self-start">{{ recipe.name }}</v-card-title></router-link
+		>
+		<div class="grey--text ms-4" v-if="recipe.yield != ''">
+			<p>{{ recipe.yield }}</p>
+		</div>
 
-		<v-card-text>
-			<!-- <v-row align="center" class="mx-0"> -->
-			<!-- <v-rating
+		<!--	<v-card-text> <v-row align="center" class="mx-0"> 
+			<v-rating
           :value="4.5"
           color="amber"
           dense
           half-increments
           readonly
           size="14"
-        ></v-rating> -->
+        ></v-rating></v-row> 
+		</v-card-text>-->
 
-			<!-- </v-row> -->
-			<div class="font-italic mb-n4 align-self-start">{{ recipe.blurb }}</div>
-		</v-card-text>
-
-		<div class="tags mt-n7">
-			<p v-for="(tag, index) in recipe.tags" :key="index"><strong>{{tag.name}}</strong></p>
+		<div class="tags mt-n3">
+			<p v-for="(tag, index) in recipe.tags" :key="index" class="mx-1 my-2">
+				<strong>{{ tag.name }}</strong>
+			</p>
 		</div>
 
-		<!-- <v-divider class="mx-4"></v-divider> -->
-		<!-- <v-card-actions>
-			<v-btn color="orange lighten-2" text> Ingredients</v-btn>
+		<v-divider class="mx-4"></v-divider>
+		<v-card-actions>
+			<v-btn color="orange lighten-2" text> Preview:</v-btn>
 
 			<v-spacer></v-spacer>
 
@@ -47,14 +49,12 @@
 				<v-divider></v-divider>
 
 				<v-card-text>
-					<div class="my-4 text-subtitle-1" v-for="(ingredient, index) in recipe.ingredients" v-bind:key="index" v-bind:ingredient="ingredient">
-						<span v-if="ingredient.quantity !== 0">{{ ingredient.quantity }}</span> {{ ingredient.measurement }} {{ ingredient.name }}
-					</div>
+					<div class="font-italic align-self-start">{{ recipe.blurb }}</div>
 				</v-card-text>
 			</div>
 		</v-expand-transition>
 
-		<v-divider class="mx-4"></v-divider>
+		<!-- <v-divider class="mx-4"></v-divider>
 		<v-card-actions>
 			<v-btn color="orange lighten-2" text> Instructions </v-btn>
 
@@ -73,7 +73,7 @@
 					{{ recipe.instructions }}
 				</v-card-text>
 			</div>
-		</v-expand-transition> -->
+		</v-expand-transition>-->
 	</v-card>
 
 	<!-- <div>
@@ -104,7 +104,7 @@ export default {
 	data: () => ({
 		show: false,
 	}),
-}
+};
 
 //methods: {
 // saveRecipe()
@@ -125,24 +125,24 @@ export default {
 	word-break: break-word;
 }
 
-.tags{
+.tags {
 	display: flex;
-	flex-direction: row;
+	/* flex-direction: row; */
 	justify-content: space-around;
 	align-items: center;
 	flex-wrap: wrap;
-	flex-basis: 300px;
-	padding: 10px;
-	margin: 10px;
+	/* flex-basis: 300px; */
+	/* padding: 10px;
+	margin: 10px; */
 }
 
-.tags p{
+.tags p {
+	flex-shrink: 1;
 	border: solid;
 	border-color: lightseagreen;
 	border-radius: 10%;
-	background-color:lightseagreen;
+	background-color: lightseagreen;
 	font-size: 10pt;
 	color: darkslategray;
-	
 }
 </style>
