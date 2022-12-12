@@ -1,7 +1,8 @@
 <template>
   <div>
         <div>
-            <select v-model="mealPlan.dayOfWeek">
+            <select class= "selections" v-model="mealPlan.dayOfWeek">
+                <option value="0" hidden disabled>Select an Option</option>
                 <option value="1">Sunday</option>
                 <option value="2">Monday</option>
                 <option value="3">Tuesday</option>
@@ -58,17 +59,34 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 #add-to-meal-plan {
     border: 2px;
     border-color: black;
     border-style: solid;
+    background-color: lightgrey;
+    padding-right: 4px;
+    padding-left: 4px;
 }
 
 #remove-from-meal-plan {
     border: 2px;
     border-color: black;
+    background-color: lightgrey;
     border-style: solid;
+    border-radius:2rem;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.selections{
+    /* border: 2px;
+    border-color: black;
+    border-style: solid; */
+    border-radius: 8%;
+    margin-right: 6px;
+    padding-right: 4px;
+    padding-left: 4px;
 }
 
 </style>
