@@ -1,19 +1,41 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Ingredient;
+import com.techelevator.model.Recipe;
 import com.techelevator.services.RecipeService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class JdbcIngredientDaoTest extends BaseDaoTests{
 
-//    @Test
-//    public void getIngredientsByRecipe() {
-//    }
-//
+    @Test
+    public void getIngredientsByRecipe_return_success() {
+        IngredientDao ingredientDao = getIngredientDao();
+        RecipeDao recipeDao = getRecipeDao();
+
+        Recipe recipe = recipeDao.getRecipe(1);
+
+        List<Ingredient> ingredients = ingredientDao.getIngredientsByRecipe(recipe);
+        Assert.assertEquals(13, ingredients.size());
+    }
+
 //    @Test
 //    public void getIngredientByName() {
+//        IngredientDao ingredientDao = getIngredientDao();
+//        RecipeDao recipeDao = getRecipeDao();
+//
+//        List<Ingredient> ingredient = ingredientDao.getIngredientByName("shallot");
+//        Recipe recipe = recipeDao.getRecipe(1);
+//
+//        List<Ingredient> ingredients = ingredientDao.getIngredientsByRecipe(recipe);
+//        Assert.assertEquals(13, ingredients.size());
+//
+//
 //    }
 //
 //    @Test
