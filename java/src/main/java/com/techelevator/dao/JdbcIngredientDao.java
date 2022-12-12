@@ -22,18 +22,17 @@ public class JdbcIngredientDao implements IngredientDao{
         return jdbcTemplate.query(sql, new IngredientMapper(), recipe.getId());
     }
 
-    // Possibly not needed?
     @Override
-    public List<Ingredient> getIngredientByName(String name) {
+    public Ingredient getIngredientByName(String name) {
         String sql = "SELECT * FROM ingredients WHERE ingredient_name ILIKE ?";
         name = "%" + name + "%";
-        return jdbcTemplate.query(sql, new IngredientMapper(), name);
+        return jdbcTemplate.queryForObject(sql, new GroceryListMapper(), name);
     }
 
     @Override
     public Ingredient getIngredientById(int id) {
         String sql = "SELECT * FROM ingredients WHERE ingredient_id = ?";
-        return jdbcTemplate.queryForObject(sql, Ingredient.class, id);
+        return jdbcTemplate.queryForObject(sql, new GroceryListMapper(), id);
     }
 
     @Override

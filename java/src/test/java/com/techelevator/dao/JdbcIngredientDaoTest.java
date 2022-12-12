@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class JdbcIngredientDaoTest extends BaseDaoTests{
 
     @Test
-    public void getIngredientsByRecipe_return_success() {
+    public void getIngredientsByRecipe_returns_list_of_ingredients() {
         IngredientDao ingredientDao = getIngredientDao();
         RecipeDao recipeDao = getRecipeDao();
 
@@ -24,27 +24,32 @@ public class JdbcIngredientDaoTest extends BaseDaoTests{
         Assert.assertEquals(13, ingredients.size());
     }
 
-//    @Test
-//    public void getIngredientByName() {
-//        IngredientDao ingredientDao = getIngredientDao();
-//        RecipeDao recipeDao = getRecipeDao();
-//
-//        List<Ingredient> ingredient = ingredientDao.getIngredientByName("shallot");
-//        Recipe recipe = recipeDao.getRecipe(1);
-//
-//        List<Ingredient> ingredients = ingredientDao.getIngredientsByRecipe(recipe);
-//        Assert.assertEquals(13, ingredients.size());
-//
-//
-//    }
-//
-//    @Test
-//    public void getIngredientById() {
-//    }
-//
-//    @Test
-//    public void getAllIngredients() {
-//    }
+    @Test
+    public void getIngredientByName_returns_ingredient() {
+        IngredientDao ingredientDao = getIngredientDao();
+        RecipeDao recipeDao = getRecipeDao();
+
+        Ingredient ingredient = ingredientDao.getIngredientByName("SHALLOT");
+        Assert.assertEquals("shallot", ingredient.getName());
+    }
+
+    @Test
+    public void getIngredientById_returns_ingredient() {
+        IngredientDao ingredientDao = getIngredientDao();
+        RecipeDao recipeDao = getRecipeDao();
+
+        Ingredient ingredient = ingredientDao.getIngredientById(1);
+        Assert.assertEquals(1, ingredient.getId());
+    }
+
+    @Test
+    public void getAllIngredients() {
+        IngredientDao ingredientDao = getIngredientDao();
+        RecipeDao recipeDao = getRecipeDao();
+
+        Ingredient ingredient = ingredientDao.getIngredientById(1);
+        Assert.assertEquals(1, ingredient.getId());
+    }
 
     private UserDao getUserDao() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
