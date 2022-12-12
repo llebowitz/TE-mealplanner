@@ -41,8 +41,8 @@ export default {
         return axios.post('/users/mealplan', mealPlan)
     },
 
-    removeFromMealPlan(mealPlan) {
-        return axios.delete(`/users/mealplan/recipe/${mealPlan.recipeID}/day/${mealPlan.dayOfWeek}`)
+    removeFromMealPlan(recipe) {
+        return axios.delete(`/users/mealplan/recipe/${recipe.recipeID}/day/${recipe.dayOfWeek}`)
     },
 
     getMealPlanRecipes(){
