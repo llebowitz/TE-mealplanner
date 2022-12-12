@@ -14,7 +14,6 @@
               <p> </p>
               </div>
               <addto-meal-plan v-bind:recipe="recipe" />
-              <button id="unsave-recipe">Unsave</button>
               <save-recipe v-bind:recipe="recipe" />
           </div>
     </div>
@@ -31,9 +30,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-.blurb-container{
+/* .blurb-container{
     
         height: 90px;
         overflow: hidden;
@@ -41,10 +40,10 @@ export default {
         padding-bottom: 3px;
         border: 1px black solid
 
-}
+} */
 
 .saved-recipe-card {
-    border: 2px black solid;
+    border: 1px rgb(156, 149, 149) solid;
     width: 260px;
     height: 260px;
     border-radius: 25px;

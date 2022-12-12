@@ -1,11 +1,14 @@
 <template>
 	<div class="text-center fill-height">
-		<h1>Featured Recipe:</h1>
+		<h2>Featured Recipe</h2>
+		<br>
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }">
-			<v-img height="250" max-width="250" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
+			<v-img max-width="250" max-height="150" class="image" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
 				<template v-slot:placeholder>
-					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img
-		></router-link>
+					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img>
+		</router-link>
+		<br>
+		<p>{{recipe.name}}</p>
 	</div>
 </template>
 
@@ -14,7 +17,16 @@ import AppService from '../services/AppService.js';
 export default {
 	name: 'featured-recipe',
 	components: {},
-	props: ['recipe'],
+	data(){
+		return{
+			recipe:{},
+		}
+	},
+	created(){
+		AppService.getRandomRecipe().then((response) => {
+			this.recipe = response.data;
+		})
+	},
 	methods: {
 		searchRecipes() {
 			AppService.getRecipes(this.filter).then((response) => {
@@ -22,11 +34,12 @@ export default {
 			});
 		},
 	},
-
-	created() {
-		this.searchRecipes;
-	},
 };
 </script>
 
-<style></style>
+<style scoped>
+h2{
+	text-decoration: underline;
+}
+
+</style>

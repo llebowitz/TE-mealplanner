@@ -1,16 +1,17 @@
 <template>
 	<div>
 		<div class="search-bar">
-			<label>Search:</label>
-			<input id="search" type="text" v-model="filter" v-on:change="searchRecipes" />
+			<label class="search-text"><strong>Let's Find A Recipe</strong></label>
+			<input id="search" class="search" type="text" v-model="filter" v-on:change="searchRecipes" />
 			<!-- can duplicate the event on a search button -->
 		</div>
+		<img class="running-chef" v-show="isLoading == true" src="../assets/swedishchef.gif" alt="">
 
 		<!-- <div class="recipe-container ma-12 d-flex flex-wrap"> -->
 			<v-container fluid>
-			<v-slide-group v-model="model" class="pa-1 d-flex flex-nowrap" center-active show-arrows>
+			<v-slide-group v-show=!isLoading v-model="model" class="pa-0 d-flex flex-nowrap" center-active show-arrows>
 				<v-slide-item v-for="recipe in recipes" v-bind:key="recipe.recipeID" v-slot="{ active, toggle }" class="ma-12 d-flex flex-wrap">
-					<recipe-card v-bind:recipe="recipe" @click="toggle" class="ma-12 pa-12">
+					<recipe-card v-bind:recipe="recipe" @tagClicked='onTagClick' @click="toggle" class="ma-12 pa-12">
 						<!-- <v-row class="fill-height pa-12 ma-12" align="center" justify="center"> -->
 						<v-scale-transition>
 							<v-icon v-if="active" color="white" size="48" v-text="'mdi-close-circle-outline'"></v-icon>
@@ -36,8 +37,10 @@ export default {
 			filter: '',
 			recipes: [],
 			model: null,
+			isLoading: true,
 		};
 	},
+	props:['passedSearch'],
 
 	components: {
 		RecipeCard,
@@ -46,20 +49,51 @@ export default {
 
 	methods: {
 		searchRecipes() {
+			this.isLoading = true;
 			AppService.getRecipes(this.filter).then((response) => {
 				this.recipes = response.data;
+				this.isLoading = false;
 			});
 		},
+
+		onTagClick(tagName){
+			this.filter = tagName;
+			this.searchRecipes();
+		}
 	},
 
 	created() {
-		this.searchRecipes;
+		this.searchRecipes();
+		if(this.passedSearch !== ''){
+			this.filter = this.passedSearch
+		}
+		
 	},
 };
 </script>
 
-<style>
+<style scoped>
 .search-bar {
-	border: 5px;
+	margin-left: 25%;
+}
+
+.search{
+	border: 2px;
+	border-color: black;
+	border-style: solid;
+	border-radius: 10px;
+	padding: 5px;
+	width: 350px;
+	/* border-top-left-radius: 10px; */
+}
+
+.search-text{
+	margin-right: 10px;
+	font-size: 16pt;
+	
+}
+
+.running-chef{
+	margin-left: 15%;
 }
 </style>

@@ -4,13 +4,13 @@
 
     <nav>
         <ul>
-            <li v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}</li>
+            <li v-for="(ingredient, index) in recipe.ingredients" :key="index"><span v-if="ingredient.quantity != 0">{{ingredient.quantity}}</span> {{ingredient.measurement}} {{ingredient.name}}</li>
         </ul>
     </nav>
 
     <main>
-        <div><img v-bind:src="`${recipe.imgLink}`"  alt=""></div>
-        {{recipe.instructions}}
+        <div><img class="image" v-bind:src="`${recipe.imgLink}`" alt=""></div>
+        <div class="instructions">{{recipe.instructions}}</div>
     </main>
 </div>
   
@@ -28,7 +28,6 @@ export default {
     created(){
         AppService.getRecipe(this.$route.params.recipeId).then((response) => {
             this.recipe = response.data;
-            //this.recipe.instructions = this.fixSpacing(this.recipe.instructions);
         })
     },
     methods:{
@@ -39,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container{
     display: grid;
     grid-template-areas: 
@@ -49,15 +48,28 @@ export default {
 
 .container header{
     grid-area: head;
+    position: sticky;
 }
 
 .container nav{
     grid-area: nav;
-    position:sticky;
 }
 
 .container main{
     grid-area: main;
+    overflow: auto;
+}
+
+.instructions{
+    white-space: pre-wrap;
+}
+
+.image{
+    padding-left: 25%;
+    max-width: 60%;
+    max-height: 60%;
+    min-width: 40%;
+    min-height: 40%;
 }
 
 </style>
