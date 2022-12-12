@@ -2,9 +2,10 @@
 	<!-- Note: Routes to Saved Recipes and Meal Plan go in here! -->
     <div>
     
-         <meal-plan />
-        <my-recipes />
+        <meal-plan />
         <view-grocery-list />
+        <my-recipes />
+   
        
         
     </div>

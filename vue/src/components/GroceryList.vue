@@ -3,11 +3,12 @@
       <!-- <button v-on:click="getGroceryList"> Get Grocery List</button> -->
       <h1>Grocery List</h1>
 
-     
-              
-              <label v-for="ingredient in groceryList" v-bind:key="ingredient.id"> <input type="checkbox"> {{ingredient.name}} <br>
-              
-              </label>
+        <button v-on:click="printGroceryList">Print List <img src="../assets/printer.png" height="20px" width="auto"> </button>
+        <br>
+      
+        <label v-for="ingredient in groceryList" v-bind:key="ingredient.id"> <input type="checkbox"> {{ingredient.name}} <br> </label>
+
+
 
              
    
@@ -39,7 +40,13 @@ export default {
                     this.groceryList = response.data;
                 }
             })
+        },
+
+        printGroceryList(){
+            window.print();
         }
+
+
       
     }
   
@@ -52,6 +59,11 @@ export default {
 
 div{
     padding: 10px
+}
+
+button{
+    font-weight: bold;
+    border: 1px black solid
 }
 
 </style>
