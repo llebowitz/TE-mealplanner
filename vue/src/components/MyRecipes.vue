@@ -1,12 +1,14 @@
 <template>
   <div>
-      <div class="container">
-			<h1>My Saved Recipes</h1>
-				<div v-for="recipe in savedRecipes" v-bind:key="recipe.id">
+      <h1>My Saved Recipes</h1>
+      <div class="flex-grid">
+		
+				<div class="col" v-for="recipe in savedRecipes" v-bind:key="recipe.id">
 					<saved-recipe-card v-bind:recipe="recipe">
 			
 					</saved-recipe-card>
 				</div>
+
 	
 			</div>
   </div>
@@ -43,6 +45,16 @@ methods: {
 </script>
 
 <style>
+
+.flex-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center
+}
+.flex-grid .col {
+  width: 100%;
+}
 
 
 

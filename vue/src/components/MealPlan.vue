@@ -4,17 +4,21 @@
       <ul>
         <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</li>
       </ul> -->
-
+      <h1>My Meal Plan</h1>
+    <div class="table">
+      <table>
+        <thead>
      <tr>
-          <th>Sun</th>
-          <th>Mon</th>
-          <th>Tue</th>
-          <th>Wed</th>
-          <th>Thi</th>
-          <th>Fri</th>
-          <th>Sat</th>
-          
+          <th>Sunday</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
       </tr>
+      </thead>
+      <tbody>
       <tr>
         <td v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</td>
         <td v-for="(recipe, index) in mealPlanRecipes.monday" v-bind:key="index">{{recipe.name}}</td>
@@ -24,8 +28,10 @@
         <td v-for="(recipe, index) in mealPlanRecipes.friday" v-bind:key="index">{{recipe.name}}</td>
         <td v-for="(recipe, index) in mealPlanRecipes.saturday" v-bind:key="index">{{recipe.name}}</td>
       </tr>
+      </tbody>
+      </table>
 
-
+</div>
 
 
 
@@ -75,5 +81,9 @@ export default {
 </script>
 
 <style>
+table, th, td{
+  height: 50vh;
+  border:1px black solid
 
+}
 </style>
