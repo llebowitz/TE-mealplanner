@@ -4,6 +4,7 @@
     
          <meal-plan />
         <my-recipes />
+        <view-grocery-list />
        
         
     </div>
@@ -12,6 +13,7 @@
 <script>
 import MealPlan from "../components/MealPlan.vue";
 import MyRecipes from '../components/MyRecipes.vue';
+import ViewGroceryList from '../components/ViewGroceryList.vue';
 
 
 
@@ -19,6 +21,7 @@ import MyRecipes from '../components/MyRecipes.vue';
 export default {
   components: { MealPlan,
     MyRecipes,
+    ViewGroceryList,
    
   
     }, 
