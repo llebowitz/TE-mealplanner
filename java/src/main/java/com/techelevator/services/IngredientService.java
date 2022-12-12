@@ -20,7 +20,7 @@ public class IngredientService {
         return ingredientDao.getIngredientsByRecipe(recipe);
     }
 
-    public List<Ingredient> getIngredientByName (String name) {
+    public Ingredient getIngredientByName (String name) {
         return ingredientDao.getIngredientByName(name);
     }
 

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,9 @@ public class IngredientController {
         if (name.isBlank()) {
             return ingredientService.getAllIngredients();
         } else {
-            return ingredientService.getIngredientByName(name);
+            List<Ingredient> ingredients = new ArrayList<>();
+            ingredients.add(ingredientService.getIngredientByName(name));
+            return ingredients;
         }
     }
 

@@ -3,54 +3,20 @@
       <h1>My Meal Plan</h1>
     <div class="week">
      
-     <div id="sunday">
-      <div class="day">Sun</div>
-        <ul class="recipe">
-              <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
-          </ul>
-      </div>
+     <meal-plan-day class="sunday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.sunday, dayOfWeek: 1, dayName: 'Sun'}" />
 
-      <div id="monday">
-        <div class="day">Mon</div>
-        <ul class="recipe">
-              <li v-for="(recipe, index) in mealPlanRecipes.monday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
-          </ul>
-      </div>
+      <meal-plan-day class="monday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.monday, dayOfWeek: 2, dayName: 'Mon'}" />
 
-      <div id="tuesday">
-        <div class="day">Tues</div>
-        <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.tuesday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
-        </ul>
-      </div>
+      <meal-plan-day class="tuesday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.tuesday, dayOfWeek: 3, dayName: 'Tue'}" />
 
-      <div id="wednesday">
-        <div class="day">Wed</div>
-        <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.wednesday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
-        </ul>
-      </div>
+      <meal-plan-day class="wednesday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.wednesday, dayOfWeek: 4, dayName: 'Wed'}" />
 
-      <div id="thursday">
-        <div class="day">Thurs</div>
-        <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.thursday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
-        </ul>
-      </div>
+      <meal-plan-day class="thursday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.thursday, dayOfWeek: 5, dayName: 'Thu'}" />
 
-      <div id="friday">
-        <div class="day">Fri</div>
-        <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.friday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
-        </ul>
-      </div>
+      <meal-plan-day class="friday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.friday, dayOfWeek: 6, dayName: 'Fri'}" />
 
-      <div id="saturday">
-        <div class="day">Sat</div>
-        <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.saturday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
-        </ul>
-      </div>
+      <meal-plan-day class="saturday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.saturday, dayOfWeek: 7, dayName: 'Sat'}" />
+      
         <br>
         <br>
 
