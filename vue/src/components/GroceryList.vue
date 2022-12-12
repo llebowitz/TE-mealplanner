@@ -47,7 +47,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 input[type="checkbox"]:checked + label {
   color:red;
