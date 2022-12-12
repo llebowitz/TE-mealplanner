@@ -55,9 +55,10 @@
           <li v-for="(recipe, index) in mealPlanRecipes.saturday" v-bind:key="index">{{recipe.name}}</li>
         </ul>
       </div>
+        <br>
+        <br>
 
      </div>
-   
 
 </div>
 
@@ -68,8 +69,9 @@
 
 <script>
 import AppService from '../services/AppService'
-export default {
 
+
+export default {
     data() {
       return {
         mealPlanRecipes: [

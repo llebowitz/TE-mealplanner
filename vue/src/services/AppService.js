@@ -47,6 +47,10 @@ export default {
 
     getMealPlanRecipes(){
         return axios.get('/users/mealplan')
+    },
+
+    getGroceryList(){
+        return axios.get('users/mealplan/grocerylist')
     }
     
 }
