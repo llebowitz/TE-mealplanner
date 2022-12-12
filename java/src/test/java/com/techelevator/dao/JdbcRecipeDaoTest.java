@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
 import com.techelevator.services.RecipeService;
 import org.junit.Assert;
@@ -85,29 +86,48 @@ public class JdbcRecipeDaoTest extends BaseDaoTests{
         Assert.assertEquals(1, recipe.getId());
     }
 
+    @Test
+    public void getRecipe_returns_success() {
+        RecipeDao recipeDao = getRecipeDao();
+
+        Recipe recipe = recipeDao.getRecipe(1);
+
+        Assert.assertEquals(1, recipe.getId());
+    }
+
+    @Test
+    public void doesRecipeExist_invalid_recipe_returns_false() {
+        RecipeDao recipeDao = getRecipeDao();
+
+        boolean recipe = recipeDao.doesRecipeExist("this is a bad jawn");
+
+        Assert.assertEquals(false, recipe);
+    }
+
+    @Test
+    public void deleteRecipe() {
+        RecipeDao recipeDao = getRecipeDao();
+
+        boolean recipe = recipeDao.deleteRecipe(recipeDao.getRecipe(2));
+
+        Assert.assertEquals(false, recipe);
+    }
+
 //    @Test
 //    public void searchRecipes() {
 //        RecipeDao recipeDao = getRecipeDao();
 //
 //        List<Recipe> recipes = recipeDao.searchRecipes("some");
 //        Assert.assertEquals(1, recipes.size());
-//
 //    }
 
 //    @Test
 //    public void searchRecipesByIngredients() {
-//    }
+//        RecipeDao recipeDao = getRecipeDao();
+//        IngredientDao ingredientDao = getIngredientDao();
 //
-//    @Test
-//    public void getRecipe() {
-//    }
-//
-//    @Test
-//    public void doesRecipeExist() {
-//    }
-//
-//    @Test
-//    public void deleteRecipe() {
+//        List<Recipe> recipes = recipeDao.searchRecipesByIngredients("shallot");
+//        Assert.assertEquals(2, recipes.size());
 //    }
 
     private RecipeDao getRecipeDao() {

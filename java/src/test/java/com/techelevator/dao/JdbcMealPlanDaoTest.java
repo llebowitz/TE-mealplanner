@@ -62,26 +62,29 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
         Assert.assertEquals(1, recipe.getId());
     }
 
-//    @Test
-//    public void deleteRecipeMealPlan() {
-//        MealPlanDao mealPlanDao = getMealPlanDao();
-//
-//        mealPlanDao.addRecipeMealPlan(1,2,1);
-//        mealPlanDao.addRecipeMealPlan(1,2,1);
-//        mealPlanDao.deleteRecipeMealPlan(1,2,1);
-//        mealPlanDao.deleteRecipeMealPlan(2,2,1);
-//
-//        User user = new User();
-//        user.setId(1);
-//        MealPlan mealPlan = mealPlanDao.getMealPlan(user);
-//        mealPlan.setRecipePerDay(mealPlan.getAllRecipes());
-//        List<Recipe> recipes = mealPlan.getAllRecipes();
-//
-//        Recipe recipe = recipes.get(0);
-//        Assert.assertEquals(null, recipe.getId());
-//        recipes.get(1);
-//        Assert.assertEquals(null, recipe.getId());
-//    }
+    @Test
+    public void deleteRecipeMealPlan() {
+        MealPlanDao mealPlanDao = getMealPlanDao();
+
+        mealPlanDao.addRecipeMealPlan(1,2,1);
+        mealPlanDao.addRecipeMealPlan(2,2,1);
+
+        User user = new User();
+        user.setId(1);
+        MealPlan mealPlan = mealPlanDao.getMealPlan(user);
+        mealPlan.setRecipePerDay(mealPlan.getAllRecipes());
+        List<Recipe> recipes = mealPlan.getAllRecipes();
+
+        mealPlanDao.deleteRecipeMealPlan(1,2,1);
+
+        Recipe recipe = recipes.get(0);
+        Assert.assertNull(null);
+
+        mealPlanDao.deleteRecipeMealPlan(2,2,1);
+
+        recipes.get(1);
+        Assert.assertNull(null);
+    }
 
     private UserDao getUserDao() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
