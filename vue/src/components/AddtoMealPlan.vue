@@ -64,22 +64,18 @@ export default {
     border: 2px;
     border-color: black;
     border-style: solid;
-<<<<<<< HEAD
     background-color: lightgrey;
     padding-right: 4px;
     padding-left: 4px;
-=======
     font-size: 11px;
     padding: 2px;
 
   
     
->>>>>>> cff569b2cc38b6319e53e97b1b9bbbaf38f4e1bc
 }
 
 #select {
     border: 2px;
-<<<<<<< HEAD
     border-color: black;
     background-color: lightgrey;
     border-style: solid;
@@ -96,7 +92,6 @@ export default {
     margin-right: 6px;
     padding-right: 4px;
     padding-left: 4px;
-=======
     border-color: gray;
     border-style: solid;
     font-size: 11px;
@@ -104,7 +99,6 @@ export default {
     width: 75px;
 
    
->>>>>>> cff569b2cc38b6319e53e97b1b9bbbaf38f4e1bc
 }
 
 
