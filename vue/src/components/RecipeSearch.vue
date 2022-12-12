@@ -8,7 +8,7 @@
 
 		<!-- <div class="recipe-container ma-12 d-flex flex-wrap"> -->
 			<v-container fluid>
-			<v-slide-group v-model="model" class="pa-12 d-flex flex-wrap" center-active show-arrows>
+			<v-slide-group v-model="model" class="pa-1 d-flex flex-nowrap" center-active show-arrows>
 				<v-slide-item v-for="recipe in recipes" v-bind:key="recipe.recipeID" v-slot="{ active, toggle }" class="ma-12 d-flex flex-wrap">
 					<recipe-card v-bind:recipe="recipe" @click="toggle" class="ma-12 pa-12">
 						<!-- <v-row class="fill-height pa-12 ma-12" align="center" justify="center"> -->

@@ -1,17 +1,15 @@
 <template>
-	<v-card class="ma-1 pa-1 rounded-xl" max-width="425" outlined elevation="3">
+	<v-card class="ma-1 rounded-xl flex-column align-content-center" max-width="415" outlined elevation="3">
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }">
-			<v-img height="300" max-width="300" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
+			<v-img height="250" max-width="325" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
 				<template v-slot:placeholder>
 					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img
 		></router-link>
 
 		<save-recipe v-bind:recipe="recipe" />
 		<addto-meal-plan v-bind:recipe="recipe" />
-		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
-			><v-card-title class="card-title">{{ recipe.name }}</v-card-title></router-link
-		>
-		<div class="grey--text ms-4" v-if="recipe.yield != ''">{{ recipe.yield }}</div>
+		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"><v-card-title class="card-title mb-n5">{{ recipe.name }}</v-card-title></router-link>
+		<div class="grey--text ms-4" v-if="recipe.yield != ''"><p>{{ recipe.yield }}</p></div>
 
 		<v-card-text>
 			<!-- <v-row align="center" class="mx-0"> -->
@@ -25,15 +23,15 @@
         ></v-rating> -->
 
 			<!-- </v-row> -->
-			<div class="font-italic">{{ recipe.blurb }}</div>
+			<div class="font-italic mb-n4">{{ recipe.blurb }}</div>
 		</v-card-text>
 
-		<div class="tags">
+		<div class="tags mt-n7">
 			<p v-for="(tag, index) in recipe.tags" :key="index"><strong>{{tag.name}}</strong></p>
 		</div>
 
 		<!-- <v-divider class="mx-4"></v-divider> -->
-		<v-card-actions>
+		<!-- <v-card-actions>
 			<v-btn color="orange lighten-2" text> Ingredients</v-btn>
 
 			<v-spacer></v-spacer>
@@ -55,7 +53,7 @@
 			</div>
 		</v-expand-transition>
 
-		<!-- <v-divider class="mx-4"></v-divider> -->
+		<v-divider class="mx-4"></v-divider>
 		<v-card-actions>
 			<v-btn color="orange lighten-2" text> Instructions </v-btn>
 
@@ -74,7 +72,7 @@
 					{{ recipe.instructions }}
 				</v-card-text>
 			</div>
-		</v-expand-transition>
+		</v-expand-transition> -->
 	</v-card>
 
 	<!-- <div>
@@ -105,9 +103,9 @@ export default {
 	data: () => ({
 		show: false,
 	}),
-};
+}
 
-//  methods: {
+//methods: {
 // saveRecipe()
 // Should we set it up to automatically save a copy of the recipe here?
 
