@@ -2,9 +2,9 @@
 	<!-- Note: Routes to Saved Recipes and Meal Plan go in here! -->
     <div>
     
-        <meal-plan />
+        <meal-plan ref="mealPlan" />
         <view-grocery-list />
-        <my-recipes />
+        <my-recipes @recipe-added="refreshMealPlans"/>
    
        
         
@@ -26,6 +26,11 @@ export default {
    
   
     }, 
+    methods: {
+        refreshMealPlans() {
+            this.$refs['mealPlans'].getMealPlanRecipes();
+        }
+    }
 
 
 };
