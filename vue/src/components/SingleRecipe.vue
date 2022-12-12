@@ -49,6 +49,7 @@ export default {
 
 .container header{
     grid-area: head;
+    position: sticky;
 }
 
 .container nav{
@@ -65,8 +66,11 @@ export default {
 }
 
 .image{
-    max-width: 500px;
-    max-height: 500px;
+    padding-left: 25%;
+    max-width: 60%;
+    max-height: 60%;
+    min-width: 40%;
+    min-height: 40%;
 }
 
 </style>

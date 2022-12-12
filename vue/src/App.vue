@@ -25,7 +25,7 @@
 		<v-main class="green lighten-4">
 			<v-container>
 				<v-row>
-					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHome()">
+					<v-col cols="12" sm="3" class="d-none d-md-block" v-if="isHome()">
 						<v-sheet id="featured-recipe-parent" rounded="lg" min-height="268">
 							<featured-recipe />
 
@@ -36,8 +36,8 @@
 						</v-sheet>
 					</v-col>
 
-					<v-col cols="12" sm="8" class="mx-auto" v-if="isHome()">
-						<v-sheet min-height="70vh" rounded="lg" class="fill-height" min-width="2fr">
+					<v-col cols="12" sm="6" class="mx-auto" v-if="isHome()">
+						<v-sheet min-height="70vh" rounded="lg" class="fill-height">
 							<!--  -->
 
 							<router-view :key="$route.fullPath" />
@@ -51,7 +51,7 @@
 						</v-sheet>
 					</v-col>
 
-					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHome()">
+					<v-col cols="12" sm="3" class="d-none d-md-block" v-if="isHome()">
 						<v-sheet rounded="lg" min-height="268">
 							<h4>Helpful links to up your cooking game:</h4>
 							<a href="https://www.seriouseats.com/">Serious Eats</a>
