@@ -1,7 +1,7 @@
 <template>
   <div class="main">
        
-          <div class="saved-recipe-card">
+        <div class="saved-recipe-card">
           
           <div class="saved-container">
               <img v-bind:src="`${recipe.imgLink}`" >
@@ -13,17 +13,19 @@
               <p>{{recipe.blurb}}</p> -->
               <p> </p>
               </div>
-              <addto-meal-plan />
+              <addto-meal-plan v-bind:recipe="recipe" />
+              <button id="unsave-recipe">Unsave</button>
+              <save-recipe v-bind:recipe="recipe" />
           </div>
-      </div>
-<!-- </div> -->
+    </div>
 </template>
 
 <script>
 import AddtoMealPlan from './AddtoMealPlan.vue'
+import SaveRecipe from './SaveRecipe.vue'
 
 export default {
-  components: { AddtoMealPlan },
+  components: { AddtoMealPlan, SaveRecipe },
     props: ['recipe'],
 
 }

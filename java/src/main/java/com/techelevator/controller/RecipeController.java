@@ -29,6 +29,24 @@ public class RecipeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/recipes/{recipeId}", method = RequestMethod.GET)
+    public Recipe getRecipeById(@PathVariable int recipeId){
+        return recipeService.getRecipeById(recipeId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/recipes/random", method = RequestMethod.GET)
+    public Recipe getRandomRecipe(){
+        return recipeService.getRandomRecipe();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/recipes/{recipeId}", method = RequestMethod.PUT)
+    public void updateRecipe(@RequestBody Recipe recipe, Principal principal){
+        recipeService.updateRecipe(recipe, principal.getName());
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/recipes/import", method = RequestMethod.GET)
     public boolean importRecipe(@RequestParam int count) throws RecipeExistsException {
         recipeService.importTastyRecipes(count);

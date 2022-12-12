@@ -95,19 +95,26 @@ public class JdbcRecipeDao implements RecipeDao{
     public boolean updateRecipe(Recipe recipe) {
         boolean itWorked = false;
 
+        //Removes all ingredients for a recipe in order to rewrite them in case the update includes removal of original ingredients
+        String sql = "DELETE FROM recipes_ingredients WHERE recipe_id = ?";
+        jdbcTemplate.update(sql, recipe.getId());
+
         for(Ingredient thisIng : recipe.getIngredients()){
-            String sql = "SELECT ingredient_id FROM ingredients i WHERE ingredient_name ILIKE ?";
+            sql = "SELECT ingredient_id FROM ingredients i WHERE ingredient_name ILIKE ?";
             String name = "%" + thisIng.getName() + "%";
             Integer ingId = jdbcTemplate.queryForObject(sql, Integer.class, name);
             if(ingId == null){
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
                 ingId =  jdbcTemplate.update(sql, Integer.class, thisIng.getName());
-                sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
-                itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
-            } else {
-                sql = "UPDATE recipes_ingredients SET quantity = ?, measurement = ? WHERE recipe_id = ? AND ingredient_id = ?";
-                itWorked = jdbcTemplate.update(sql, thisIng.getQuantity(), thisIng.getMeasurement(), recipe.getId(), ingId) == 1;
             }
+            sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
+            itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
+
+            //If the recipe/ingredient combo has been deleted then we can no longer update and must insert
+//            else {
+//                sql = "UPDATE recipes_ingredients SET quantity = ?, measurement = ? WHERE recipe_id = ? AND ingredient_id = ?";
+//                itWorked = jdbcTemplate.update(sql, thisIng.getQuantity(), thisIng.getMeasurement(), recipe.getId(), ingId) == 1;
+//            }
         }
         return itWorked;
     }

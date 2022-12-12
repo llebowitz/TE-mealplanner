@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class RecipeService {
     private final TagDao tagDao;
     private final UserDao userDao;
     private final RestTemplate restTemplate = new RestTemplate();
+    private static final int TOTAL_RECIPES = 297;
     private final static String API_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
     private final static String TASTY_API_URL = "https://tasty.p.rapidapi.com/recipes/list?from=%d&size=%d";
 
@@ -46,8 +48,21 @@ public class RecipeService {
         return recipe;
     }
 
-    public void updateRecipe(Recipe recipe) {
-        recipeDao.updateRecipe(recipe);
+    public Recipe getRandomRecipe() {
+        int randomNum = (int) (Math.random() * TOTAL_RECIPES);
+        return recipeDao.getRecipe(randomNum);
+    }
+
+    public void updateRecipe(Recipe recipe, String username) {
+        if(username != null && !username.isBlank()){
+            recipe.setName(recipe.getName() + " made by " + username);
+        }
+
+        if(recipeDao.doesRecipeExist(recipe.getName())){
+            recipeDao.updateRecipe(recipe);
+        }else{
+            recipeDao.addRecipe(recipe);
+        }
     }
 
     public void deleteRecipe(Recipe recipe) {
@@ -184,5 +199,4 @@ public class RecipeService {
     private String escape(String s){
         return s == null ? "" : unidecode(s).replace("'", "''").strip().replace("  ", " ");
     }
-
 }

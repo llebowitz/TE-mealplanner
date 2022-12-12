@@ -1,8 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.MealPlan;
-import com.techelevator.model.Recipe;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 import com.techelevator.services.RecipeService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,7 +13,7 @@ import static org.junit.Assert.*;
 public class JdbcMealPlanDaoTest extends BaseDaoTests{
 
     @Test
-    public void addRecipeMealPlan() {
+    public void addRecipeMealPlan_return_success() {
         MealPlanDao mealPlanDao = getMealPlanDao();
 
         mealPlanDao.addRecipeMealPlan(1, 2,1);
@@ -23,6 +21,7 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
         User user = new User();
         user.setId(1);
         MealPlan mealPlan = mealPlanDao.getMealPlan(user);
+        mealPlan.setRecipePerDay(mealPlan.getAllRecipes());
         List<Recipe> recipes = mealPlan.getMonday();
         Assert.assertEquals(1, recipes.size());
 
@@ -30,14 +29,25 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
         Assert.assertEquals(1, recipe.getId());
     }
 
+    @Test
+    public void createGroceryList_returns_listOfIngredients() {
+        MealPlanDao mealPlanDao = getMealPlanDao();
+//TODO: Look over
+        mealPlanDao.addRecipeMealPlan(1,2, 1);
+        mealPlanDao.addRecipeMealPlan(2,2, 1);
+        mealPlanDao.createGroceryList(1);
+
+        User user = new User();
+        user.setId(1);
+        MealPlan mealPlan = mealPlanDao.getMealPlan(user);
+        List<Ingredient> ingredients = mealPlanDao.createGroceryList(1);
+        Assert.assertEquals(13, ingredients.size());
+    }
+
 //    @Test
 //    public void getMealPlan() {
 //    }
-//
-//    @Test
-//    public void createGroceryList() {
-//    }
-//
+
 //    @Test
 //    public void deleteRecipeMealPlan() {
 //    }

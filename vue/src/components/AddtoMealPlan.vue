@@ -1,9 +1,8 @@
 <template>
   <div>
-        <div id="buttons">
-            <select id="select" v-model="mealPlan.dayOfWeek">
-            
-                <option value="">Select a Day</option>
+        <div>
+            <select class= "selections" v-model="mealPlan.dayOfWeek">
+                <option value="0" hidden disabled>Select a Day</option>
                 <option value="1">Sunday</option>
                 <option value="2">Monday</option>
                 <option value="3">Tuesday</option>
@@ -60,13 +59,17 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 #add-to-meal-plan {
     border: 2px;
     border-color: black;
     border-style: solid;
+    background-color: lightgrey;
+    padding-right: 4px;
+    padding-left: 4px;
     font-size: 11px;
     padding: 2px;
+    border-radius: 5px;
 
   
     
@@ -74,11 +77,27 @@ export default {
 
 #select {
     border: 2px;
+    border-color: black;
+    background-color: lightgrey;
+    border-style: solid;
+    border-radius:2rem;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.selections{
+    /* border: 2px;
+    border-color: black;
+    border-style: solid; */
+    border-radius: 8%;
+    margin-right: 6px;
+    padding-right: 4px;
+    padding-left: 4px;
     border-color: gray;
     border-style: solid;
     font-size: 11px;
     margin: 5px;
-    width: 75px;
+    width: 90px;
 
    
 }

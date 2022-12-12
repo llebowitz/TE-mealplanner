@@ -1,14 +1,15 @@
 <template>
-	<v-card class="ma-1 rounded-xl flex-column align-content-center" max-width="415" outlined elevation="3">
+	<v-card class="ma-1 rounded-xl flex-column align-items-center justify-start flex-nowrap" max-width="415" max-height="85%" outlined elevation="3">
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }">
 			<v-img height="250" max-width="325" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
 				<template v-slot:placeholder>
 					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img
 		></router-link>
-
+		<div>
 		<save-recipe v-bind:recipe="recipe" />
 		<addto-meal-plan v-bind:recipe="recipe" />
-		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"><v-card-title class="card-title mb-n5">{{ recipe.name }}</v-card-title></router-link>
+		</div>
+		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"><v-card-title class="card-title mb-n5 align-self-start">{{ recipe.name }}</v-card-title></router-link>
 		<div class="grey--text ms-4" v-if="recipe.yield != ''"><p>{{ recipe.yield }}</p></div>
 
 		<v-card-text>
@@ -23,7 +24,7 @@
         ></v-rating> -->
 
 			<!-- </v-row> -->
-			<div class="font-italic mb-n4">{{ recipe.blurb }}</div>
+			<div class="font-italic mb-n4 align-self-start">{{ recipe.blurb }}</div>
 		</v-card-text>
 
 		<div class="tags mt-n7">

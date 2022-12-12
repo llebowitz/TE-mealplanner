@@ -22,6 +22,9 @@ INSERT INTO ingredients (ingredient_name) VALUES ('black pepper');
 INSERT INTO recipes (recipe_name, yield, blurb, instructions) VALUES ('Apple, Celery Root and Fennel Salad with Hazelnuts',
 'Serves 6', 'A winter salad with bold and bright flavors', 'In a large bowl, combine the shallot and vinegar. Let sit for 10 minutes.  Whisk in the horseradish, oil and honey. 1 teaspoon salt and 1/2 teaspoon pepper.  Add the apple, celery root and fennel and toss. Stir in the parsley and mint then sprinkle with hazelnuts');
 
+INSERT INTO recipes (recipe_name, yield, blurb, instructions) VALUES ('Something else salad',
+'Serves 6', 'A winter salad with bold and bright flavors', 'In a large bowl, combine the shallot and vinegar. Let sit for 10 minutes.  Whisk in the horseradish, oil and honey. 1 teaspoon salt and 1/2 teaspoon pepper.  Add the apple, celery root and fennel and toss. Stir in the parsley and mint then sprinkle with hazelnuts');
+
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 1, 1, 'small, grated');
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 2, 1.5, 'tablespoons');
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 3, 3, 'tablespoons, grated, lightly packed');
@@ -35,6 +38,9 @@ INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 11, .5, 'cup, toasted and rough chopped');
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 12, 1, 'teaspoon');
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 13, .5, 'teaspoon');
+
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 1, 3, 'small, grated');
+INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 2, 4.5, 'tablespoons');
 
 INSERT into users_recipes (user_id, recipe_id) VALUES (2, 1);
 

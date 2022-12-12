@@ -51,4 +51,8 @@ export default {
 	getRandomRecipe() {
 		return axios.get('/recipes/random');
 	},
+
+	getGroceryList() {
+		return axios.get('users/mealplan/grocerylist');
+	},
 };
