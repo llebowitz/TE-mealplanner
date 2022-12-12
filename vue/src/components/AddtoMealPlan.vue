@@ -2,7 +2,7 @@
   <div>
         <div>
             <select class= "selections" v-model="mealPlan.dayOfWeek">
-                <option value="0" hidden disabled>Select an Option</option>
+                <option value="0" hidden disabled>Select a Day</option>
                 <option value="1">Sunday</option>
                 <option value="2">Monday</option>
                 <option value="3">Tuesday</option>
@@ -69,6 +69,7 @@ export default {
     padding-left: 4px;
     font-size: 11px;
     padding: 2px;
+    border-radius: 5px;
 
   
     
@@ -96,7 +97,7 @@ export default {
     border-style: solid;
     font-size: 11px;
     margin: 5px;
-    width: 75px;
+    width: 90px;
 
    
 }

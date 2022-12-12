@@ -28,8 +28,14 @@ export default {
     created(){
         AppService.getRecipe(this.$route.params.recipeId).then((response) => {
             this.recipe = response.data;
+            //this.recipe.instructions = this.fixSpacing(this.recipe.instructions);
         })
     },
+    methods:{
+        fixSpacing(instructions){
+            return instructions.replace('\n', '<br>');
+        }
+    }
 }
 </script>
 
