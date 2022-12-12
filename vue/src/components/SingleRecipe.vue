@@ -26,7 +26,6 @@ export default {
         }
     },
     created(){
-        document.body.style.overflow = 'hidden';
         AppService.getRecipe(this.$route.params.recipeId).then((response) => {
             this.recipe = response.data;
         })
@@ -45,7 +44,6 @@ export default {
     grid-template-areas: 
     "head head" 
     "nav main";
-    overflow: hidden;
 }
 
 .container header{

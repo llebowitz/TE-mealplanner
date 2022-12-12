@@ -1,5 +1,5 @@
 <template>
-	<v-card class="ma-1 rounded-xl flex-column align-items-center justify-start flex-nowrap" max-width="415" max-height="85%" outlined elevation="3">
+	<v-card class="ma-1 rounded-xl flex-column align-items-center justify-start flex-nowrap" max-width="417" max-height="85%" outlined elevation="3">
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }">
 			<v-img height="250" max-width="325" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
 				<template v-slot:placeholder>
@@ -28,10 +28,8 @@
 		</v-card-text>-->
 
 		<div class="tags mt-n3">
-			<p v-for="(tag, index) in recipe.tags" :key="index" class="mx-1 my-2">
-				<router-link v-bind:passedSearch = "tag.name" :to="{name: recipes}">
+			<p v-for="(tag, index) in recipe.tags" :key="index" class="mx-1 my-2" @click="$emit('tagClicked', tag.name)">
 				<strong>{{ tag.name }}</strong>
-				</router-link>
 			</p>
 		</div>
 
@@ -146,10 +144,16 @@ export default {
 .tags p {
 	flex-shrink: 1;
 	border: solid;
-	border-color: lightseagreen;
+	border-color: darkseagreen;
 	border-radius: 10%;
-	background-color: lightseagreen;
+	background-color: darkseagreen;
 	font-size: 10pt;
 	color: darkslategray;
+}
+
+.tags p:hover{
+	background-color: lightseagreen;
+	border-color: lightseagreen;
+	cursor: pointer;
 }
 </style>
