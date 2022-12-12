@@ -22,7 +22,7 @@
 		</v-app-bar>
 
 		<!-- <v-main class="grey lighten-3"> -->
-		<v-main class="green lighten-4">
+		<v-main class="stuff">
 			<v-container>
 				<v-row>
 					<v-col cols="12" sm="3" class="d-none d-md-block" v-if="isHome()">
@@ -132,4 +132,8 @@ v-main {
 	background-position: 10px 10px;
 	background-repeat: no-repeat;
 } */
+
+.stuff{
+	background-color: #CAD97A;
+}
 </style>
