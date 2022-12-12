@@ -9,7 +9,7 @@
     </nav>
 
     <main>
-        <div><img v-bind:src="`${recipe.imgLink}`"  alt=""></div>
+        <div><img class="image" v-bind:src="`${recipe.imgLink}`" alt=""></div>
         <div class="instructions">{{recipe.instructions}}</div>
     </main>
 </div>
@@ -62,6 +62,11 @@ export default {
 
 .instructions{
     white-space: pre-wrap;
+}
+
+.image{
+    max-width: 500px;
+    max-height: 500px;
 }
 
 </style>
