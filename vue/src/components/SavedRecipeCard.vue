@@ -13,7 +13,7 @@
               <p>{{recipe.blurb}}</p> -->
               <p> </p>
               </div>
-              <addto-meal-plan v-bind:recipe="recipe" @recipe-added="refreshMealPlans" />
+              <addto-meal-plan v-on="$listeners" v-bind:recipe="recipe" />
               <save-recipe v-bind:recipe="recipe" />
           </div>
     </div>

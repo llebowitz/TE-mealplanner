@@ -1,6 +1,8 @@
 <template>
   <div>
-      <!-- <button v-on:click="getGroceryList"> Get Grocery List</button> -->
+      
+      <div class="flex-box"><!-- <button v-on:click="getGroceryList"> Get Grocery List</button> -->
+      
       <h1>Grocery List</h1>
 
         <button v-on:click="printGroceryList">Print List <img src="../assets/printer.png" height="20px" width="auto"> </button>
@@ -11,7 +13,7 @@
 
 
              
-   
+   </div>
   </div>
 </template>
 
@@ -57,13 +59,17 @@ export default {
 <style scoped>
 
 
-div{
-    padding: 10px
+
+.flex-box {
+     column-count: 4;
+     
 }
 
 button{
     font-weight: bold;
     border: 1px black solid
 }
+
+
 
 </style>

@@ -4,7 +4,7 @@
     
         <meal-plan ref="mealPlan" />
         <view-grocery-list />
-        <my-recipes @recipe-added="refreshMealPlans"/>
+        <my-recipes><saved-recipe-card @get-meal-plan-recipe="getMealPlanRecipes()"></saved-recipe-card></my-recipes>
    
        
         
@@ -14,6 +14,7 @@
 <script>
 import MealPlan from "../components/MealPlan.vue";
 import MyRecipes from '../components/MyRecipes.vue';
+import SavedRecipeCard from '../components/SavedRecipeCard.vue';
 import ViewGroceryList from '../components/ViewGroceryList.vue';
 
 
@@ -23,6 +24,7 @@ export default {
   components: { MealPlan,
     MyRecipes,
     ViewGroceryList,
+    SavedRecipeCard,
    
   
     }, 
