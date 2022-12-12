@@ -117,7 +117,7 @@ export default {
 	background-color: #c8e6c9;
 } */
 v-main {
-	background-color: #c8e6c9;
+	/* background-color: #c8e6c9; */
 }
 .hidden-sm-and-down {
 	margin-left: 12px;
