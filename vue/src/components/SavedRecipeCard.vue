@@ -13,7 +13,7 @@
               <p>{{recipe.blurb}}</p> -->
               <p> </p>
               </div>
-              <addto-meal-plan v-bind:recipe="recipe" />
+              <addto-meal-plan v-bind:recipe="recipe" @recipe-added="refreshMealPlans" />
               <save-recipe v-bind:recipe="recipe" />
           </div>
     </div>
@@ -26,6 +26,11 @@ import SaveRecipe from './SaveRecipe.vue'
 export default {
   components: { AddtoMealPlan, SaveRecipe },
     props: ['recipe'],
+    methods: {
+        refreshMealPlans() {
+            console.log('here')
+        }
+    }   
 
 }
 </script>

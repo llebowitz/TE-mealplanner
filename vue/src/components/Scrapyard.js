@@ -287,3 +287,26 @@ Original RecipeCard.vue code for the carousel.  I am tinkering to see if we can 
 </table>
 
 </div> */}
+
+
+
+// methods: {
+
+// 	flipStatus(mealPlan) {
+// 		if (mealPlan.status == 'notAdded') {
+// 			AppService.addToMealPlan(this.mealPlan).then( (response) => {
+// 			if (response.status === 201) {
+// 				this.mealPlan.status = "added";
+// 				this.$emit('recipeAdded');
+// 			} 
+			
+// 	});
+// 	 } else if (mealPlan.status == "added") {
+// 		 AppService.removeFromMealPlan(this.mealPlan).then( (response) => {
+// 			if (response.status === 204) {
+// 				this.mealPlan.status = "notAdded";
+// 			}
+// 	 });
+// 		}
+// 	}
+// }

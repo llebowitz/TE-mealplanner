@@ -12,17 +12,20 @@
                 <option value="7">Saturday</option>
             </select>
 
-            <button id="add-to-meal-plan" v-on:click="flipStatus(mealPlan)">{{ mealPlan.status === "added" ? "Remove from Meal Plan" :"Add to Meal Plan" }}</button>
-
+           <!-- <button id="add-to-meal-plan" v-on:click="flipStatus(mealPlan)">{{ mealPlan.status === "added" ? "Remove from Meal Plan" :"Add to Meal Plan" }}</button> -->
+        <!-- v-on:click="removeFromDay({ recipeID: recipe.id, dayOfWeek: mealPlanDay.dayOfWeek }) -->
+        
+            <button id="add-to-meal-plan"  @recipe-added="refreshMealPlans" v-on:click="addToMealPlan(mealPlan)">{{ mealPlan.status === "added" ? "Added to Meal Plan" :"Add to Meal Plan" }}</button>
         </div>
   </div>
 </template>
 
 <script>
 import AppService from '../services/AppService'
+
 export default {
     name: 'meal-plan',
-    props: ['recipe'],
+    props: ['recipe', 'getMealPlanRecipes'],
     data() {
         return {
             mealPlan: {
@@ -38,20 +41,21 @@ export default {
     },
     methods: {
 
-        flipStatus(mealPlan) {
+        addToMealPlan(mealPlan) {
             if (mealPlan.status == 'notAdded') {
                 AppService.addToMealPlan(this.mealPlan).then( (response) => {
                 if (response.status === 201) {
                     this.mealPlan.status = "added";
+                    this.$emit('get-meal-plan-recipe');
+                  
                 } 
-        });
-         } else if (mealPlan.status == "added") {
-             AppService.removeFromMealPlan(this.mealPlan).then( (response) => {
-                if (response.status === 204) {
-                    this.mealPlan.status = "notAdded";
-                }
-         });
-            }
+                
+                });
+            } 
+      
+        },
+        refreshMealPlans() {
+            console.log('here')
         }
     }
 }
