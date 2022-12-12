@@ -33,5 +33,4 @@ public class IngredientController {
     public Ingredient getIngredientById(@PathVariable int id) {
         return ingredientService.getIngredientById(id);
     }
-
 }

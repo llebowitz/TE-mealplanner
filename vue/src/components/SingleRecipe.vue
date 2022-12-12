@@ -9,8 +9,8 @@
     </nav>
 
     <main>
-        <div><img v-bind:src="`${recipe.imgLink}`"  alt=""></div>
-        {{recipe.instructions}}
+        <div><img class="image" v-bind:src="`${recipe.imgLink}`" alt=""></div>
+        <div class="instructions">{{recipe.instructions}}</div>
     </main>
 </div>
   
@@ -39,7 +39,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container{
     display: grid;
     grid-template-areas: 
@@ -49,6 +49,7 @@ export default {
 
 .container header{
     grid-area: head;
+    position: sticky;
 }
 
 .container nav{
@@ -58,6 +59,18 @@ export default {
 
 .container main{
     grid-area: main;
+}
+
+.instructions{
+    white-space: pre-wrap;
+}
+
+.image{
+    padding-left: 25%;
+    max-width: 60%;
+    max-height: 60%;
+    min-width: 40%;
+    min-height: 40%;
 }
 
 </style>

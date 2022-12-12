@@ -30,6 +30,7 @@ public class RecipeService {
     private final TagDao tagDao;
     private final UserDao userDao;
     private final RestTemplate restTemplate = new RestTemplate();
+    private static final int TOTAL_RECIPES = 297;
     private final static String API_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
     private final static String TASTY_API_URL = "https://tasty.p.rapidapi.com/recipes/list?from=%d&size=%d";
 
@@ -45,6 +46,11 @@ public class RecipeService {
         recipe.setIngredients(ingredientDao.getIngredientsByRecipe(recipe));
         recipe.setTags(tagDao.getTagsForRecipe(recipe));
         return recipe;
+    }
+
+    public Recipe getRandomRecipe() {
+        int randomNum = (int) (Math.random() * TOTAL_RECIPES);
+        return recipeDao.getRecipe(randomNum);
     }
 
     public void updateRecipe(Recipe recipe, String username) {
@@ -193,5 +199,4 @@ public class RecipeService {
     private String escape(String s){
         return s == null ? "" : unidecode(s).replace("'", "''").strip().replace("  ", " ");
     }
-
 }
