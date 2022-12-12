@@ -27,8 +27,7 @@
 				<v-row>
 					<v-col cols="12" sm="2" class="d-none d-md-block" v-if="isHome()">
 						<v-sheet id="featured-recipe-parent" rounded="lg" min-height="268">
-							<h1>Featured Recipe</h1>
-							<!-- <featured-recipe /> -->
+							<featured-recipe />
 
 							<!--  -->
 							<!-- <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp; -->
@@ -38,7 +37,7 @@
 					</v-col>
 
 					<v-col cols="12" sm="8" class="mx-auto" v-if="isHome()">
-						<v-sheet min-height="70vh" rounded="lg" class="fill-height">
+						<v-sheet min-height="70vh" rounded="lg" class="fill-height" min-width="2fr">
 							<!--  -->
 
 							<router-view :key="$route.fullPath" />
@@ -78,12 +77,12 @@
 </template>
 
 <script>
-// import FeaturedRecipe from './components/FeaturedRecipe.vue';
+import FeaturedRecipe from './components/FeaturedRecipe.vue';
 
 export default {
 	name: 'App',
 	components: {
-		// FeaturedRecipe,
+		FeaturedRecipe,
 	},
 	methods: {
 		isHome() {
