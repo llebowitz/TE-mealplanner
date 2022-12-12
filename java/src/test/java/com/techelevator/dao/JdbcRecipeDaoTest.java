@@ -40,8 +40,9 @@ public class JdbcRecipeDaoTest extends BaseDaoTests{
         recipes = recipeDao.getUserRecipes(2);
         Assert.assertEquals(0, recipes.size());
     }
+
     @Test
-    public void addRecipe() {
+    public void addRecipe_toDb_returns_success() {
         RecipeDao recipeDao = getRecipeDao();
         Recipe recipe = new Recipe();
         recipe.setName("Banana");
@@ -60,7 +61,7 @@ public class JdbcRecipeDaoTest extends BaseDaoTests{
         Recipe recipe = recipeService.getRecipeById(1);
         recipe.getIngredients().get(0).setQuantity(5.0);
 
-        recipeService.updateRecipe(recipe);
+        recipeService.updateRecipe(recipe, null);
 
         recipe = recipeService.getRecipeById(1);
         Assert.assertEquals(5.0, recipe.getIngredients().get(0).getQuantity(), .01);

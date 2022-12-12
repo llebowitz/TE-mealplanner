@@ -21,22 +21,20 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
         User user = new User();
         user.setId(1);
         MealPlan mealPlan = mealPlanDao.getMealPlan(user);
-        List<Recipe> recipes = mealPlan.getAllRecipes(); //Not working.
+        mealPlan.setRecipePerDay(mealPlan.getAllRecipes());
+        List<Recipe> recipes = mealPlan.getMonday();
         Assert.assertEquals(1, recipes.size());
 
         Recipe recipe = recipes.get(0);
         Assert.assertEquals(1, recipe.getId());
     }
 
-//    @Test
-//    public void getMealPlan() {
-//    }
-//
     @Test
     public void createGroceryList_returns_listOfIngredients() {
         MealPlanDao mealPlanDao = getMealPlanDao();
 //TODO: Look over
         mealPlanDao.addRecipeMealPlan(1,2, 1);
+        mealPlanDao.addRecipeMealPlan(2,2, 1);
         mealPlanDao.createGroceryList(1);
 
         User user = new User();
@@ -44,11 +42,12 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
         MealPlan mealPlan = mealPlanDao.getMealPlan(user);
         List<Ingredient> ingredients = mealPlanDao.createGroceryList(1);
         Assert.assertEquals(13, ingredients.size());
-
-        Ingredient ingredient = ingredients.get(0);
-        Assert.assertEquals(13, ingredient.getId());
     }
-//
+
+//    @Test
+//    public void getMealPlan() {
+//    }
+
 //    @Test
 //    public void deleteRecipeMealPlan() {
 //    }
