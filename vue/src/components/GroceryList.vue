@@ -49,4 +49,13 @@ export default {
 
 <style>
 
+input[type="checkbox"]:checked + label {
+  color:red;
+  text-decoration: line-through;
+}
+
+div{
+    padding: 10px
+}
+
 </style>
