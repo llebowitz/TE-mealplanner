@@ -13,32 +13,37 @@ import static org.junit.Assert.*;
 public class JdbcRecipeDaoTest extends BaseDaoTests{
 
     @Test
-    public void saveRecipeToUserList_valid_recipe_returns_success() {
+    public void saveRecipeToUserList_multiple_recipes_returns_success() {
         RecipeDao recipeDao = getRecipeDao();
 
         recipeDao.saveRecipeToUserList(1,1);
+        recipeDao.saveRecipeToUserList(1,2);
 
         List<Recipe> recipes = recipeDao.getUserRecipes(1);
-        Assert.assertEquals(1, recipes.size());
+        Assert.assertEquals(2, recipes.size());
 
         Recipe recipe = recipes.get(0);
+        Assert.assertEquals(1, recipe.getId());
+        recipes.get(1);
         Assert.assertEquals(1, recipe.getId());
     }
 
     @Test
-    public void removeRecipeFromUserList_return_success() {
+    public void removeRecipeFromUserList_return_one_recipe() {
         RecipeDao recipeDao = getRecipeDao();
 
         List<Recipe> recipes = recipeDao.getUserRecipes(2);
-        Assert.assertEquals(1, recipes.size());
+        Assert.assertEquals(2, recipes.size());
 
         Recipe recipe = recipes.get(0);
+        Assert.assertEquals(1, recipe.getId());
+        recipes.get(1);
         Assert.assertEquals(1, recipe.getId());
 
         recipeDao.removeRecipeFromUserList(2, 1);
 
         recipes = recipeDao.getUserRecipes(2);
-        Assert.assertEquals(0, recipes.size());
+        Assert.assertEquals(1, recipes.size());
     }
 
     @Test
@@ -67,14 +72,28 @@ public class JdbcRecipeDaoTest extends BaseDaoTests{
         Assert.assertEquals(5.0, recipe.getIngredients().get(0).getQuantity(), .01);
     }
 
-//    @Test
-//    public void getUserRecipes() {
-//    }
-//
+    @Test
+    public void getUserRecipes_returns_success() {
+        RecipeDao recipeDao = getRecipeDao();
+
+        List<Recipe> recipes = recipeDao.getUserRecipes(2);
+        Assert.assertEquals(2, recipes.size());
+
+        Recipe recipe = recipes.get(0);
+        Assert.assertEquals(1, recipe.getId());
+        recipes.get(1);
+        Assert.assertEquals(1, recipe.getId());
+    }
+
 //    @Test
 //    public void searchRecipes() {
-//    }
+//        RecipeDao recipeDao = getRecipeDao();
 //
+//        List<Recipe> recipes = recipeDao.searchRecipes("some");
+//        Assert.assertEquals(1, recipes.size());
+//
+//    }
+
 //    @Test
 //    public void searchRecipesByIngredients() {
 //    }

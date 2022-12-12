@@ -4,7 +4,7 @@
 
     <nav>
         <ul>
-            <li v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ingredient.quantity}} {{ingredient.measurement}} {{ingredient.name}}</li>
+            <li v-for="(ingredient, index) in recipe.ingredients" :key="index"><span v-if="ingredient.quantity != 0">{{ingredient.quantity}}</span> {{ingredient.measurement}} {{ingredient.name}}</li>
         </ul>
     </nav>
 
@@ -28,7 +28,6 @@ export default {
     created(){
         AppService.getRecipe(this.$route.params.recipeId).then((response) => {
             this.recipe = response.data;
-            //this.recipe.instructions = this.fixSpacing(this.recipe.instructions);
         })
     },
     methods:{
@@ -54,11 +53,11 @@ export default {
 
 .container nav{
     grid-area: nav;
-    position:sticky;
 }
 
 .container main{
     grid-area: main;
+    overflow: auto;
 }
 
 .instructions{
