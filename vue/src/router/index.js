@@ -9,6 +9,7 @@ import RecipesDisplay from '../views/RecipesDisplay.vue';
 // import Recipe from '../views/Recipe.vue';
 import UserPortal from '../views/UserPortal.vue';
 import OneRecipe from '../views/OneRecipe.vue';
+import GroceryList from '../views/GroceryList'
 
 Vue.use(Router);
 
@@ -80,7 +81,17 @@ const router = new Router({
 			meta: {
 				requiresAuth: true,
 			},
+
+
 		},
+		{
+			path: '/grocerylist',
+			name: 'groceryList',
+			component: GroceryList,
+			meta: {
+				requiresAuth: false,
+			},
+		}
 	],
 });
 
