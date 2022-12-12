@@ -1,63 +1,60 @@
 <template>
   <div>
-      <!-- <h2>Sunday</h2>
-      <ul>
-        <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</li>
-      </ul> -->
       <h1>My Meal Plan</h1>
     <div class="week">
      
      <div id="sunday">
       <div class="day">Sun</div>
         <ul class="recipe">
-              <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index">{{recipe.name}}</li>
+              <li v-for="(recipe, index) in mealPlanRecipes.sunday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
           </ul>
       </div>
 
       <div id="monday">
         <div class="day">Mon</div>
         <ul class="recipe">
-              <li v-for="(recipe, index) in mealPlanRecipes.monday" v-bind:key="index">{{recipe.name}}</li>
+              <li v-for="(recipe, index) in mealPlanRecipes.monday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
           </ul>
       </div>
 
       <div id="tuesday">
         <div class="day">Tues</div>
         <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.tuesday" v-bind:key="index">{{recipe.name}}</li>
+          <li v-for="(recipe, index) in mealPlanRecipes.tuesday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
         </ul>
       </div>
 
       <div id="wednesday">
         <div class="day">Wed</div>
         <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.wednesday" v-bind:key="index">{{recipe.name}}</li>
+          <li v-for="(recipe, index) in mealPlanRecipes.wednesday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
         </ul>
       </div>
 
       <div id="thursday">
         <div class="day">Thurs</div>
         <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.thursday" v-bind:key="index">{{recipe.name}}</li>
+          <li v-for="(recipe, index) in mealPlanRecipes.thursday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
         </ul>
       </div>
 
       <div id="friday">
         <div class="day">Fri</div>
         <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.friday" v-bind:key="index">{{recipe.name}}</li>
+          <li v-for="(recipe, index) in mealPlanRecipes.friday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
         </ul>
       </div>
 
       <div id="saturday">
         <div class="day">Sat</div>
         <ul class="recipe">
-          <li v-for="(recipe, index) in mealPlanRecipes.saturday" v-bind:key="index">{{recipe.name}}</li>
+          <li v-for="(recipe, index) in mealPlanRecipes.saturday" v-bind:key="index"><router-link :to="{name: 'singleRecipe', params: {recipeId: recipe.id}}">{{recipe.name}}</router-link></li>
         </ul>
       </div>
+        <br>
+        <br>
 
      </div>
-   
 
 </div>
 
@@ -68,8 +65,9 @@
 
 <script>
 import AppService from '../services/AppService'
-export default {
 
+
+export default {
     data() {
       return {
         mealPlanRecipes: [
