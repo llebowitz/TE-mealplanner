@@ -38,6 +38,7 @@ export default {
 			model: null,
 		};
 	},
+	props:['passedSearch'],
 
 	components: {
 		RecipeCard,
@@ -53,6 +54,10 @@ export default {
 	},
 
 	created() {
+		if(this.passedSearch !== ''){
+			this.filter = this.passedSearch
+		}
+		
 		this.searchRecipes;
 	},
 };

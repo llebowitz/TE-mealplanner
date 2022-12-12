@@ -29,7 +29,9 @@
 
 		<div class="tags mt-n3">
 			<p v-for="(tag, index) in recipe.tags" :key="index" class="mx-1 my-2">
+				<router-link v-bind:passedSearch = "tag.name" :to="{name: recipes}">
 				<strong>{{ tag.name }}</strong>
+				</router-link>
 			</p>
 		</div>
 
@@ -104,6 +106,11 @@ export default {
 	data: () => ({
 		show: false,
 	}),
+	methods:{
+		searchByTag(tagWord){
+			this.$router.push({name: 'recipes', params: {passedSearch: tagWord}});
+		}
+	}
 };
 
 //methods: {
