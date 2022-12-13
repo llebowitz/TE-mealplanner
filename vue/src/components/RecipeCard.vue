@@ -47,7 +47,6 @@
 <script>
 import SaveRecipe from '../components/SaveRecipe.vue';
 
-
 export default {
 	name: 'recipe-card',
 	components: {
@@ -86,7 +85,7 @@ export default {
 	flex-shrink: 1;
 	border: solid;
 	border-color: darkseagreen;
-	border-radius: 10%;
+	border-radius: 10px;
 	background-color: darkseagreen;
 	font-size: 10pt;
 	color: darkslategray;
