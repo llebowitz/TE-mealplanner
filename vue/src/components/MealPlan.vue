@@ -104,4 +104,22 @@ export default {
   grid-area: saturday;
   background-color: white;
 }
+
+.week::-webkit-scrollbar {
+  width: 16px;
+}
+
+.week::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+  border-radius: 100px;
+}
+
+.week::-webkit-scrollbar-thumb {
+  background: url('../assets/rolling-pin.png');
+  background-repeat: space;
+  background-size: contain, contain;
+  background-position: center bottom, center;
+  background-color: rgb(240, 226, 209);
+  border-radius: 100px;
+}
 </style>

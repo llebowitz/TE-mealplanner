@@ -41,8 +41,8 @@ export default {
   display: flex;
   flex-direction: column;
   min-width: 250px;
-  /* grid-template-areas: "day"
-                       "recipe"; */
+  grid-template-areas: "day"
+                       "recipe";
   grid-gap: 2px;
   background-color: black;
 }
