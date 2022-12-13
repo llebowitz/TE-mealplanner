@@ -53,5 +53,5 @@ export default {
 
 	getGroceryList() {
 		return axios.get('users/mealplan/grocerylist');
-	},
+	}
 };
