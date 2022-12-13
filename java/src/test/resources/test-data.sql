@@ -39,6 +39,18 @@ INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 12, 1, 'teaspoon');
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (1, 13, .5, 'teaspoon');
 
+INSERT INTO public.tags VALUES (1, 'Best Vegetarian');
+INSERT INTO public.tags VALUES (2, 'Bread Lovers');
+INSERT INTO public.tags VALUES (3, 'Lunch');
+INSERT INTO public.tags VALUES (4, 'American');
+INSERT INTO public.tags VALUES (5, 'Desserts');
+
+INSERT INTO public.recipes_tags VALUES (1, 1);
+INSERT INTO public.recipes_tags VALUES (1, 2);
+INSERT INTO public.recipes_tags VALUES (2, 3);
+INSERT INTO public.recipes_tags VALUES (2, 4);
+INSERT INTO public.recipes_tags VALUES (2, 5);
+
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 1, 3, 'small, grated');
 INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (2, 2, 4.5, 'tablespoons');
 

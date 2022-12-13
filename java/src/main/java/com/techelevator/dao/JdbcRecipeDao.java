@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Component
-public class JdbcRecipeDao implements RecipeDao{
+public class JdbcRecipeDao implements RecipeDao {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -30,25 +30,17 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public List<Recipe> searchRecipes(String searchWord) {
-        String sql = "SELECT DISTINCT r.recipe_id, r.recipe_name, r.yield, r.blurb, r.instructions, r.img_link, r.is_published, r.is_edited FROM recipes r " +
-                "JOIN recipes_tags rt ON r.recipe_id = rt.recipe_id JOIN tags t ON rt.tag_id = t.tag_id " +
-                "WHERE recipe_name ILIKE ? OR instructions ILIKE ? OR tag_name ILIKE ? ORDER BY recipe_name";
-        String sql1 = "SELECT * FROM recipes";
-        searchWord = "%" + searchWord + "%";
         if (searchWord.isBlank()) {
+            String sql1 = "SELECT * FROM recipes";
             return jdbcTemplate.query(sql1, new RecipeMapper());
         } else {
+            String sql = "SELECT DISTINCT r.recipe_id, r.recipe_name, r.yield, r.blurb, r.instructions, r.img_link, r.is_published, r.is_edited FROM recipes r " +
+                    "JOIN recipes_tags rt ON r.recipe_id = rt.recipe_id JOIN tags t ON rt.tag_id = t.tag_id " +
+                    "JOIN recipes_ingredients ri ON r.recipe_id = ri.recipe_id JOIN ingredients i ON i.ingredient_id = ri.ingredient_id " +
+                    "WHERE recipe_name ILIKE ? OR i.ingredient_name ILIKE ? OR tag_name ILIKE ? ORDER BY recipe_name";
+            searchWord = "%" + searchWord + "%";
             return jdbcTemplate.query(sql, new RecipeMapper(), searchWord, searchWord, searchWord);
         }
-    }
-
-    @Override
-    public List<Recipe> searchRecipesByIngredients(String ingredients) {
-        String sql = "SELECT DISTINCT r.recipe_id, recipe_name, yield, blurb, instructions FROM recipes r " +
-                "JOIN recipes_ingredients ri ON r.recipe_id = ri.recipe_id " +
-                "JOIN ingredients i ON i.ingredient_id = ri.ingredient_id WHERE ingredient_name ILIKE ?";
-        ingredients = "%" + ingredients + "%";
-        return jdbcTemplate.query(sql, new RecipeMapper(), ingredients);
     }
 
     @Override
@@ -58,12 +50,13 @@ public class JdbcRecipeDao implements RecipeDao{
     }
 
     @Override
-    public boolean doesRecipeExist(String recipeName){
+    public boolean doesRecipeExist(String recipeName) {
         String sql = "SELECT recipe_id FROM recipes WHERE recipe_name ILIKE ?";
         Integer recipeId = 0;
-        try{
+        try {
             recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipeName);
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
 
         return recipeId != 0;
     }
@@ -71,20 +64,23 @@ public class JdbcRecipeDao implements RecipeDao{
     @Override
     public int addRecipe(Recipe recipe) {
         String sql = "INSERT INTO recipes (recipe_name, yield, blurb, instructions, img_link, is_published) VALUES (?, ?, ?, ?, ?, ?) RETURNING recipe_id";
-        if(recipe.getYield().length() > 40){recipe.setYield("");}
+        if (recipe.getYield().length() > 40) {
+            recipe.setYield("");
+        }
         Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getYield(), recipe.getBlurb(), recipe.getInstructions(), recipe.getImgLink(), recipe.isPublished());
         recipe.setId(recipeId);
 
-        for(Ingredient thisIng : recipe.getIngredients()){
+        for (Ingredient thisIng : recipe.getIngredients()) {
             sql = "SELECT ingredient_id FROM ingredients i WHERE ingredient_name ILIKE ?";
             Integer ingId = 0;
-            try{
+            try {
                 ingId = jdbcTemplate.queryForObject(sql, Integer.class, thisIng.getName());
-            }catch(Exception e){}
+            } catch (Exception e) {
+            }
 
-            if(ingId == 0){
+            if (ingId == 0) {
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
-                ingId =  jdbcTemplate.queryForObject(sql, Integer.class, thisIng.getName().toLowerCase());
+                ingId = jdbcTemplate.queryForObject(sql, Integer.class, thisIng.getName().toLowerCase());
             }
             sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
             jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement());
@@ -100,13 +96,13 @@ public class JdbcRecipeDao implements RecipeDao{
         String sql = "DELETE FROM recipes_ingredients WHERE recipe_id = ?";
         jdbcTemplate.update(sql, recipe.getId());
 
-        for(Ingredient thisIng : recipe.getIngredients()){
+        for (Ingredient thisIng : recipe.getIngredients()) {
             sql = "SELECT ingredient_id FROM ingredients i WHERE ingredient_name ILIKE ?";
             String name = "%" + thisIng.getName() + "%";
             Integer ingId = jdbcTemplate.queryForObject(sql, Integer.class, name);
-            if(ingId == null){
+            if (ingId == null) {
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
-                ingId =  jdbcTemplate.update(sql, Integer.class, thisIng.getName());
+                ingId = jdbcTemplate.update(sql, Integer.class, thisIng.getName());
             }
             sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
             itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;

@@ -38,6 +38,6 @@ public class JdbcIngredientDao implements IngredientDao{
     @Override
     public List<Ingredient> getAllIngredients() {
         String sql = "SELECT * FROM ingredients";
-        return jdbcTemplate.query(sql, new IngredientMapper());
+        return jdbcTemplate.query(sql, new GroceryListMapper());
     }
 }

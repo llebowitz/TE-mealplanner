@@ -11,14 +11,14 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class JdbcRecipeDaoTest extends BaseDaoTests{
+public class JdbcRecipeDaoTest extends BaseDaoTests {
 
     @Test
     public void saveRecipeToUserList_multiple_recipes_returns_success() {
         RecipeDao recipeDao = getRecipeDao();
 
-        recipeDao.saveRecipeToUserList(1,1);
-        recipeDao.saveRecipeToUserList(1,2);
+        recipeDao.saveRecipeToUserList(1, 1);
+        recipeDao.saveRecipeToUserList(1, 2);
 
         List<Recipe> recipes = recipeDao.getUserRecipes(1);
         Assert.assertEquals(2, recipes.size());
@@ -105,7 +105,7 @@ public class JdbcRecipeDaoTest extends BaseDaoTests{
     }
 
     @Test
-    public void deleteRecipe() {
+    public void deleteRecipe_returns_false() {
         RecipeDao recipeDao = getRecipeDao();
 
         boolean recipe = recipeDao.deleteRecipe(recipeDao.getRecipe(2));
@@ -113,22 +113,22 @@ public class JdbcRecipeDaoTest extends BaseDaoTests{
         Assert.assertEquals(false, recipe);
     }
 
-//    @Test
-//    public void searchRecipes() {
-//        RecipeDao recipeDao = getRecipeDao();
-//
-//        List<Recipe> recipes = recipeDao.searchRecipes("some");
-//        Assert.assertEquals(1, recipes.size());
-//    }
+    @Test
+    public void searchRecipes_return_correct_amount() {
+        RecipeDao recipeDao = getRecipeDao();
 
-//    @Test
-//    public void searchRecipesByIngredients() {
-//        RecipeDao recipeDao = getRecipeDao();
-//        IngredientDao ingredientDao = getIngredientDao();
-//
-//        List<Recipe> recipes = recipeDao.searchRecipesByIngredients("shallot");
-//        Assert.assertEquals(2, recipes.size());
-//    }
+        List<Recipe> recipes = recipeDao.searchRecipes("");
+        Assert.assertEquals(2, recipes.size());
+
+        recipes = recipeDao.searchRecipes("shallot");
+        Assert.assertEquals(2, recipes.size());
+
+        recipes = recipeDao.searchRecipes("some");
+        Assert.assertEquals(1, recipes.size());
+
+        recipes = recipeDao.searchRecipes("hjk");
+        Assert.assertEquals(0, recipes.size());
+    }
 
     private RecipeDao getRecipeDao() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
