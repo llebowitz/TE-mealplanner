@@ -8,7 +8,7 @@
         <button v-on:click="printGroceryList">Print List <img src="../assets/printer.png" height="20px" width="auto"> </button>
         <br>
       
-        <label v-for="ingredient in groceryList" v-bind:key="ingredient.id"> <input type="checkbox"> {{ingredient.name}} <br> </label>
+        <label v-for="ingredient in groceryList" v-bind:key="ingredient.id" class="strikethrough"> <input type="checkbox"> {{ingredient.name}} <br> </label>
 
 
 
@@ -68,6 +68,10 @@ export default {
 button{
     font-weight: bold;
     border: 1px black solid
+}
+
+input[type=checkbox]:checked + label.strikethrough{
+    text-decoration: line-through;
 }
 
 

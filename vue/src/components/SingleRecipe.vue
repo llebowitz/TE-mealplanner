@@ -62,6 +62,7 @@ export default {
 
 .instructions{
     white-space: pre-wrap;
+    height: 100%;
 }
 
 .image{
