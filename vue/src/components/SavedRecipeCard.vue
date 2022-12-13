@@ -13,7 +13,7 @@
               <p>{{recipe.blurb}}</p> -->
               <p> </p>
               </div>
-              <addto-meal-plan v-on="$listeners" v-bind:recipe="recipe" />
+              <addto-meal-plan v-on:get-meal-plan-recipes="refreshMealPlans" v-bind:recipe="recipe" />
               <save-recipe v-bind:recipe="recipe" />
           </div>
     </div>
@@ -28,9 +28,9 @@ export default {
     props: ['recipe'],
     methods: {
         refreshMealPlans() {
-            console.log('here')
+            this.$emit('get-meal-plan-recipes')
         }
-    }   
+    }  
 
 }
 </script>
