@@ -47,7 +47,7 @@ export default {
                 if (response.status === 201) {
                     this.mealPlan.status = "added";
                     // this.$emit('get-meal-plan-recipe');
-                    location.reload();
+                    
                 } 
                 
                 });
