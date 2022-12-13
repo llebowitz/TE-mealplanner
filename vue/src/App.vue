@@ -10,7 +10,7 @@
 
 	<v-app id="inspire">
 		<v-app-bar app color="white" flat>
-			<v-avatar :color="$vuetify.breakpoint.smAndDown ? 'grey darken-1' : 'transparent'" size="32"></v-avatar>
+			<v-avatar :color="$vuetify.breakpoint.smAndDown ? 'grey darken-1' : 'transparent'" size="32"><img v-if="$vuetify.breakpoint.smAndDown" src="./assets/crossed-utensils.jpg" /></v-avatar>
 			<v-tabs centered class="ml-n9" color="grey darken-1">
 				<v-tab class="hide-slider" v-for="link in links" :key="link.title" router-link v-bind:to="{ name: `${link.routeName}` }">
 					{{ link.title }}
@@ -140,6 +140,6 @@ export default {
 <style>
 /*  Used to globally enable/disable vertical scroll in html element (code is in router index.js) */
 .y-scroll-hidden {
-    overflow: hidden;
+	overflow: hidden;
 }
 </style>

@@ -7,9 +7,6 @@
  
         <label for="quantity">Quantity:</label><br>
         <input type="text" id="quantity" v-for="(ingredient, index) in modifyRecipe.ingredients" :key="index" v-model="ingredient.quantity"><br>
-
-      
-
        
         <label for="measurement">Measurement:</label><br>
          <input type="text" id="measurement" v-for="(ingredient, index) in modifyRecipe.ingredients" :key="index" v-model="ingredient.measurement"><br>
@@ -23,7 +20,12 @@
         <label for="instructions">Instructions:</label><br>
         <textarea id="ingredients" v-model="modifyRecipe.instructions" > </textarea>
 
-<br><button type="submit">Submit</button>
+        <br>  
+        <input type="checkbox" value="published">
+        <label> Publish?</label>
+        <br>
+
+<br><button @click="updateRecipe">Submit</button>
         </form>
   </div>
 
@@ -38,10 +40,7 @@ export default {
   data() {
     return {
       modifyRecipe: {
-        // id: 0,
-        // name: '',
-        // ingredients: [],
-        // instructions: ''
+        isEdited: true
       },
     };
   },
@@ -55,6 +54,7 @@ export default {
     },
     methods: {
         updateRecipe() {
+          this.modifyRecipe.isEdited = true;
             AppService.updateRecipe(this.modifyRecipe).then((response) => {
                 if(response.status === 200) {
                     alert("Recipe updated!")

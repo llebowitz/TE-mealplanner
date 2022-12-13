@@ -95,7 +95,7 @@ const router = new Router({
 		},
 
 		{
-			path: '/:recipeId/modify',
+			path: 'singleRecipe/:recipeId/modify',
 			name: 'modify-recipe',
 			component: ModifyRecipe,
 			meta: {
