@@ -21,7 +21,7 @@
         <textarea id="ingredients" v-model="modifyRecipe.instructions" > </textarea>
 
         <br>  
-        <input type="checkbox" value="published">
+        <input type="checkbox" v-model="modifyRecipe.published" >
         <label> Publish?</label>
         <br>
 
