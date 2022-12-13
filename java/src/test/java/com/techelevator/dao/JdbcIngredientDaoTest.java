@@ -43,12 +43,12 @@ public class JdbcIngredientDaoTest extends BaseDaoTests{
     }
 
     @Test
-    public void getAllIngredients() {
+    public void getAllIngredients_returns_correct_amount() {
         IngredientDao ingredientDao = getIngredientDao();
         RecipeDao recipeDao = getRecipeDao();
 
-        Ingredient ingredient = ingredientDao.getIngredientById(1);
-        Assert.assertEquals(1, ingredient.getId());
+        List<Ingredient> ingredients = ingredientDao.getAllIngredients();
+        Assert.assertEquals(13, ingredients.size());
     }
 
     private UserDao getUserDao() {
