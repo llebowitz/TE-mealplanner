@@ -46,7 +46,7 @@ export default {
                 AppService.addToMealPlan(this.mealPlan).then( (response) => {
                 if (response.status === 201) {
                     this.mealPlan.status = "added";
-                    // this.$emit('get-meal-plan-recipe');
+                    this.$emit('get-meal-plan-recipes');
                     
                 } 
                 
