@@ -11,6 +11,7 @@
 			<button type="submit">Sign in</button>
 			<router-link :to="{ name: 'register' }">Need an account?</router-link>
 		</form>
+		<v-img src="../assets/cartoonfood1-cutout.png" class="mt-12"></v-img>
 	</div>
 </template>
 

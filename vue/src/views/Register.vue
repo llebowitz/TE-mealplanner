@@ -13,6 +13,7 @@
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
 			<router-link :to="{ name: 'login' }">Have an account?</router-link>
 		</form>
+		<v-img src="../assets/cartoonfood1-cutout.png" class="mt-12"></v-img>
 	</div>
 </template>
 
