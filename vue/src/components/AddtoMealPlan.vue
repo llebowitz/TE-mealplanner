@@ -15,7 +15,7 @@
            <!-- <button id="add-to-meal-plan" v-on:click="flipStatus(mealPlan)">{{ mealPlan.status === "added" ? "Remove from Meal Plan" :"Add to Meal Plan" }}</button> -->
         <!-- v-on:click="removeFromDay({ recipeID: recipe.id, dayOfWeek: mealPlanDay.dayOfWeek }) -->
         
-            <button id="add-to-meal-plan"  @recipe-added="refreshMealPlans" v-on:click="addToMealPlan(mealPlan)">{{ mealPlan.status === "added" ? "Added to Meal Plan" :"Add to Meal Plan" }}</button>
+            <button id="add-to-meal-plan" v-on:click="addToMealPlan(mealPlan)">{{ mealPlan.status === "added" ? "Added to Meal Plan" :"Add to Meal Plan" }}</button>
         </div>
   </div>
 </template>
@@ -46,8 +46,8 @@ export default {
                 AppService.addToMealPlan(this.mealPlan).then( (response) => {
                 if (response.status === 201) {
                     this.mealPlan.status = "added";
-                    this.$emit('get-meal-plan-recipe');
-                  
+                    // this.$emit('get-meal-plan-recipe');
+                    location.reload();
                 } 
                 
                 });

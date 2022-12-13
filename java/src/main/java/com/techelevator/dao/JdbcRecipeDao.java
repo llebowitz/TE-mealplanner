@@ -121,7 +121,7 @@ public class JdbcRecipeDao implements RecipeDao{
 
     @Override
     public boolean deleteRecipe(Recipe recipe) {
-        String sql = "DELETE FROM recipes WHERE recipe_id = ?";
+        String sql = "DELETE FROM recipes_ingredients WHERE recipe_id = ?";
         return jdbcTemplate.update(sql, recipe.getId()) == 1;
     }
 

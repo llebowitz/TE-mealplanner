@@ -25,7 +25,7 @@
 		<v-main class="stuff">
 			<v-container>
 				<v-row>
-					<v-col cols="12" sm="3" class="d-none d-md-block" v-if="isHome()">
+					<v-col cols="12" sm="3" class="" v-if="isHome()">
 						<v-sheet id="featured-recipe-parent" rounded="lg" min-height="268">
 							<featured-recipe />
 
@@ -34,6 +34,7 @@
 							<!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
 							<!-- <router-link v-bind:to="{ name: 'recipes' }"> Display Recipes</router-link> -->
 						</v-sheet>
+						<v-img src="./assets/cartoonfood1.jpg"></v-img>
 					</v-col>
 
 					<v-col cols="12" sm="6" class="mx-auto" v-if="isHome()">
@@ -130,7 +131,7 @@ export default {
 	background-repeat: no-repeat;
 } */
 
-.stuff{
-	background-color: #CAD97A;
+.stuff {
+	background-color: #cad97a;
 }
 </style>
