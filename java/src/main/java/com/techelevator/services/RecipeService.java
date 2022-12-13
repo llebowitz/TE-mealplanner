@@ -63,6 +63,7 @@ public class RecipeService {
             recipeDao.updateRecipe(recipe);
         }else{
             recipeDao.addRecipe(recipe);
+            recipeDao.saveRecipeToUserList(userDao.findIdByUsername(username), recipe.getId());
         }
     }
 

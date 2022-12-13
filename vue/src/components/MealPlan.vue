@@ -72,6 +72,7 @@ export default {
   border: solid black;
   background-color: black;
   grid-gap: 1px;
+  margin-bottom: 10px;
 }
 
 #sunday{
@@ -114,10 +115,15 @@ export default {
 
 .week::-webkit-scrollbar-thumb {
   background: url('../assets/rolling-pin.png');
-  background-repeat: space;
+  background-repeat: no-repeat;
   background-size: contain, contain;
   background-position: center bottom, center;
-  background-color: rgb(240, 226, 209);
+  background-color: transparent;
   border-radius: 100px;
 }
+
+h1{
+  text-align: center;
+}
+
 </style>

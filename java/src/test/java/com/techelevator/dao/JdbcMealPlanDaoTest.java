@@ -13,6 +13,18 @@ import static org.junit.Assert.*;
 public class JdbcMealPlanDaoTest extends BaseDaoTests{
 
     @Test
+    public void createMealPlan() {
+        MealPlanDao mealPlanDao = getMealPlanDao();
+
+        mealPlanDao.createMealPlan(3);
+
+        User user = new User();
+        user.setId(3);
+        MealPlan mealPlan = mealPlanDao.getMealPlan(user);
+        Assert.assertNotNull(mealPlan);
+    }
+
+    @Test
     public void addRecipeMealPlan_return_success() {
         MealPlanDao mealPlanDao = getMealPlanDao();
 
@@ -63,7 +75,7 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
     }
 
     @Test
-    public void deleteRecipeMealPlan() {
+    public void deleteRecipeMealPlan_adds_recipes_and_removes_each_one() {
         MealPlanDao mealPlanDao = getMealPlanDao();
 
         mealPlanDao.addRecipeMealPlan(1,2,1);
@@ -72,18 +84,32 @@ public class JdbcMealPlanDaoTest extends BaseDaoTests{
         User user = new User();
         user.setId(1);
         MealPlan mealPlan = mealPlanDao.getMealPlan(user);
-        mealPlan.setRecipePerDay(mealPlan.getAllRecipes());
         List<Recipe> recipes = mealPlan.getAllRecipes();
+        assertEquals(2, recipes.size());
 
         mealPlanDao.deleteRecipeMealPlan(1,2,1);
 
-        Recipe recipe = recipes.get(0);
-        Assert.assertNull(null);
+        mealPlan = mealPlanDao.getMealPlan(user);
+        recipes = mealPlan.getAllRecipes();
+        boolean hasRecipe = false;
+        for (Recipe recipe : recipes) {
+            if (recipe.getId() == 1) {
+                hasRecipe = true;
+            }
+        }
+        Assert.assertFalse(hasRecipe);
 
         mealPlanDao.deleteRecipeMealPlan(2,2,1);
 
-        recipes.get(1);
-        Assert.assertNull(null);
+        mealPlan = mealPlanDao.getMealPlan(user);
+        recipes = mealPlan.getAllRecipes();
+        hasRecipe = false;
+        for (Recipe recipe : recipes) {
+            if (recipe.getId() == 2) {
+                hasRecipe = true;
+            }
+        }
+        Assert.assertFalse(hasRecipe);
     }
 
     private UserDao getUserDao() {

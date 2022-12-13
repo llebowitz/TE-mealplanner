@@ -63,6 +63,12 @@ export default {
 .container nav{
     grid-area: nav;
     height:100%;
+    padding-right: 10px;
+    overflow: auto;
+}
+
+.container nav ul{
+    height: 125%;
 }
 
 .container main{
@@ -106,6 +112,16 @@ transition: all 0.2s;
 
 button:hover{
 background-color:#20ca6d;
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
+
+nav::-webkit-scrollbar {
+  width: 5px;
+  display: none;
 }
 
 </style>
