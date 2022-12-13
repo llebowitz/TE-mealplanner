@@ -5,10 +5,11 @@
       
       <h1>Grocery List</h1>
 
-        <button v-on:click="printGroceryList">Print List <img src="../assets/printer.png" height="20px" width="auto"> </button>
+        <button v-on:click="printGroceryList">Print   <img src="../assets/printer.png" height="20px" width="auto"> </button>
         <br>
       
-        <label v-for="ingredient in groceryList" v-bind:key="ingredient.id"> <input type="checkbox"> {{ingredient.name}} <br> </label>
+        <label v-for="ingredient in groceryList" v-bind:key="ingredient.id" class="strikethrough"> <input type="checkbox" id="check"> {{ingredient.name}} <br> </label>
+        
 
 
 
@@ -66,8 +67,27 @@ export default {
 }
 
 button{
-    font-weight: bold;
-    border: 1px black solid
+display:inline-block;
+padding:0.3em 1.2em;
+margin:0 0.3em 0.3em 0;
+border-radius:2em;
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:300;
+color: white;
+text-shadow: 0 0.09em 0.05em rgba(0,0,0,0.35);
+background-color:#2ca1e4;
+text-align:center;
+transition: all 0.2s;
+}
+
+button:hover{
+background-color:#4095c6;
+}
+
+input[type=checkbox]#check:checked + label.strikethrough{
+    text-decoration: line-through;
 }
 
 

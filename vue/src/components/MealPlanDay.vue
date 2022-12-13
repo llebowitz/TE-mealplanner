@@ -1,18 +1,27 @@
 <template>
   <div>
     <div id="day-of-week">
-      <div class="day">{{ mealPlanDay.dayName }}</div>
+      <div id="day">{{ mealPlanDay.dayName }}</div>
       <ul id="recipe">
-          <div v-for="(recipe, index) in mealPlanDay.recipes" v-bind:key="index">
-        <li id="li">
-          <router-link
-            :to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
-            >{{ recipe.name }}</router-link
+        <div
+          id="recipe-item"
+          v-for="(recipe, index) in mealPlanDay.recipes"
+          v-bind:key="index"
           >
-        </li>
-        <button
-            id="remove-button"
-            v-on:click="removeFromDay({ recipeID: recipe.id, dayOfWeek: mealPlanDay.dayOfWeek })"
+          <li id="recipe-li">
+            <router-link
+              :to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
+              >{{ recipe.name }}</router-link
+            >
+          </li>
+          <button
+            id="button"
+            v-on:click="
+              removeFromDay({
+                recipeID: recipe.id,
+                dayOfWeek: mealPlanDay.dayOfWeek,
+              })
+            "
           >
             <img class="remove-button" src="../assets/x-icon.png" />
           </button>
@@ -26,13 +35,13 @@
 import AppService from "../services/AppService";
 
 export default {
-  props: ['mealPlanDay'],
+  props: ["mealPlanDay"],
 
   methods: {
     removeFromDay(recipe) {
       AppService.removeFromMealPlan(recipe).then((response) => {
         if (response.status === 204) {
-          this.$emit('recipeRemoved');
+          this.$emit("recipeRemoved");
         }
       });
     },
@@ -40,26 +49,48 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#day-of-week {
+  display: grid;
+  min-width: 250px;
+  grid-template-areas:
+    "day"
+    "recipe";
+  grid-gap: 2px;
+  background-color: black;
+}
 
-.day{
+#day {
   font-weight: bold;
   font-size: 30px;
   padding-left: 5px;
+  grid-area: day;
+  background-color: white;
 }
 
 ul {
   list-style-image: url(../assets/carrot.png);
 }
 
-#remove-button{
+#button {
   width: 10px;
   height: auto;
   margin-left: 5px;
+  grid-area: button;
 }
 
+#recipe {
+  grid-area: recipe;
+  background-color: white;
+}
 
-
-
+#recipe-li {
+  grid-area: recipe-li;
+}
+#recipe-item{
+  display: grid;
+  grid-template-areas: "recipe-li button";
+  grid-template-rows: 4fr 1fr;
+}
 
 </style>

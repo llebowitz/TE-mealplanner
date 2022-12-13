@@ -4,7 +4,7 @@
       <div class="flex-grid">
 		
 				<div class="col" v-for="recipe in savedRecipes" v-bind:key="recipe.id">
-					<saved-recipe-card v-bind:recipe="recipe">
+					<saved-recipe-card v-bind:recipe="recipe" @get-meal-plan-recipes="refreshMealPlans">
 			
 					</saved-recipe-card>
 				</div>
@@ -39,7 +39,10 @@ methods: {
                 this.savedRecipes = response.data;
             }
         })
-    }
+    },
+    refreshMealPlans() {
+      this.$emit("get-meal-plan-recipes");
+    },
 }
 }
 </script>

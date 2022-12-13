@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static net.gcardone.junidecode.Junidecode.unidecode;
@@ -62,6 +63,7 @@ public class RecipeService {
             recipeDao.updateRecipe(recipe);
         }else{
             recipeDao.addRecipe(recipe);
+            recipeDao.saveRecipeToUserList(userDao.findIdByUsername(username), recipe.getId());
         }
     }
 
@@ -75,6 +77,8 @@ public class RecipeService {
             r.setIngredients(ingredientDao.getIngredientsByRecipe(r));
             r.setTags(tagDao.getTagsForRecipe(r));
         }
+
+        Collections.shuffle(searchedRecipes);
         return searchedRecipes;
     }
 

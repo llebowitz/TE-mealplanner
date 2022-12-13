@@ -9,7 +9,8 @@ import RecipesDisplay from '../views/RecipesDisplay.vue';
 // import Recipe from '../views/Recipe.vue';
 import UserPortal from '../views/UserPortal.vue';
 import OneRecipe from '../views/OneRecipe.vue';
-import GroceryList from '../views/GroceryList'
+import GroceryList from '../views/GroceryList';
+import ModifyRecipe from '../views/ModifyRecipe'
 
 Vue.use(Router);
 
@@ -90,8 +91,19 @@ const router = new Router({
 			component: GroceryList,
 			meta: {
 				requiresAuth: true,
-			},
+			}
+		},
+
+		{
+			path: '/:recipeId/modify',
+			name: 'modify-recipe',
+			component: ModifyRecipe,
+			meta: {
+				requiresAuth: true,
+			}
 		}
+
+		
 	],
 });
 
@@ -105,6 +117,14 @@ router.beforeEach((to, from, next) => {
 	} else {
 		// Else let them go to their next destination
 		next();
+	}
+
+	const html = document.getElementById('html-tag');
+
+	if (to.name === 'singleRecipe') {
+		html.classList.add('y-scroll-hidden')
+	} else {
+		html.classList.remove('y-scroll-hidden')
 	}
 });
 

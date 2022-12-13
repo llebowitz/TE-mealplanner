@@ -56,6 +56,9 @@ export default new Vuex.Store({
     },
     ADD_SAVED_RECIPE(state, recipe) {
       state.savedRecipes.push(recipe);
+    },
+    UPDATE_MY_RECIPES(state, recipes){
+      state.user.myRecipes = recipes;
     }
     // // REMOVE_SAVED_RECIPE(state, recipeIdToRemove){
 
