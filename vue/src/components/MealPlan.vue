@@ -3,22 +3,19 @@
       <h1>My Meal Plan</h1>
     <div class="week">
      
-     <meal-plan-day class="sunday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.sunday, dayOfWeek: 1, dayName: 'Sun'}" />
+      <meal-plan-day class="day" id="sunday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.sunday, dayOfWeek: 1, dayName: 'Sun'}" />
 
-      <meal-plan-day class="monday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.monday, dayOfWeek: 2, dayName: 'Mon'}" />
+      <meal-plan-day class="day" id="monday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.monday, dayOfWeek: 2, dayName: 'Mon'}" />
 
-      <meal-plan-day class="tuesday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.tuesday, dayOfWeek: 3, dayName: 'Tue'}" />
+      <meal-plan-day class="day" id="tuesday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.tuesday, dayOfWeek: 3, dayName: 'Tue'}" />
 
-      <meal-plan-day class="wednesday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.wednesday, dayOfWeek: 4, dayName: 'Wed'}" />
+      <meal-plan-day class="day" id="wednesday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.wednesday, dayOfWeek: 4, dayName: 'Wed'}" />
 
-      <meal-plan-day class="thursday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.thursday, dayOfWeek: 5, dayName: 'Thu'}" />
+      <meal-plan-day class="day" id="thursday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.thursday, dayOfWeek: 5, dayName: 'Thu'}" />
 
-      <meal-plan-day class="friday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.friday, dayOfWeek: 6, dayName: 'Fri'}" />
+      <meal-plan-day class="day" id="friday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.friday, dayOfWeek: 6, dayName: 'Fri'}" />
 
-      <meal-plan-day class="saturday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.saturday, dayOfWeek: 7, dayName: 'Sat'}" />
-      
-        <br>
-        <br>
+      <meal-plan-day class="day" id="saturday" v-on:recipeRemoved="getMealPlanRecipes" v-bind:mealPlanDay="{recipes: mealPlanRecipes.saturday, dayOfWeek: 7, dayName: 'Sat'}" />
 
      </div>
 
@@ -81,53 +78,36 @@ export default {
   grid-template-areas: "sunday monday tuesday wednesday thursday friday saturday";
   width: 100%;
   border: solid black;
-  border-left: hidden;
+  background-color: black;
+  grid-gap: 1px;
 }
 
 #sunday{
   grid-area: sunday;
+  background-color: white;
 }
-
 #monday{
   grid-area: monday;
+  background-color: white;
 }
-
 #tuesday{
   grid-area: tuesday;
+  background-color: white;
 }
-
 #wednesday{
   grid-area: wednesday;
+  background-color: white;
 }
-
 #thursday{
   grid-area: thursday;
+  background-color: white;
 }
-
 #friday{
   grid-area: friday;
+  background-color: white;
 }
-
 #saturday{
   grid-area: saturday;
+  background-color: white;
 }
-
-.day{
-  font-weight: bold;
-  font-size: 30px;
-  border-left: solid black;
-  padding-left: 5px;
-}
-
-.recipe{
-  color: blue;
-  border-left: solid black;
-  border-top: solid black;
-  padding-left: 5px;
-}
-
-ul {
-  list-style-image: url(../assets/carrot.png);
-}
-
 </style>
