@@ -42,12 +42,15 @@ export default {
     methods: {
 
         addToMealPlan(mealPlan) {
-            if (mealPlan.status == 'notAdded') {
+            if(this.mealPlan.dayOfWeek == 0){
+                alert("Please select a day of the week.")
+            }
+            else if (mealPlan.status == 'notAdded') {
                 AppService.addToMealPlan(this.mealPlan).then( (response) => {
                 if (response.status === 201) {
                     this.mealPlan.status = "added";
-                    // this.$emit('get-meal-plan-recipe');
-                    location.reload();
+                    this.$emit('get-meal-plan-recipes');
+                    
                 } 
                 
                 });

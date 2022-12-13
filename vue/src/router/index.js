@@ -106,6 +106,14 @@ router.beforeEach((to, from, next) => {
 		// Else let them go to their next destination
 		next();
 	}
+
+	const html = document.getElementById('html-tag');
+
+	if (to.name === 'singleRecipe') {
+		html.classList.add('y-scroll-hidden')
+	} else {
+		html.classList.remove('y-scroll-hidden')
+	}
 });
 
 export default router;

@@ -7,7 +7,6 @@
 		></router-link>
 		<div>
 			<save-recipe v-bind:recipe="recipe" />
-			<addto-meal-plan v-bind:recipe="recipe" />
 		</div>
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
 			><v-card-title class="card-title mb-n5 align-self-start">{{ recipe.name }}</v-card-title></router-link
@@ -15,17 +14,6 @@
 		<div class="grey--text ms-4" v-if="recipe.yield != ''">
 			<p>{{ recipe.yield }}</p>
 		</div>
-
-		<!--	<v-card-text> <v-row align="center" class="mx-0"> 
-			<v-rating
-          :value="4.5"
-          color="amber"
-          dense
-          half-increments
-          readonly
-          size="14"
-        ></v-rating></v-row> 
-		</v-card-text>-->
 
 		<div class="tags mt-n3">
 			<p v-for="(tag, index) in recipe.tags" :key="index" class="mx-1 my-2" @click="$emit('tagClicked', tag.name)">
@@ -53,52 +41,16 @@
 				</v-card-text>
 			</div>
 		</v-expand-transition>
-
-		<!-- <v-divider class="mx-4"></v-divider>
-		<v-card-actions>
-			<v-btn color="orange lighten-2" text> Instructions </v-btn>
-
-			<v-spacer></v-spacer>
-
-			<v-btn icon @click="show = !show">
-				<v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-			</v-btn>
-		</v-card-actions>
-
-		<v-expand-transition>
-			<div v-show="show">
-				<v-divider></v-divider>
-
-				<v-card-text>
-					{{ recipe.instructions }}
-				</v-card-text>
-			</div>
-		</v-expand-transition>-->
 	</v-card>
-
-	<!-- <div>
-      <h3>{{ recipe.recipeName}} </h3>
-      add image 
-        <body> 
-            <div>{{ recipe.instructions }}</div>
-            <div>{{ recipe.ingredients }}</div>
-        </body>
-        add event: on click, save to user recipes 
-        <button>Save Recipe</button>
-        add event: on click, save to user meal plan 
-
-</div> -->
 </template>
 
 <script>
 import SaveRecipe from '../components/SaveRecipe.vue';
-import AddtoMealPlan from './AddtoMealPlan.vue';
 
 export default {
 	name: 'recipe-card',
 	components: {
 		SaveRecipe,
-		AddtoMealPlan,
 	},
 	props: ['recipe'],
 	data: () => ({
@@ -111,18 +63,6 @@ export default {
 	}
 };
 
-//methods: {
-// saveRecipe()
-// Should we set it up to automatically save a copy of the recipe here?
-
-// unSaveRecipe()
-
-// addToMealPlan()
-//             'if Monday, add to ""'
-// deleteFromMealPlan()
-
-// toggleSave()
-// }
 </script>
 
 <style scoped>
@@ -145,7 +85,7 @@ export default {
 	flex-shrink: 1;
 	border: solid;
 	border-color: darkseagreen;
-	border-radius: 10%;
+	border-radius: 10px;
 	background-color: darkseagreen;
 	font-size: 10pt;
 	color: darkslategray;

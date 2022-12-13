@@ -3,15 +3,17 @@
     <div>
     
         <meal-plan ref="mealPlan" />
+        
         <view-grocery-list />
-        <my-recipes><saved-recipe-card @get-meal-plan-recipe="getMealPlanRecipes()"></saved-recipe-card></my-recipes>
+        <my-recipes @get-meal-plan-recipes="refreshMealPlans()"><saved-recipe-card ></saved-recipe-card></my-recipes>
    
-       
+       <add-recipe />
         
     </div>
 </template>
 
 <script>
+import AddRecipe from '../components/AddRecipe.vue';
 import MealPlan from "../components/MealPlan.vue";
 import MyRecipes from '../components/MyRecipes.vue';
 import SavedRecipeCard from '../components/SavedRecipeCard.vue';
@@ -25,12 +27,13 @@ export default {
     MyRecipes,
     ViewGroceryList,
     SavedRecipeCard,
+    AddRecipe
    
   
     }, 
     methods: {
         refreshMealPlans() {
-            this.$refs['mealPlans'].getMealPlanRecipes();
+            this.$refs.mealPlan.getMealPlanRecipes();
         }
     }
 

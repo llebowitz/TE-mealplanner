@@ -4,7 +4,9 @@
         <div class="saved-recipe-card">
           
           <div class="saved-container">
+              <router-link v-bind:to="{ name : 'singleRecipe', params: { recipeId: recipe.id } }">
               <img v-bind:src="`${recipe.imgLink}`" >
+              </router-link>
               
               <router-link v-bind:to="{ name : 'singleRecipe', params: { recipeId: recipe.id } }">
               <h3>{{recipe.name}}</h3> </router-link>
@@ -13,7 +15,7 @@
               <p>{{recipe.blurb}}</p> -->
               <p> </p>
               </div>
-              <addto-meal-plan v-on="$listeners" v-bind:recipe="recipe" />
+              <addto-meal-plan v-on:get-meal-plan-recipes="refreshMealPlans" v-bind:recipe="recipe" />
               <save-recipe v-bind:recipe="recipe" />
           </div>
     </div>
@@ -28,9 +30,9 @@ export default {
     props: ['recipe'],
     methods: {
         refreshMealPlans() {
-            console.log('here')
+            this.$emit('get-meal-plan-recipes')
         }
-    }   
+    }  
 
 }
 </script>

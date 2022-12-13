@@ -136,3 +136,10 @@ export default {
 	background-color: #c8e6c9;
 }
 </style>
+
+<style>
+/*  Used to globally enable/disable vertical scroll in html element (code is in router index.js) */
+.y-scroll-hidden {
+    overflow: hidden;
+}
+</style>
