@@ -66,6 +66,10 @@ export default {
     padding-right: 10px;
 }
 
+.container nav ul{
+    height: 125%;
+}
+
 .container main{
     grid-area: main;
     overflow: auto;
