@@ -53,16 +53,21 @@ export default {
 
 .container nav{
     grid-area: nav;
+    height:100%;
 }
 
 .container main{
     grid-area: main;
     overflow: auto;
+    /* display: grid;
+    grid-template-areas: "image" "instructions"; */
+
 }
 
 .instructions{
     white-space: pre-wrap;
-    height: 100%;
+    grid-area: instructions;
+    height:125%;
 }
 
 .image{
@@ -71,6 +76,7 @@ export default {
     max-height: 60%;
     min-width: 40%;
     min-height: 40%;
+    grid-area: image;
 }
 
 </style>

@@ -6,7 +6,7 @@
 					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img
 		></router-link>
 		<div>
-			<save-recipe v-bind:recipe="recipe" />
+			<save-recipe v-bind:recipe="recipe" :key="recipe.id"/>
 		</div>
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
 			><v-card-title class="card-title mb-n5 align-self-start">{{ recipe.name }}</v-card-title></router-link
