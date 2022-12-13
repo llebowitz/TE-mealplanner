@@ -4,7 +4,9 @@
         <div class="saved-recipe-card">
           
           <div class="saved-container">
+              <router-link v-bind:to="{ name : 'singleRecipe', params: { recipeId: recipe.id } }">
               <img v-bind:src="`${recipe.imgLink}`" >
+              </router-link>
               
               <router-link v-bind:to="{ name : 'singleRecipe', params: { recipeId: recipe.id } }">
               <h3>{{recipe.name}}</h3> </router-link>

@@ -3,6 +3,7 @@
     <button id="save-button" v-on:click="flipStatus(savedRecipe)">
       {{ savedRecipe.status === "saved" ? "Unsave" : "Save" }}
     </button>
+    <p>{{setStatus}}</p>
   </div>
 </template>
 
@@ -19,6 +20,14 @@ export default {
         status: "unsaved",
       },
     };
+  },
+  computed:{
+    setStatus(){
+      return this.$store.state.user.myRecipes.filter(r => {
+        return r.id == this.recipe.id;
+      }).length > 0;
+      }
+       
   },
   methods: {
     flipStatus(savedRecipe) {
