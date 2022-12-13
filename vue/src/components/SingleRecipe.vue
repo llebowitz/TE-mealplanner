@@ -6,6 +6,12 @@
         <ul>
             <li v-for="(ingredient, index) in recipe.ingredients" :key="index"><span v-if="ingredient.quantity != 0">{{ingredient.quantity}}</span> {{ingredient.measurement}} {{ingredient.name}}</li>
         </ul>
+        <br>
+
+        <button v-on:click="printRecipe">Print   <img src="../assets/printer.png" height="19px" width="auto"></button>
+        
+        <router-link :to="{ name: 'modify-recipe', params: {recipeId: recipe.id }}"> Edit Recipe </router-link>
+      
     </nav>
 
     <main>
@@ -33,6 +39,9 @@ export default {
     methods:{
         fixSpacing(instructions){
             return instructions.replace('\n', '<br>');
+        },
+        printRecipe(){
+            window.print();
         }
     }
 }
@@ -80,22 +89,24 @@ export default {
     grid-area: image;
 }
 
-main::-webkit-scrollbar {
-  width: 16px;
+button{
+display:inline-block;
+padding:0.3em 1.2em;
+margin:0 0.3em 0.3em 0;
+border-radius:2em;
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:350;
+color: white;
+text-shadow: 0 0.09em 0.05em rgba(0,0,0,0.35);
+background-color:#2e8d27;
+text-align:center;
+transition: all 0.2s;
 }
 
-main::-webkit-scrollbar-track {
-  background-color: rgb(255, 255, 255);
-  border-radius: 100px;
-}
-
-main::-webkit-scrollbar-thumb {
-  background: url('../assets/rolling-pin-vertical.png');
-  background-repeat: space;
-  background-size: contain, contain;
-  background-position: center bottom, center;
-  background-color: rgb(240, 226, 209);
-  border-radius: 100px;
+button:hover{
+background-color:#20ca6d;
 }
 
 </style>

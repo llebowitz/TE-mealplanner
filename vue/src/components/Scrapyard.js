@@ -310,3 +310,6 @@ Original RecipeCard.vue code for the carousel.  I am tinkering to see if we can 
 // 		}
 // 	}
 // }
+
+
+{/* <label v-for="ingredient in groceryList" v-bind:key="ingredient.id" class="strikethrough"> <input type="checkbox"> {{ingredient.name}} <br> </label> */}
