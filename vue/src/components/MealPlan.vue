@@ -58,13 +58,6 @@ export default {
       created() {
         this.getMealPlanRecipes();
       }
-
-      // updateRecipeDay()
-
-      // clearMP()
-
-        
-          // generateGroceryList()
     }
 
 
@@ -73,9 +66,10 @@ export default {
 
 <style scoped>
 .week{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-areas: "sunday monday tuesday wednesday thursday friday saturday";
+  display: flex;
+  overflow-x: auto;
+  /* grid-template-columns: repeat(7, 1fr);
+  grid-template-areas: "sunday monday tuesday wednesday thursday friday saturday"; */
   width: 100%;
   border: solid black;
   background-color: black;

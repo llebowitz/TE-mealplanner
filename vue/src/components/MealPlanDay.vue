@@ -38,9 +38,11 @@ export default {
 <style scoped>
 
 #day-of-week{
-  display: grid;
-  grid-template-areas: "day"
-                       "recipe";
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+  /* grid-template-areas: "day"
+                       "recipe"; */
   grid-gap: 2px;
   background-color: black;
 }
