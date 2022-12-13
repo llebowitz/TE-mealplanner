@@ -7,7 +7,7 @@
 		></router-link>
 		<div>
 			<save-recipe v-bind:recipe="recipe" />
-			<addto-meal-plan v-bind:recipe="recipe" />
+	
 		</div>
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
 			><v-card-title class="card-title mb-n5 align-self-start">{{ recipe.name }}</v-card-title></router-link
@@ -92,13 +92,13 @@
 
 <script>
 import SaveRecipe from '../components/SaveRecipe.vue';
-import AddtoMealPlan from './AddtoMealPlan.vue';
+
 
 export default {
 	name: 'recipe-card',
 	components: {
 		SaveRecipe,
-		AddtoMealPlan,
+		
 	},
 	props: ['recipe'],
 	data: () => ({
