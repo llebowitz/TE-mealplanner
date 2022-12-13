@@ -54,6 +54,7 @@ export default {
 .container nav{
     grid-area: nav;
     height:100%;
+    padding-right: 10px;
 }
 
 .container main{
@@ -77,6 +78,24 @@ export default {
     min-width: 40%;
     min-height: 40%;
     grid-area: image;
+}
+
+main::-webkit-scrollbar {
+  width: 16px;
+}
+
+main::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+  border-radius: 100px;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: url('../assets/rolling-pin-vertical.png');
+  background-repeat: space;
+  background-size: contain, contain;
+  background-position: center bottom, center;
+  background-color: rgb(240, 226, 209);
+  border-radius: 100px;
 }
 
 </style>
