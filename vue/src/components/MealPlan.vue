@@ -68,8 +68,6 @@ export default {
 .week{
   display: flex;
   overflow-x: auto;
-  /* grid-template-columns: repeat(7, 1fr);
-  grid-template-areas: "sunday monday tuesday wednesday thursday friday saturday"; */
   width: 100%;
   border: solid black;
   background-color: black;
@@ -77,31 +75,31 @@ export default {
 }
 
 #sunday{
-  grid-area: sunday;
+  /* grid-area: sunday; */
   background-color: white;
 }
 #monday{
-  grid-area: monday;
+  /* grid-area: monday; */
   background-color: white;
 }
 #tuesday{
-  grid-area: tuesday;
+  /* grid-area: tuesday; */
   background-color: white;
 }
 #wednesday{
-  grid-area: wednesday;
+  /* grid-area: wednesday; */
   background-color: white;
 }
 #thursday{
-  grid-area: thursday;
+  /* grid-area: thursday; */
   background-color: white;
 }
 #friday{
-  grid-area: friday;
+  /* grid-area: friday; */
   background-color: white;
 }
 #saturday{
-  grid-area: saturday;
+  /* grid-area: saturday; */
   background-color: white;
 }
 
