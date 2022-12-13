@@ -5,7 +5,8 @@
 			<input id="search" class="search" type="text" v-model="filter" v-on:change="searchRecipes" />
 			<!-- can duplicate the event on a search button -->
 		</div>
-		<img class="running-chef" v-show="isLoading == true" src="../assets/swedishchef.gif" alt="">
+		<div class="running-chef"><img v-show="isLoading == true" src="../assets/swedishchef.gif" alt=""></div>
+		
 
 		<!-- <div class="recipe-container ma-12 d-flex flex-wrap"> -->
 			<v-container fluid>
@@ -74,7 +75,9 @@ export default {
 
 <style scoped>
 .search-bar {
-	margin-left: 25%;
+	margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
 .search{
@@ -83,17 +86,18 @@ export default {
 	border-style: solid;
 	border-radius: 10px;
 	padding: 5px;
-	width: 350px;
+	width: 50%;
 	/* border-top-left-radius: 10px; */
 }
 
 .search-text{
 	margin-right: 10px;
 	font-size: 16pt;
-	
 }
 
 .running-chef{
-	margin-left: 15%;
+	margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 </style>

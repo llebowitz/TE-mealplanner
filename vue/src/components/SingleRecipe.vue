@@ -6,15 +6,23 @@
         <ul>
             <li v-for="(ingredient, index) in recipe.ingredients" :key="index"><span v-if="ingredient.quantity != 0">{{ingredient.quantity}}</span> {{ingredient.measurement}} {{ingredient.name}}</li>
         </ul>
-        <br>
-
-        <button v-on:click="printRecipe">Print   <img src="../assets/printer.png" height="19px" width="auto"></button>
+      
+         <button v-on:click="printRecipe">Print   <img src="../assets/printer.png" height="19px" width="auto"></button>
         
         <router-link :to="{ name: 'modify-recipe', params: {recipeId: recipe.id }}"> Edit Recipe </router-link>
+      
+        <br>
+
+       
       
     </nav>
 
     <main>
+
+        <button v-on:click="printRecipe">Print   <img src="../assets/printer.png" height="19px" width="auto"></button>
+        
+        <router-link :to="{ name: 'modify-recipe', params: {recipeId: recipe.id }}"> Edit Recipe </router-link>
+        
         <div><img class="image" v-bind:src="`${recipe.imgLink}`" alt=""></div>
         <div class="instructions">{{recipe.instructions}}</div>
     </main>

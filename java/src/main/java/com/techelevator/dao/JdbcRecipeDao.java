@@ -63,11 +63,11 @@ public class JdbcRecipeDao implements RecipeDao {
 
     @Override
     public int addRecipe(Recipe recipe) {
-        String sql = "INSERT INTO recipes (recipe_name, yield, blurb, instructions, img_link, is_published) VALUES (?, ?, ?, ?, ?, ?) RETURNING recipe_id";
+        String sql = "INSERT INTO recipes (recipe_name, yield, blurb, instructions, img_link, is_published, is_edited) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING recipe_id";
         if (recipe.getYield().length() > 40) {
             recipe.setYield("");
         }
-        Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getYield(), recipe.getBlurb(), recipe.getInstructions(), recipe.getImgLink(), recipe.isPublished());
+        Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getYield(), recipe.getBlurb(), recipe.getInstructions(), recipe.getImgLink(), recipe.isPublished(), recipe.isEdited());
         recipe.setId(recipeId);
 
         for (Ingredient thisIng : recipe.getIngredients()) {

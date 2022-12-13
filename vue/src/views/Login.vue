@@ -1,5 +1,5 @@
 <template>
-	<div id="login" class="text-center fill-height">
+	<div id="login" class="text-center fill-height d-flex flex-column align-center">
 		<form class="form-signin" @submit.prevent="login">
 			<h1 class="display-1">Please Sign In</h1>
 			<div class="alert alert-danger" role="alert" v-if="invalidCredentials">Invalid username and password!</div>
@@ -11,6 +11,7 @@
 			<button type="submit">Sign in</button>
 			<router-link :to="{ name: 'register' }">Need an account?</router-link>
 		</form>
+		<v-img src="../assets/cartoonfood1-cutout.png" max-width="600px" class="mt-4"></v-img>
 	</div>
 </template>
 
