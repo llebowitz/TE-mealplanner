@@ -93,11 +93,11 @@ export default {
 .search-text{
 	margin-right: 10px;
 	font-size: 16pt;
+	
 }
 
 .running-chef{
 	margin: auto;
   width: 50%;
-  padding: 10px;
 }
 </style>
