@@ -45,6 +45,10 @@ public class MealPlanService {
         return mealPlanDao.deleteRecipeMealPlan(recipeId, dayOfWeek, userDao.findByUsername(username).getId());
     }
 
+    public void clearMealPlan(String username){
+        mealPlanDao.clearMealPlan(userDao.findIdByUsername(username));
+    }
+
     public MealPlan getMealPlanByUsername(String username) {
         MealPlan userMP = mealPlanDao.getMealPlan(userDao.findByUsername(username));
 

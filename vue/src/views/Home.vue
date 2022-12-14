@@ -1,13 +1,8 @@
 <template>
-	<!-- <div class="home">
-		<h1>{{ $store.state.token != '' ? `Hello, ${$store.state.user.username}!` : 'Welcome to Unnamed App!' }}</h1>
-		<p>You must be authenticated to see this</p>
-	</div> -->
 	<v-container>
 		<v-sheet class="d-flex flex-column align-center">
 			<h1>{{ $store.state.token != '' ? `Hello, ${$store.state.user.username}!` : 'Welcome to [logo for Too Many Cooks]!' }}</h1>
-			<!-- Possible animation for title if time Wed -->
-			<h2>Version 1.0 of Too Many Cooks is live! We've got all kinds of features:</h2>
+			<!-- <h2>Version 1.0 of Too Many Cooks is live! We've got all kinds of features:</h2>
 			<ul>
 				<li v-if="$store.state.token != ''">Click in the top right corner to logout, or <router-link v-bind:to="{ name: 'logout' }">click here.</router-link></li>
 				<li v-else>Click in the top right corner to login, or <router-link v-bind:to="{ name: 'login' }">click here.</router-link></li>
@@ -28,12 +23,28 @@
 				<li>Man bites dog, Zac bites backend.</li>
 				<li>Accuracy of Katy's assertion "It'll all be fine!" still awaiting testing.</li>
 				<li>More updates to follow; follow Q's Queue on Twitter for the latest.</li>
-			</ul>
+			</ul> -->
+			
 		</v-sheet>
+	<div>
+		<div id="search">
+		<h2 class="text"><span>Search for a Recipe</span></h2>
+		</div>
+		<div id="save">
+		<h2 class="text"><span>Save Your Favorites</span></h2>
+		</div>
+		<div id="mealplan">
+		<h2 class="text"><span>Create a Weekly Meal Plan</span></h2>
+		</div>
+	</div>
+
 		<v-spacer></v-spacer>
-		<p class="my-10 text-left">
+		<div id="facts-container">
+		<img id=img src="../assets/cartoonfood-cutout-cropped.png" />
+		<p class="my-10 text-left" id="random-facts">
 			<strong>Did you know?</strong> <span class="font-italic">{{ foodFacts[generateRandomFact()] }}</span>
 		</p>
+		</div>
 		<!-- <p>Jokes about our team, bullet pointed. // Man bites dog, Zac bites backend // Katy commits grand theft auto and terrorizes the city; </p> -->
 	</v-container>
 </template>
@@ -79,7 +90,82 @@ export default {
 </script>
 
 <style scoped>
-ul {
-	list-style-image: url(../assets/carrot.png);
+
+#search{
+	text-align: center;
+	padding: 50px;
+	background-image: url('../assets/dough-yellow.png');
+	background-size: cover;
+	background-position: center;
+}
+
+#save{
+	text-align: center;
+	padding: 50px;
+	background-image: url('../assets/beets-red.png');
+	background-size: cover;
+	background-position: center;
+}
+
+#mealplan{
+	text-align: center;
+	padding: 50px;
+	background-image: url('../assets/spices-orange.png');
+	background-size: cover;
+	background-position: center;
+}
+
+.text{
+	color: white;
+}
+
+#search .text span{
+	background-color: #f8d85696;
+	border-radius: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: solid 2px #f8d856
+}
+
+#save .text span{
+	background-color: #ff454b9d;
+	border-radius: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: solid 2px #FF454B
+}
+
+#mealplan .text span{
+	background-color: #f88a30a2;
+	border-radius: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: solid 2px #F88A30
+}
+
+#random-facts{
+	border: solid 3px #2ea734; 
+	border-radius: 10px;
+	padding: 10px;
+	grid-area: random-facts;
+}
+
+#img{
+	width: 100px;
+	height: auto;
+	grid-area: img;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+#facts-container{
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-areas: "img random-facts";
 }
 </style>

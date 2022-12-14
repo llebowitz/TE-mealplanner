@@ -142,6 +142,7 @@ export default {
     font-size: 10pt;
     margin: 5px;
     width: 90px;
+    margin-bottom: 10px;
 
    
 }
