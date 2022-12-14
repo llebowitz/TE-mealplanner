@@ -79,7 +79,7 @@ export default {
     background-color: lightgrey;
     padding-right: 4px;
     padding-left: 4px;
-    font-size: 11px;
+    font-size: 10pt;
     padding: 2px;
     border-radius: 5px;
 
@@ -107,7 +107,7 @@ export default {
     padding-left: 4px;
     border-color: gray;
     border-style: solid;
-    font-size: 11px;
+    font-size: 10pt;
     margin: 5px;
     width: 90px;
     margin-bottom: 10px;
