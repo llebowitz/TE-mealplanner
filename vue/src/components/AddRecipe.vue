@@ -23,21 +23,21 @@
 							<v-subheader>This will be added to your saved recipes.</v-subheader>
 
 							<v-card-text>
-								<v-form  id="recipeForm">
+								<v-form id="recipeForm">
 									<v-row>
 										<v-col cols="12" sm="6">
 											<v-text-field v-model="newRecipe.name" label="Recipe Name*" required></v-text-field>
 										</v-col>
 									</v-row>
 									<v-row>
-										<v-container v-for='(ingredient, index) in newRecipe.ingredients' v-model="newRecipe.ingredient" v-bind:key="index">
+										<v-container v-for="(ingredient, index) in newRecipe.ingredients" v-model="newRecipe.ingredient" v-bind:key="index" d-flex>
 											<v-col cols="3">
 												<!-- <v-autocomplete :items="[]" label="Ingredient" multiple></v-autocomplete> -->
 												<v-text-field label="Ingredient*" v-model="ingredient.name" required multiple></v-text-field>
 											</v-col>
 
 											<v-col cols="3">
-												<v-text-field  label="Amount*" v-model="ingredient.quantity" required multiple placeholder="1"></v-text-field>
+												<v-text-field label="Quantity*" v-model="ingredient.quantity" required multiple placeholder="1"></v-text-field>
 											</v-col>
 
 											<v-col cols="2">
@@ -45,9 +45,24 @@
 											</v-col>
 										</v-container>
 										<v-col cols="4">
-											<v-btn class="mx-2" fab dark color="indigo">
-												<v-icon dark @click="addItem"> mdi-hamburger-plus </v-icon>
-											</v-btn>
+											<v-tooltip top>
+												<template v-slot:activator="{ on, attrs }">
+													<span v-bind="attrs" v-on="on"
+														><v-btn class="mx-2" fab dark color="indigo">
+															<v-icon dark @click="addItem"> mdi-hamburger-plus </v-icon>
+														</v-btn></span
+													>
+												</template>
+												<span>Add an ingredient</span>
+											</v-tooltip>
+										</v-col>
+									</v-row>
+									<v-row>
+										<v-col>
+											<v-text-field label="Recipe Tag*" v-model="tag.name" required multiple></v-text-field>
+										</v-col>
+										<v-col>
+											<v-text-field label="Blurb/quick description" v-model="newRecipe.blurb" multiple></v-text-field>
 										</v-col>
 									</v-row>
 
@@ -79,24 +94,33 @@ export default {
 			notifications: false,
 			sound: true,
 			widgets: false,
-			items: [' ','g', 'oz', 'item', 'lb', 'cups', 'tablespoons',  'teaspoons'],
+			items: [' ', 'g', 'oz', 'item', 'lb', 'cups', 'tablespoons', 'teaspoons'],
+			tag: {
+				name: '',
+			},
 			newRecipe: {
 				name: '',
 				ingredients: [
-					
 					{
 						name: '',
 						quantity: 0,
-				measurement: '',
-					}
+						measurement: '',
+					},
 				],
-				instructions: ''
+				tags: [
+					{
+						name: 'User Created',
+					},
+				],
+				blurb: '',
+				instructions: '',
 			},
-			arrOfIngredients: []
+			arrOfIngredients: [],
 		};
 	},
 	methods: {
 		addRecipe() {
+			this.addTag();
 			AppService.addRecipe(this.newRecipe).then((response) => {
 				if (response.status === 201) {
 					this.resetRecipeForm();
@@ -108,17 +132,27 @@ export default {
 			this.newRecipe = {
 				recipeName: '',
 				ingredients: [],
-				instructions: ''
+				tags: [
+					{
+						name: 'User Created',
+					},
+				],
+				blurb: '',
+				instructions: '',
+			};
+			this.tag = {
+				name: '',
 			};
 			document.getElementById('recipeForm').reset();
 			this.dialog = false;
-
 		},
 		addItem() {
-			console.log(this.newRecipe.ingredients)
-			this.newRecipe.ingredients.push({name: '',quantity: 0,measurement: ''});
-		}
-
+			console.log(this.newRecipe.ingredients);
+			this.newRecipe.ingredients.push({ name: '', quantity: 0, measurement: '' });
+		},
+		addTag() {
+			this.newRecipe.tags.push(this.tag);
+		},
 	},
 };
 </script>
