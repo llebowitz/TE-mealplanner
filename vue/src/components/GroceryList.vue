@@ -62,7 +62,7 @@ export default {
 
 
 .flex-box {
-     column-count: 4;
+     column-width: 100px;
      
 }
 
