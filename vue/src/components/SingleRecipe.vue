@@ -3,26 +3,18 @@
     <header><h1>{{recipe.name}}</h1></header>
 
     <nav>
+        <div class="left-panel">
         <ul>
             <li v-for="(ingredient, index) in recipe.ingredients" :key="index"><span v-if="ingredient.quantity != 0">{{ingredient.quantity}}</span> {{ingredient.measurement}} {{ingredient.name}}</li>
         </ul>
-      
-         <button v-on:click="printRecipe">Print   <img src="../assets/printer.png" height="19px" width="auto"></button>
-        
-        <router-link :to="{ name: 'modify-recipe', params: {recipeId: recipe.id }}"> Edit Recipe </router-link>
-      
         <br>
-
-       
-      
+        <button v-on:click="printRecipe">Print   <img src="../assets/printer.png" height="19px" width="auto"></button>
+        <br>        
+        <router-link :to="{ name: 'modify-recipe', params: {recipeId: recipe.id }}"> Edit Recipe </router-link>       
+      </div>
     </nav>
 
-    <main>
-
-        <button v-on:click="printRecipe">Print   <img src="../assets/printer.png" height="19px" width="auto"></button>
-        
-        <router-link :to="{ name: 'modify-recipe', params: {recipeId: recipe.id }}"> Edit Recipe </router-link>
-        
+    <main>       
         <div><img class="image" v-bind:src="`${recipe.imgLink}`" alt=""></div>
         <div class="instructions">{{recipe.instructions}}</div>
     </main>
@@ -75,30 +67,25 @@ export default {
     overflow: auto;
 }
 
-.container nav ul{
-    height: 125%;
+.left-panel{
+    height: 150%;
 }
 
 .container main{
     grid-area: main;
     overflow: auto;
-    /* display: grid;
-    grid-template-areas: "image" "instructions"; */
-
 }
 
 .instructions{
     white-space: pre-wrap;
     grid-area: instructions;
-    height:125%;
+    height: 150%;
 }
 
 .image{
     padding-left: 25%;
-    max-width: 60%;
-    max-height: 60%;
-    min-width: 40%;
-    min-height: 40%;
+    max-width: 900px;
+    max-height: 500px;
     grid-area: image;
 }
 

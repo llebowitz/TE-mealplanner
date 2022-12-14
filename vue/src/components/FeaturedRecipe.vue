@@ -3,7 +3,7 @@
 		<h2>Featured Recipe</h2>
 		<br>
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }">
-			<v-img max-width="250" max-height="150" class="image" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
+			<v-img width="250px" height="auto" class="image" v-bind:src="`${recipe.imgLink}`" lazy-src="https://i.pinimg.com/originals/f9/98/0f/f9980fdb73ff0acc69d70a8997acb5fa.gif">
 				<template v-slot:placeholder>
 					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img>
 		</router-link>
