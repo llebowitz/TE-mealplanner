@@ -39,9 +39,12 @@
 	</div>
 
 		<v-spacer></v-spacer>
+		<div id="facts-container">
+		<img id=img src="../assets/cartoonfood-cutout-cropped.png" />
 		<p class="my-10 text-left" id="random-facts">
 			<strong>Did you know?</strong> <span class="font-italic">{{ foodFacts[generateRandomFact()] }}</span>
 		</p>
+		</div>
 		<!-- <p>Jokes about our team, bullet pointed. // Man bites dog, Zac bites backend // Katy commits grand theft auto and terrorizes the city; </p> -->
 	</v-container>
 </template>
@@ -87,9 +90,6 @@ export default {
 </script>
 
 <style scoped>
-/* ul {
-	list-style-image: url(../assets/carrot.png);
-} */
 
 #search{
 	text-align: center;
@@ -153,5 +153,19 @@ export default {
 	border: solid 3px #2ea734; 
 	border-radius: 10px;
 	padding: 10px;
+	grid-area: random-facts;
+}
+
+#img{
+	width: 100px;
+	height: auto;
+	grid-area: img;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+#facts-container{
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-areas: "img random-facts";
 }
 </style>
