@@ -64,8 +64,8 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public int addRecipe(Recipe recipe) {
         String sql = "INSERT INTO recipes (recipe_name, yield, blurb, instructions, img_link, is_published, is_edited) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING recipe_id";
-        if (recipe.getYield().length() > 40) {
-            recipe.setYield("");
+        if (recipe.getYield().length() > 40 || recipe.getYield().isBlank()) {
+            recipe.setYield("Servings: ");
         }
         Integer recipeId = jdbcTemplate.queryForObject(sql, Integer.class, recipe.getName(), recipe.getYield(), recipe.getBlurb(), recipe.getInstructions(), recipe.getImgLink(), recipe.isPublished(), recipe.isEdited());
         recipe.setId(recipeId);
@@ -95,10 +95,12 @@ public class JdbcRecipeDao implements RecipeDao {
         //Removes all ingredients for a recipe in order to rewrite them in case the update includes removal of original ingredients
         String sql = "DELETE FROM recipes_ingredients WHERE recipe_id = ?";
         jdbcTemplate.update(sql, recipe.getId());
+        sql = "UPDATE recipes SET instructions = ? WHERE recipe_id = ?";
+        jdbcTemplate.update(sql, recipe.getInstructions(), recipe.getId());
 
         for (Ingredient thisIng : recipe.getIngredients()) {
             sql = "SELECT ingredient_id FROM ingredients i WHERE ingredient_name ILIKE ?";
-            String name = "%" + thisIng.getName() + "%";
+            String name = thisIng.getName();
             Integer ingId = jdbcTemplate.queryForObject(sql, Integer.class, name);
             if (ingId == null) {
                 sql = "INSERT INTO ingredients (ingredient_name) VALUES (?) RETURNING ingredient_id";
@@ -106,12 +108,6 @@ public class JdbcRecipeDao implements RecipeDao {
             }
             sql = "INSERT INTO recipes_ingredients (recipe_id, ingredient_id, quantity, measurement) VALUES (?,?,?,?)";
             itWorked = jdbcTemplate.update(sql, recipe.getId(), ingId, thisIng.getQuantity(), thisIng.getMeasurement()) == 1;
-
-            //If the recipe/ingredient combo has been deleted then we can no longer update and must insert
-//            else {
-//                sql = "UPDATE recipes_ingredients SET quantity = ?, measurement = ? WHERE recipe_id = ? AND ingredient_id = ?";
-//                itWorked = jdbcTemplate.update(sql, thisIng.getQuantity(), thisIng.getMeasurement(), recipe.getId(), ingId) == 1;
-//            }
         }
         return itWorked;
     }
@@ -122,6 +118,7 @@ public class JdbcRecipeDao implements RecipeDao {
         return jdbcTemplate.update(sql, recipe.getId()) == 1;
     }
 
+    @Override
     public void saveRecipeToUserList(int userId, int recipeId) {
         String sql = "INSERT into users_recipes (user_id, recipe_id) VALUES (?, ?)";
         jdbcTemplate.update(sql, userId, recipeId);

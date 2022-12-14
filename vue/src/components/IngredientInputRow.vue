@@ -46,6 +46,10 @@ export default {
     height: 75px
 }
 
+.contents:hover{
+    box-shadow: 0 4px 8px 0 rgba(5, 133, 5, 0.5);
+}
+
 label{
     font-weight: bolder;
 }
