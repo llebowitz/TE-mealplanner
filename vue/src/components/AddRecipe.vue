@@ -114,6 +114,7 @@ export default {
 				],
 				blurb: '',
 				instructions: '',
+				imgLink: 'https://thumbs.dreamstime.com/b/cooking-pot-stove-vegetables-mushrooms-steam-boiling-water-pan-saucepan-tomatoes-peppers-onions-parsley-vector-126999560.jpg',
 			},
 			arrOfIngredients: [],
 		};
@@ -139,6 +140,7 @@ export default {
 				],
 				blurb: '',
 				instructions: '',
+				imgLink: 'https://thumbs.dreamstime.com/b/cooking-pot-stove-vegetables-mushrooms-steam-boiling-water-pan-saucepan-tomatoes-peppers-onions-parsley-vector-126999560.jpg',
 			};
 			this.tag = {
 				name: '',
