@@ -73,23 +73,55 @@ export default {
 
 <style scoped>
 #add-to-meal-plan {
-    border: 2px;
-    border-color: black;
-    border-style: solid;
-    background-color: lightgrey;
-    padding-right: 4px;
-    padding-left: 4px;
-    font-size: 11px;
-    padding: 2px;
-    border-radius: 5px;
-
-  
     
+    /* border: 1px;
+    border-color: black;
+    border-style: none;
+    background-color: lightgrey;
+    padding-right: 6px;
+    padding-left: 6px;
+    font-size: 10pt;
+    padding: 2px;
+    border-radius: 5px;    */
+    
+    
+    
+                    display: inline-block;
+                    outline: 0;
+                    appearance: none;
+                    padding: 0px 09px;
+                    border: 0px solid transparent;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    cursor: pointer;
+                    background-color: rgb(165, 168, 167);
+                    /* box-shadow: rgb(19 170 82 / 40%) 0px 2px 3px; */
+                    color: rgb(7, 7, 7);
+                    font-size: 10pt;
+                    font-weight: 400;
+                    height: 25px;
+                    transition: all 150ms ease-in-out 0s;
+                   
+                   
+                    }
+                
+
+ /* background-color: rgb(9, 128, 76);
+ color: rgb(255, 255, 255); */
+
+#add-to-meal-plan:visited {
+    background-color: blue;
+}
+
+#add-to-meal-plan:hover {
+                        color: rgb(255, 255, 255);
+                        background-color: rgb(17, 97, 73);
+                        box-shadow: rgb(19 170 82 / 40%) 0px 2px 3px, rgb(195 231 202) 0px 0px 0px 3px;
 }
 
 #select {
     border: 2px;
-    border-color: black;
+    border-color: rgb(12, 7, 78);
     background-color: lightgrey;
     border-style: solid;
     border-radius:2rem;
@@ -107,7 +139,7 @@ export default {
     padding-left: 4px;
     border-color: gray;
     border-style: solid;
-    font-size: 11px;
+    font-size: 10pt;
     margin: 5px;
     width: 90px;
 
