@@ -16,7 +16,7 @@
 							<v-spacer></v-spacer>
 							<v-toolbar-items>
 								<!-- Save button -->
-								<v-btn dark text v-on:click="resetRecipeForm"> Save </v-btn>
+								<v-btn dark text v-on:click="addRecipe"> Save </v-btn>
 							</v-toolbar-items>
 						</v-toolbar>
 						<v-list three-line subheader>
@@ -26,22 +26,22 @@
 								<v-form  id="recipeForm">
 									<v-row>
 										<v-col cols="12" sm="6">
-											<v-text-field v-model="newRecipe.recipeName" label="Recipe Name*" required></v-text-field>
+											<v-text-field v-model="newRecipe.name" label="Recipe Name*" required></v-text-field>
 										</v-col>
 									</v-row>
 									<v-row>
-										<v-container v-for='(ingredient, index) in arrOfIngredients' v-bind:key="index">
+										<v-container v-for='(ingredient, index) in newRecipe.ingredients' v-model="newRecipe.ingredient" v-bind:key="index">
 											<v-col cols="3">
 												<!-- <v-autocomplete :items="[]" label="Ingredient" multiple></v-autocomplete> -->
-												<v-text-field v-model="newRecipe.ingredients.name" label="Ingredient*" required multiple></v-text-field>
+												<v-text-field label="Ingredient*" v-model="ingredient.name" required multiple></v-text-field>
 											</v-col>
 
 											<v-col cols="3">
-												<v-text-field v-model="newRecipe.ingredients.amount" label="Amount*" required multiple placeholder="1"></v-text-field>
+												<v-text-field  label="Amount*" v-model="ingredient.amount" required multiple placeholder="1"></v-text-field>
 											</v-col>
 
 											<v-col cols="2">
-												<v-select :items="items" v-model="newRecipe.ingredients.measurement" item-text="state" item-value="abbr" label="Unit of Measurement" persistent-hint return-object single-line></v-select>
+												<v-select :items="items" v-model="ingredient.measurement" item-text="state" item-value="abbr" label="Unit of Measurement" persistent-hint return-object single-line></v-select>
 											</v-col>
 										</v-container>
 										<v-col cols="4">
@@ -79,9 +79,9 @@ export default {
 			notifications: false,
 			sound: true,
 			widgets: false,
-			items: [{ state: 'g' }, { state: 'oz' }, { state: 'item' }, { state: 'lb' }, { state: 'cups' }, { state: 'tablespoons' }, { state: 'teaspoons' }],
+			items: [' ','g', 'oz', 'item', 'lb', 'cups', 'tablespoons',  'teaspoons'],
 			newRecipe: {
-				recipeName: '',
+				name: '',
 				ingredients: [
 					
 					{
@@ -115,7 +115,8 @@ export default {
 
 		},
 		addItem() {
-			this.arrOfIngredients.push({value: ''});
+			console.log(this.newRecipe.ingredients)
+			this.newRecipe.ingredients.push({name: '',amount: 0,measurement: ''});
 		}
 
 	},
