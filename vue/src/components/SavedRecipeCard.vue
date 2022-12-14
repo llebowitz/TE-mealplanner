@@ -59,7 +59,7 @@ export default {
 .saved-recipe-card {
     border: 1px rgb(156, 149, 149) solid;
     width: 260px;
-    height: 260px;
+    height: auto;
     border-radius: 25px;
     margin: 2px;
     padding: 12px;

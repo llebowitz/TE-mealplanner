@@ -5,8 +5,8 @@
         <meal-plan ref="mealPlan" />
         
         <view-grocery-list />
-        <my-recipes @get-meal-plan-recipes="refreshMealPlans()"><saved-recipe-card ></saved-recipe-card></my-recipes>
-   
+        <my-recipes @get-meal-plan-recipes="refreshMealPlans()"></my-recipes>
+        <br>
        <add-recipe />
         
     </div>
@@ -16,7 +16,7 @@
 import AddRecipe from '../components/AddRecipe.vue';
 import MealPlan from "../components/MealPlan.vue";
 import MyRecipes from '../components/MyRecipes.vue';
-import SavedRecipeCard from '../components/SavedRecipeCard.vue';
+// import SavedRecipeCard from '../components/SavedRecipeCard.vue';
 import ViewGroceryList from '../components/ViewGroceryList.vue';
 
 
@@ -26,7 +26,7 @@ export default {
   components: { MealPlan,
     MyRecipes,
     ViewGroceryList,
-    SavedRecipeCard,
+    // SavedRecipeCard,
     AddRecipe
    
   

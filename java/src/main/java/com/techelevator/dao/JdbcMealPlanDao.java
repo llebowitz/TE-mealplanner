@@ -27,6 +27,19 @@ public class JdbcMealPlanDao implements MealPlanDao {
     }
 
     @Override
+    public void clearMealPlan(int userId) {
+        String sql = "SELECT plan_id FROM meal_plan WHERE user_id = ?";
+        Integer planId = 0;
+        try {
+            planId = jdbcTemplate.queryForObject(sql, Integer.class, userId);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        sql = "DELETE FROM recipes_meal_plan WHERE plan_id = ?";
+        jdbcTemplate.update(sql, planId);
+    }
+
+    @Override
     public boolean createMealPlan(int userId){
         String sql = "INSERT INTO meal_plan (user_id) VALUES (?) RETURNING plan_id";
         return jdbcTemplate.queryForObject(sql, Integer.class, userId) > 0;
