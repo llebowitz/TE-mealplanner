@@ -35,7 +35,7 @@
 							<!-- <router-link v-bind:to="{ name: 'recipes' }"> Display Recipes</router-link> -->
 						</v-sheet>
 						<!-- <v-spacer></v-spacer> -->
-						<v-img src="./assets/cartoonfood1-cutout.png" class="mt-12"></v-img>
+						<!-- <v-img src="./assets/cartoonfood1-cutout.png" class="mt-12"></v-img> -->
 					</v-col>
 
 					<v-col cols="12" sm="6" class="mx-auto" v-if="isHome()">
@@ -74,6 +74,16 @@
 					</v-col>
 				</v-row>
 			</v-container>
+			<div id="meet-chefs">
+				<h1>Meet the Chefs</h1>
+				<div id="headshots">
+					<img class="us" src="./assets/Katy.png" />
+					<img class="us" src="./assets/Liora.png" />
+					<img class="us" src="./assets/Q.png" />
+					<img class="us" src="./assets/Zac.png" />
+
+				</div>
+			</div>
 		</v-main>
 	</v-app>
 </template>
@@ -141,5 +151,27 @@ export default {
 /*  Used to globally enable/disable vertical scroll in html element (code is in router index.js) */
 .y-scroll-hidden {
 	overflow: hidden;
+}
+
+#meet-chefs{
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#meet-chefs h1{
+	text-align: center;
+}
+
+#headshots{
+	display: flex;
+	justify-content: center;
+}
+.us{
+	width: 125px;
+	height: auto;
+	border: solid 5px #6ead42;
+	border-radius: 10px;
+	margin: 10px;
 }
 </style>
