@@ -3,10 +3,8 @@
       <h1>My Saved Recipes</h1>
       <div class="flex-grid">
 		
-				<div class="col" v-for="recipe in savedRecipes" v-bind:key="recipe.id">
-					<saved-recipe-card v-bind:recipe="recipe" @get-meal-plan-recipes="refreshMealPlans">
-			
-					</saved-recipe-card>
+				<div class="col" v-for="(recipe, index) in savedRecipes" v-bind:key="index">
+					<saved-recipe-card v-bind:recipe="recipe" @get-meal-plan-recipes="refreshMealPlans"></saved-recipe-card>
 				</div>
 
 	

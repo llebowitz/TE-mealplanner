@@ -43,6 +43,12 @@ public class MealPlanController {
         boolean r = mealPlanService.deleteRecipeMealPlan(principal.getName(), dayOfWeek, recipeId);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/users/mealplan/removeall", method = RequestMethod.DELETE)
+    public void clearMealPlan(Principal principal){
+        mealPlanService.clearMealPlan(principal.getName());
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/users/mealplan/grocerylist", method = RequestMethod.GET)
     public List<Ingredient> createGroceryList(Principal principal) {
