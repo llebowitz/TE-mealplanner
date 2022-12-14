@@ -63,9 +63,6 @@ export default {
 </script>
 
 <style scoped>
-button, input, textarea {
-    /* border: black 1px solid */
-}
 
 #instructions{
   width: 100%;
