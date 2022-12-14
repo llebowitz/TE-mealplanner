@@ -23,27 +23,30 @@
 							<v-subheader>This will be added to your saved recipes.</v-subheader>
 
 							<v-card-text>
-								<v-container>
+								<v-form  id="recipeForm">
 									<v-row>
 										<v-col cols="12" sm="6">
-											<v-text-field v-model="newRecipe.recipeName" label="Recipe Name*" required></v-text-field>
+											<v-text-field v-model="newRecipe.name" label="Recipe Name*" required></v-text-field>
 										</v-col>
 									</v-row>
 									<v-row>
-										<v-col cols="3">
-											<v-autocomplete :items="[]" label="Ingredient" multiple></v-autocomplete>
-										</v-col>
+										<v-container v-for='(ingredient, index) in newRecipe.ingredients' v-model="newRecipe.ingredient" v-bind:key="index">
+											<v-col cols="3">
+												<!-- <v-autocomplete :items="[]" label="Ingredient" multiple></v-autocomplete> -->
+												<v-text-field label="Ingredient*" v-model="ingredient.name" required multiple></v-text-field>
+											</v-col>
 
-										<v-col cols="3">
-											<v-text-field label="Amount" placeholder="1"></v-text-field>
-										</v-col>
+											<v-col cols="3">
+												<v-text-field  label="Amount*" v-model="ingredient.quantity" required multiple placeholder="1"></v-text-field>
+											</v-col>
 
-										<v-col cols="2">
-											<v-select :items="items" item-text="state" item-value="abbr" label="Unit of Measurement" persistent-hint return-object single-line></v-select>
-										</v-col>
+											<v-col cols="2">
+												<v-select :items="items" v-model="ingredient.measurement" item-text="state" item-value="abbr" label="Unit of Measurement" persistent-hint return-object single-line></v-select>
+											</v-col>
+										</v-container>
 										<v-col cols="4">
 											<v-btn class="mx-2" fab dark color="indigo">
-												<v-icon dark> mdi-hamburger-plus </v-icon>
+												<v-icon dark @click="addItem"> mdi-hamburger-plus </v-icon>
 											</v-btn>
 										</v-col>
 									</v-row>
@@ -53,7 +56,7 @@
 											<v-textarea v-model="newRecipe.instructions" name="input-7-1" filled label="Cooking Instructions" auto-grow value=""></v-textarea>
 										</v-col>
 									</v-row>
-								</v-container>
+								</v-form>
 								<small class="text-right">* indicates required field</small>
 							</v-card-text>
 							<v-card-actions />
@@ -76,31 +79,46 @@ export default {
 			notifications: false,
 			sound: true,
 			widgets: false,
-			items: [{ state: 'g' }, { state: 'oz' }, { state: 'item' }, { state: 'lb' }, { state: 'cups' }, { state: 'tablespoons' }, { state: 'teaspoons' }],
+			items: [' ','g', 'oz', 'item', 'lb', 'cups', 'tablespoons',  'teaspoons'],
 			newRecipe: {
-				recipeName: '',
-				ingredient: '',
-				amount: '',
+				name: '',
+				ingredients: [
+					
+					{
+						name: '',
+						quantity: 0,
+				measurement: '',
+					}
+				],
+				instructions: ''
 			},
+			arrOfIngredients: []
 		};
 	},
 	methods: {
 		addRecipe() {
 			AppService.addRecipe(this.newRecipe).then((response) => {
 				if (response.status === 201) {
-					this.resetForm();
-					this.dialog = false;
+					this.resetRecipeForm();
 				}
 			});
 		},
 
-		resetForm() {
+		resetRecipeForm() {
 			this.newRecipe = {
 				recipeName: '',
-				ingredient: '',
-				amount: '',
+				ingredients: [],
+				instructions: ''
 			};
+			document.getElementById('recipeForm').reset();
+			this.dialog = false;
+
 		},
+		addItem() {
+			console.log(this.newRecipe.ingredients)
+			this.newRecipe.ingredients.push({name: '',quantity: 0,measurement: ''});
+		}
+
 	},
 };
 </script>
