@@ -110,6 +110,7 @@ export default {
     font-size: 11px;
     margin: 5px;
     width: 90px;
+    margin-bottom: 10px;
 
    
 }
