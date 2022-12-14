@@ -20,6 +20,9 @@ export default {
       },
     };
   },
+  created(){
+    this.updatedRecipeList();
+  },
   computed:{
     isRecipeInList(){
       return this.$store.state.user.myRecipes.filter(r => {
