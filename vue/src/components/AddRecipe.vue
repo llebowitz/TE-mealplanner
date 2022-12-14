@@ -37,7 +37,7 @@
 											</v-col>
 
 											<v-col cols="3">
-												<v-text-field  label="Amount*" v-model="ingredient.amount" required multiple placeholder="1"></v-text-field>
+												<v-text-field  label="Amount*" v-model="ingredient.quantity" required multiple placeholder="1"></v-text-field>
 											</v-col>
 
 											<v-col cols="2">
@@ -86,7 +86,7 @@ export default {
 					
 					{
 						name: '',
-						amount: 0,
+						quantity: 0,
 				measurement: '',
 					}
 				],
@@ -116,7 +116,7 @@ export default {
 		},
 		addItem() {
 			console.log(this.newRecipe.ingredients)
-			this.newRecipe.ingredients.push({name: '',amount: 0,measurement: ''});
+			this.newRecipe.ingredients.push({name: '',quantity: 0,measurement: ''});
 		}
 
 	},
