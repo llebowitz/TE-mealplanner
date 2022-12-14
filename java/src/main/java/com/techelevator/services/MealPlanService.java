@@ -34,7 +34,11 @@ public class MealPlanService {
     }
 
     public boolean addRecipeMealPlan(String username, int dayOfWeek, int recipeId) {
-        return mealPlanDao.addRecipeMealPlan(recipeId, dayOfWeek, userDao.findByUsername(username).getId());
+        int id = userDao.findByUsername(username).getId();
+        if (!mealPlanDao.doesRecipeMealPlanExist(recipeId, dayOfWeek, id)) {
+            return mealPlanDao.addRecipeMealPlan(recipeId, dayOfWeek, id);
+        }
+        return false;
     }
 
     public boolean deleteRecipeMealPlan(String username, int dayOfWeek, int recipeId) {

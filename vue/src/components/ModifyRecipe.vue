@@ -52,6 +52,7 @@ export default {
             AppService.updateRecipe(this.modifyRecipe).then((response) => {
                 if(response.status === 200) {
                     alert("Recipe updated!")
+                    this.$router.push({path: '/users'})
                 }
             })
         }
@@ -63,9 +64,6 @@ export default {
 </script>
 
 <style scoped>
-button, input, textarea {
-    /* border: black 1px solid */
-}
 
 #instructions{
   width: 100%;
@@ -94,10 +92,10 @@ button, input, textarea {
   /* display: grid;
   grid-template-columns: repeat(3, 1fr); */
 
- display: flex;
-flex-wrap: wrap;
-justify-content:space-evenly;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  
 }
 
 .submit-button{
