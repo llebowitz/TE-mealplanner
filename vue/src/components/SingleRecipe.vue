@@ -10,7 +10,9 @@
         <br>
         <button v-on:click="printRecipe">Print   <img src="../assets/printer.png" height="19px" width="auto"></button>
         <br>        
-        <router-link :to="{ name: 'modify-recipe', params: {recipeId: recipe.id }}"> Edit Recipe </router-link>       
+        <router-link v-bind:to="{ name: 'modify-recipe', params: {recipeId: recipe.id }}"> Edit Recipe </router-link>   
+        <br>
+        <save-recipe v-bind:recipe="recipe"/>
       </div>
     </nav>
 
@@ -24,8 +26,10 @@
 
 <script>
 import AppService from '../services/AppService'
+import SaveRecipe from './SaveRecipe.vue'
 
 export default {
+  components: { SaveRecipe },
     data(){
         return{
             recipe:{}

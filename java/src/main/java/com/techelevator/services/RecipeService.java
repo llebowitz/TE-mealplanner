@@ -56,14 +56,22 @@ public class RecipeService {
 
     public void updateRecipe(Recipe recipe, String username) {
         recipe.setEdited(true);
-        if(username != null && !username.isBlank()){
-            recipe.setName(recipe.getName() + " made by " + username);
-        }
         if(recipeDao.doesRecipeExist(recipe.getName())){
-            recipeDao.updateRecipe(recipe);
+            Recipe r = recipeDao.getRecipe(recipe.getId());
+            if(r.isEdited())
+            {
+                recipeDao.updateRecipe(recipe);
+            }else{
+                recipe.setName(recipe.getName() + " made by " + username);
+                recipeDao.addRecipe(recipe);
+                recipeDao.saveRecipeToUserList(userDao.findIdByUsername(username), recipe.getId());
+                tagDao.addTags(recipe);
+            }
         }else{
+            recipe.setName(recipe.getName() + " made by " + username);
             recipeDao.addRecipe(recipe);
             recipeDao.saveRecipeToUserList(userDao.findIdByUsername(username), recipe.getId());
+            tagDao.addTags(recipe);
         }
     }
 

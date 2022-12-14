@@ -47,6 +47,15 @@ public class JdbcMealPlanDao implements MealPlanDao {
         return jdbcTemplate.update(sql, recipeId, dayOfWeek, userId) == 1;
     }
 
+    @Override
+    public boolean doesRecipeMealPlanExist(int recipeId, int dayOfWeek, int userId) {
+        String sql = "SELECT COUNT(*) FROM recipes_meal_plan rmp " +
+                "JOIN meal_plan mp ON rmp.plan_id = mp.plan_id " +
+                "WHERE recipe_id = ? AND mp.user_id = ? AND day_of_week = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, recipeId, userId, dayOfWeek);
+        return count != null && count > 0;
+    }
+
     //TO DO: look into day_of_week type as string in database
     @Override
     public boolean deleteRecipeMealPlan(int recipeId, Integer dayOfWeek, int userId) {

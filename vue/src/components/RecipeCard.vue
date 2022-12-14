@@ -11,7 +11,7 @@
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
 			><v-card-title class="card-title mb-n5 align-self-start">{{ recipe.name }}</v-card-title></router-link
 		>
-		<div class="grey--text ms-4" v-if="recipe.yield != ''">
+		<div class="grey--text ms-4" v-show="recipe.yield != ''">
 			<p>{{ recipe.yield }}</p>
 		</div>
 

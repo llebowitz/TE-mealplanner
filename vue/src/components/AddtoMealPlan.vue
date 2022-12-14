@@ -1,7 +1,7 @@
 <template>
   <div>
         <div>
-            <select class= "selections" v-model="mealPlan.dayOfWeek">
+            <select v-on:change="dayChanged" class= "selections" v-model="mealPlan.dayOfWeek">
                 <option value="0" hidden disabled>Select a Day</option>
                 <option value="1">Sunday</option>
                 <option value="2">Monday</option>
@@ -57,6 +57,11 @@ export default {
             } 
       
         },
+
+            dayChanged() {
+                this.mealPlan.status='notAdded';
+            },
+
         refreshMealPlans() {
             console.log('here')
         }

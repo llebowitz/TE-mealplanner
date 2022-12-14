@@ -8,17 +8,24 @@
               <img v-bind:src="`${recipe.imgLink}`" >
               </router-link>
               
+              <div>
               <router-link v-bind:to="{ name : 'singleRecipe', params: { recipeId: recipe.id } }">
-              <h3>{{recipe.name}}</h3> </router-link>
+              {{recipe.name}} </router-link>
+              </div>
               <!-- <p>{{recipe.yield}}</p> -->
               <!-- <div class="blurb-container">
               <p>{{recipe.blurb}}</p> -->
-              <p> </p>
-              </div>
+              
+              <div>
               <addto-meal-plan v-on:get-meal-plan-recipes="refreshMealPlans" v-bind:recipe="recipe" />
+              </div>
+              
+              <div>
               <save-recipe v-bind:recipe="recipe" />
+              </div>
           </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -57,7 +64,8 @@ export default {
     margin: 2px;
     padding: 12px;
     padding-top: 25px;
-   
+    display:flex;
+    flex-direction: column;
     
 }
  .saved-recipe-card:hover {
@@ -69,10 +77,10 @@ export default {
 
     height: auto;
     width: 100%;
- 
+    
     
 }
-h3 {
+ p{
     font-size: 14px;
     text-align: center
 }
@@ -86,7 +94,7 @@ p{
 
 img {
     width: 150px;
-    max-height: 150px;
+    height: 150px;
     object-fit: cover;
     display: block;
     margin: auto
