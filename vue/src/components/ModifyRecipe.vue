@@ -63,9 +63,6 @@ export default {
 </script>
 
 <style scoped>
-button, input, textarea {
-    /* border: black 1px solid */
-}
 
 #instructions{
   width: 100%;
@@ -91,12 +88,12 @@ button, input, textarea {
 }
 
 .ingredient-list{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
 
-  /* display: flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content:space-evenly; */
+  justify-content:space-evenly;
   
 }
 
