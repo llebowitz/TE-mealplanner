@@ -76,37 +76,55 @@ export default {
 }
 
 #sunday{
-  /* grid-area: sunday; */
+  background-image: url('../assets/broccoli.png');
+  background-size: contain;
+  background-position: center;
   background-color: white;
 }
 #monday{
-  /* grid-area: monday; */
+  background-image: url('../assets/cabbage.png');
+  background-size: contain;
+  background-position: center;
   background-color: white;
 }
 #tuesday{
-  /* grid-area: tuesday; */
+  background-image: url('../assets/corn.png');
+  background-size: contain;
+  background-position: center;
   background-color: white;
 }
 #wednesday{
-  /* grid-area: wednesday; */
+  background-image: url('../assets/onion.png');
+  background-size: contain;
+  background-position: center;
   background-color: white;
 }
 #thursday{
-  /* grid-area: thursday; */
+  background-image: url('../assets/potato.png');
+  background-size: contain;
+  background-position: center;
   background-color: white;
 }
 #friday{
-  /* grid-area: friday; */
+  background-image: url('../assets/spinach.png');
+  background-size: contain;
+  background-position: center;
   background-color: white;
 }
 #saturday{
-  /* grid-area: saturday; */
+  background-image: url('../assets/tomato.png');
+  background-size: contain;
+  background-position: center;
   background-color: white;
 }
 
 .week::-webkit-scrollbar {
-  width: 16px;
+  width: 50px;
 }
+
+/* .week::-webkit-scrollbar-button{
+  width: 20px;
+} */
 
 .week::-webkit-scrollbar-track {
   background-color: rgb(255, 255, 255);
@@ -124,6 +142,7 @@ export default {
 
 h1{
   text-align: center;
+  margin: 5px;
 }
 
 </style>

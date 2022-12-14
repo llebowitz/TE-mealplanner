@@ -57,7 +57,7 @@ export default {
     "day"
     "recipe";
   grid-gap: 2px;
-  background-color: black;
+  background-color: transparent;
 }
 
 #day {
@@ -65,7 +65,8 @@ export default {
   font-size: 30px;
   padding-left: 5px;
   grid-area: day;
-  background-color: white;
+  background-color: transparent;
+  border-bottom: solid black 1px;
 }
 
 ul {
@@ -81,11 +82,14 @@ ul {
 
 #recipe {
   grid-area: recipe;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10%;
+  
 }
 
 #recipe-li {
   grid-area: recipe-li;
+  background: transparent;
 }
 #recipe-item{
   display: grid;
