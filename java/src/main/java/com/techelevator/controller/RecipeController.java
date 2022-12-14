@@ -46,6 +46,12 @@ public class RecipeController {
         recipeService.updateRecipe(recipe, principal.getName());
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path= "/recipes", method = RequestMethod.POST)
+    public void addRecipe(@RequestBody Recipe recipe, Principal principal){
+        recipeService.updateRecipe(recipe, principal.getName());
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/recipes/import", method = RequestMethod.GET)
     public boolean importRecipe(@RequestParam int count) throws RecipeExistsException {

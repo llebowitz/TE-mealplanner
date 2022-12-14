@@ -3,7 +3,6 @@
     <button id="save-button" v-on:click="flipStatus()">
       {{ isRecipeInList ? "Remove from my recipes" : "Save to my recipes" }}
     </button>
-    <p>{{setStatus}}</p>
   </div>
 </template>
 
