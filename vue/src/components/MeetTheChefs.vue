@@ -1,24 +1,42 @@
 <template>
   <div>
-    <div id="meet-chefs">
+        <div id="meet-chefs">
 				<h1>Meet the Chefs</h1>
 				<div id="headshots">
-					<img class="chef-hat" id="chef1" src="../assets/chef-hat.png" />
-					<p class="name" id="name-k">Katy Powers</p>
-					<img class="us" id="katy" src="../assets/Katy.png" />
-					<img class="chef-hat" id="chef2" src="../assets/chef-hat.png" />
-					<p class="name" id="name-l">Liora Lebowitz</p>
-					<img class="us" id="liora" src="../assets/Liora.png" />
-					<img class="chef-hat" id="chef3" src="../assets/chef-hat.png" />
-					<p class="name" id="name-q">Quoc Pham</p>
-					<img class="us" id="q" src="../assets/Q.png" />
-					<img class="chef-hat" id="chef4" src="../assets/chef-hat.png" />
-					<p class="name" id="name-z">Zac Luchette</p>
-					<img class="us" id="zac" src="../assets/Zac.png" />
+
+                    <div id="Katy" class="person">
+                        <img class="chef-hat" src="../assets/chef-hat.png" />
+                        <p class="name">Katy Powers</p>
+                        <img class="us" src="../assets/Katy.png" />
+                    </div>
+
+                    <div id="Liora" class="person">
+                        <img class="chef-hat" src="../assets/chef-hat.png" />
+                        <p class="name">Liora Lebowitz</p>
+                        <img class="us" src="../assets/Liora.png" />
+                    </div>
+
+                    <div id="Q" class="person">
+                        <img class="chef-hat" src="../assets/chef-hat.png" />
+                        <p class="name">Quoc Pham</p>
+                        <img class="us" src="../assets/Q.png" />
+                    </div>
+
+                    <div id="Steve" class="person">
+                        <img class="chef-hat"  src="../assets/chef-hat.png" />
+                        <p class="name">Steven Arenaz</p>
+                        <img class="us" src="../assets/Steve.png" />
+                    </div>
+
+                    <div id="Zac" class="person">
+                        <img class="chef-hat" src="../assets/chef-hat.png" />
+                        <p class="name">Zac Luchette</p>
+                        <img class="us" src="../assets/Zac.png" />
+                    </div>
 
 				</div>  
-  </div>
-  </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -29,9 +47,9 @@ export default {
 
 <style>
 #meet-chefs{
-	margin-top: 50px;
-	margin-left: auto;
-	margin-right: auto;
+    transform: scale(0.8, 0.8);
+	margin: 50px;
+    
 }
 
 #meet-chefs h1{
@@ -43,9 +61,7 @@ export default {
 
 #headshots{
 	display: grid;
-	grid-template-areas: "chef1 chef2 chef3 chef4"
-						"name-k name-l name-q name-z"
-						"katy liora q zac";
+	grid-template-areas: "Katy Liora Q Steve Zac";
 }
 .us{
 	width: 125px;
@@ -55,48 +71,36 @@ export default {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 20px;
+    grid-area: pic;
 }
 .chef-hat{
 	width: auto;
 	height: 70px;
 	margin-left: auto;
 	margin-right: auto;
+    grid-area: chef-hat;
 }
-#chef1{
-	grid-area: chef1;
+.person{
+    display: grid;
+    grid-template-areas: "chef-hat"
+                        "name"
+                        "pic";
 }
-#chef2{
-	grid-area: chef2;
+
+#Katy{
+    grid-area: Katy;
 }
-#chef3{
-	grid-area: chef3;
+#Liora {
+    grid-area: Liora;
 }
-#chef4{
-	grid-area: chef4;
+#Q{
+    grid-area: Q;
 }
-#katy{
-	grid-area: katy;
+#Steve{
+    grid-area: Steve;
 }
-#name-k{
-	grid-area: name-k;
-}
-#liora{
-	grid-area: liora;
-}
-#name-l{
-	grid-area: name-l;
-}
-#q{
-	grid-area: q;
-}
-#name-q{
-	grid-area: name-q;
-}
-#zac{
-	grid-area: zac;
-}
-#name-z{
-	grid-area: name-z;
+#Zac{
+    grid-area: Zac;
 }
 
 .name{
@@ -105,5 +109,6 @@ export default {
 	margin-top: 10px;
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    grid-area: name;
 }
 </style>
