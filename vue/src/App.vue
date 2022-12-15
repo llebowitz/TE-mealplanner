@@ -91,35 +91,20 @@
 					</v-col>
 				</v-row>
 			</v-container>
-			<div id="meet-chefs">
-				<h1>Meet the Chefs</h1>
-				<div id="headshots">
-					<img class="chef-hat" id="chef1" src="./assets/chef-hat.png" />
-					<p class="name" id="name-k">Katy Powers</p>
-					<img class="us" id="katy" src="./assets/Katy.png" />
-					<img class="chef-hat" id="chef2" src="./assets/chef-hat.png" />
-					<p class="name" id="name-l">Liora Lebowitz</p>
-					<img class="us" id="liora" src="./assets/Liora.png" />
-					<img class="chef-hat" id="chef3" src="./assets/chef-hat.png" />
-					<p class="name" id="name-q">Quoc Pham</p>
-					<img class="us" id="q" src="./assets/Q.png" />
-					<img class="chef-hat" id="chef4" src="./assets/chef-hat.png" />
-					<p class="name" id="name-z">Zac Luchette</p>
-					<img class="us" id="zac" src="./assets/Zac.png" />
-
-				</div>
-			</div>
+			<meet-the-chefs v-if="isHome()" />
 		</v-main>
 	</v-app>
 </template>
 
 <script>
 import FeaturedRecipe from "./components/FeaturedRecipe.vue";
+import MeetTheChefs from './components/MeetTheChefs.vue';
 
 export default {
   name: "App",
   components: {
     FeaturedRecipe,
+    MeetTheChefs,
   },
   methods: {
     isHome() {
@@ -182,7 +167,7 @@ export default {
 	padding: 5px;
 }
 
-#meet-chefs{
+/* #meet-chefs{
 	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
@@ -259,7 +244,7 @@ export default {
 	margin-top: 10px;
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+} */
 ul{
 	list-style-image: url(./assets/carrot.png);
 }
