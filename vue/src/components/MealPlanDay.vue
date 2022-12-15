@@ -52,7 +52,7 @@ export default {
 <style scoped>
 #day-of-week {
   display: grid;
-  min-width: 250px;
+  min-width: 275px;
   grid-template-areas:
     "day"
     "recipe";
@@ -76,7 +76,8 @@ ul {
 #button {
   width: 10px;
   height: auto;
-  margin-left: 5px;
+  margin-left: 3px;
+  margin-right: 10px;
   grid-area: button;
 }
 
