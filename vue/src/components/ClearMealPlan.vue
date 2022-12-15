@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-on:click="clearMealPlan()">Clear Meal Plan</button>
+    <v-btn color="primary" dark v-on:click="clearMealPlan()">Clear Meal Plan</v-btn>
 
   </div>
 </template>
@@ -24,6 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 
 </style>

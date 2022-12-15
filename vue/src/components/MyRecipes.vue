@@ -4,7 +4,7 @@
       <div class="flex-grid">
 		
 				<div class="col" v-for="(recipe, index) in savedRecipes" v-bind:key="index">
-					<saved-recipe-card v-bind:recipe="recipe" @get-meal-plan-recipes="refreshMealPlans"></saved-recipe-card>
+					<saved-recipe-card v-bind:recipe="recipe" @get-meal-plan-recipes="refreshMealPlans" @update-my-recipe-list="getMyRecipes" ></saved-recipe-card>
 				</div>
 
 	

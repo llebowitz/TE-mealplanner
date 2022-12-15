@@ -86,24 +86,23 @@ export default {
     
     
     
-                    display: inline-block;
-                    outline: 0;
-                    appearance: none;
-                    padding: 0px 09px;
-                    border: 0px solid transparent;
-                    border-radius: 4px;
-                    text-decoration: none;
-                    cursor: pointer;
-                    background-color: rgb(165, 168, 167);
-                    /* box-shadow: rgb(19 170 82 / 40%) 0px 2px 3px; */
-                    color: rgb(7, 7, 7);
-                    font-size: 10pt;
-                    font-weight: 400;
-                    height: 25px;
-                    transition: all 150ms ease-in-out 0s;
-                   
-                   
-                    }
+    display: inline-block;
+    outline: 0;
+    appearance: none;
+    padding: 0px 09px;
+    border: 0px solid transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgb(165, 168, 167);
+    color: rgb(7, 7, 7);
+    font-size: 10pt;
+    font-weight: 400;
+    height: 25px;
+    transition: all 150ms ease-in-out 0s;
+
+    /* box-shadow: rgb(19 170 82 / 40%) 0px 2px 3px; */           
+    }
                 
 
  /* background-color: rgb(9, 128, 76);
@@ -112,9 +111,9 @@ export default {
 
 
 #add-to-meal-plan:hover {
-                        color: rgb(255, 255, 255);
-                        background-color: rgb(17, 97, 73);
-                        box-shadow: rgb(19 170 82 / 40%) 0px 2px 3px, rgb(195 231 202) 0px 0px 0px 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(17, 97, 73);
+    box-shadow: rgb(19 170 82 / 40%) 0px 2px 3px, rgb(195 231 202) 0px 0px 0px 3px;
 }
 
 #select {

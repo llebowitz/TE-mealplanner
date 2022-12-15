@@ -75,26 +75,18 @@
             <v-sheet
               rounded="lg"
               min-height="268"
-              class="d-flex flex-column align-center justify-space-around"
-            >
+              class="d-flex flex-column align-center justify-space-around" id="right-column"
+            >	<div class="all-links">
               <h3>Helpful links to up your cooking game:</h3>
-              <a href="https://www.seriouseats.com/">Serious Eats</a>
-              <!-- <v-spacer></v-spacer> -->
-              <a
-                href="https://nymag.com/strategist/article/best-cookware-sets.html"
-                >Cookware Recommendations</a
-              >
-              <!-- <v-spacer></v-spacer> -->
-
-              <a
-                href="https://www.masterclass.com/?campaignid=16375017014&adgroupid=135152788313&adid=634414682315&utm_term=masterclass%20cooking&utm_campaign=%5BMC%5C+%7C+Search+%7C+Brand+%7C+Topic+%7C+USA+%7C+EN+%7C+MAX+%7C+EG%7CPP+%7C+BRD+%7C+US&utm_source=google&utm_medium=cpc&utm_content=634414682315&hsa_acc=9801000675&hsa_cam=16375017014&hsa_grp=135152788313&hsa_ad=634414682315&hsa_src=g&hsa_tgt=kwd-306566196910&hsa_kw=masterclass%20cooking&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAiAv9ucBhBXEiwA6N8nYAScvo90J4NKfu1F-oFm-tPqhz9kmfP5Z0BUp-er79W4tcuizq5g9BoCeB0QAvD_BwE"
-                >Master Class</a
-              >
-              <!-- <v-spacer></v-spacer> -->
-
-              <a href="https://www.fox.com/masterchef/">Master Chef</a>
-
-							<!--  -->
+				<ul>
+					<li><a href="https://www.seriouseats.com/">Serious Eats</a></li>
+					<li><a href="https://nymag.com/strategist/article/best-cookware-sets.html"
+					>Cookware Recommendations</a></li>
+					<li><a href="https://www.masterclass.com/?campaignid=16375017014&adgroupid=135152788313&adid=634414682315&utm_term=masterclass%20cooking&utm_campaign=%5BMC%5C+%7C+Search+%7C+Brand+%7C+Topic+%7C+USA+%7C+EN+%7C+MAX+%7C+EG%7CPP+%7C+BRD+%7C+US&utm_source=google&utm_medium=cpc&utm_content=634414682315&hsa_acc=9801000675&hsa_cam=16375017014&hsa_grp=135152788313&hsa_ad=634414682315&hsa_src=g&hsa_tgt=kwd-306566196910&hsa_kw=masterclass%20cooking&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gclid=CjwKCAiAv9ucBhBXEiwA6N8nYAScvo90J4NKfu1F-oFm-tPqhz9kmfP5Z0BUp-er79W4tcuizq5g9BoCeB0QAvD_BwE"
+                >Master Class</a></li>
+				<li><a href="https://www.fox.com/masterchef/">Master Chef</a></li>
+				</ul>
+			</div>
 						</v-sheet>
 					</v-col>
 				</v-row>
@@ -186,6 +178,10 @@ export default {
   overflow: hidden;
 }
 
+.all-links{
+	padding: 5px;
+}
+
 #meet-chefs{
 	margin-top: 50px;
 	margin-left: auto;
@@ -263,5 +259,8 @@ export default {
 	margin-top: 10px;
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+ul{
+	list-style-image: url(./assets/carrot.png);
 }
 </style>

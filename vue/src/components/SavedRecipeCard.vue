@@ -12,16 +12,13 @@
               <router-link v-bind:to="{ name : 'singleRecipe', params: { recipeId: recipe.id } }">
               {{recipe.name}} </router-link>
               </div>
-              <!-- <p>{{recipe.yield}}</p> -->
-              <!-- <div class="blurb-container">
-              <p>{{recipe.blurb}}</p> -->
               
               <div>
               <addto-meal-plan v-on:get-meal-plan-recipes="refreshMealPlans" v-bind:recipe="recipe" />
               </div>
               
               <div>
-              <save-recipe v-bind:recipe="recipe" />
+              <save-recipe v-bind:recipe="recipe" :style="styleObject" v-on:update-my-recipe-list="refreshMyRecipes" />
               </div>
           </div>
     </div>
@@ -37,7 +34,29 @@ export default {
     props: ['recipe'],
     methods: {
         refreshMealPlans() {
-            this.$emit('get-meal-plan-recipes')
+            this.$emit('get-meal-plan-recipes');
+        },
+        refreshMyRecipes(){
+            this.$emit('update-my-recipe-list');
+        }
+    },
+    data(){
+        return{
+            styleObject:{
+            display: "inline-block",
+            outline: "0",
+            padding: "0px 09px",
+            border: "0px solid transparent",
+            borderRadius: "4px",
+            textDecoration: "none",
+            cursor: "pointer",
+            backgroundColor: "rgb(17, 97, 73)",
+            color: "rgb(255, 255, 255)",
+            fontSize: "12pt",
+            height: "25px",
+            boxShadow: "rgb(19 170 82 / 40%) 0px 2px 3px, rgb(195 231 202) 0px 0px 0px 3px",
+            fontStyle: "Roboto"
+            }
         }
     }  
 
@@ -74,11 +93,8 @@ export default {
 
 
 .saved-container {
-
     height: auto;
     width: 100%;
-    
-    
 }
  p{
     font-size: 14px;

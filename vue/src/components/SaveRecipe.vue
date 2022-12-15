@@ -38,6 +38,7 @@ export default {
           if (response.status === 204) {
               this.savedRecipe.status = "unsaved";
               this.updatedRecipeList();
+              this.$emit('update-my-recipe-list');
           }
         });
       } else {
@@ -65,7 +66,7 @@ export default {
 </script>
 
 <style scoped>
-#save-button {
+/* #save-button {
     border: 2px;
     padding: 2px;
     border-color: black;
@@ -73,5 +74,5 @@ export default {
     border-radius: 5px;
     background-color: whitesmoke;
     font-size: 10pt;
-}
+} */
 </style>
