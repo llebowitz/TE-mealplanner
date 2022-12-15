@@ -38,7 +38,7 @@
         src="../assets/cartoonfood-cutout-cropped.png"
       />
       <p class="my-10 text-left" id="random-facts">
-        <strong>Did you know?</strong>
+        <strong>Did you know? </strong>
         <span class="font-italic">{{ foodFacts[generateRandomFact()] }}</span>
       </p>
     </div>
@@ -89,6 +89,7 @@ export default {
 </script>
 
 <style scoped>
+
 #search {
 	text-align: center;
 	padding: 50px;
@@ -198,4 +199,5 @@ a:hover {
 a:active {
 	text-decoration: none;
 }
+
 </style>
