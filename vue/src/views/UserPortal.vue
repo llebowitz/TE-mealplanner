@@ -7,7 +7,7 @@
         <view-grocery-list />
         <my-recipes @get-meal-plan-recipes="refreshMealPlans()"></my-recipes>
         <br>
-       <add-recipe />
+        <add-recipe />
         
     </div>
 </template>

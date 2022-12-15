@@ -12,16 +12,13 @@
               <router-link v-bind:to="{ name : 'singleRecipe', params: { recipeId: recipe.id } }">
               {{recipe.name}} </router-link>
               </div>
-              <!-- <p>{{recipe.yield}}</p> -->
-              <!-- <div class="blurb-container">
-              <p>{{recipe.blurb}}</p> -->
               
               <div>
               <addto-meal-plan v-on:get-meal-plan-recipes="refreshMealPlans" v-bind:recipe="recipe" />
               </div>
               
               <div>
-              <save-recipe v-bind:recipe="recipe" />
+              <save-recipe v-bind:recipe="recipe" v-on:update-my-recipe-list="refreshMyRecipes" />
               </div>
           </div>
     </div>
@@ -37,7 +34,10 @@ export default {
     props: ['recipe'],
     methods: {
         refreshMealPlans() {
-            this.$emit('get-meal-plan-recipes')
+            this.$emit('get-meal-plan-recipes');
+        },
+        refreshMyRecipes(){
+            this.$emit('update-my-recipe-list');
         }
     }  
 

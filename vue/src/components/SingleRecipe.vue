@@ -123,4 +123,8 @@ nav::-webkit-scrollbar {
   display: none;
 }
 
+ul {
+  list-style-image: url(../assets/carrot.png);
+}
+
 </style>

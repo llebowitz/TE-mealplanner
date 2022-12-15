@@ -38,6 +38,7 @@ export default {
           if (response.status === 204) {
               this.savedRecipe.status = "unsaved";
               this.updatedRecipeList();
+              this.$emit('update-my-recipe-list');
           }
         });
       } else {
