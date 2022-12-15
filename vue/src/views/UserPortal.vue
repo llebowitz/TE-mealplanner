@@ -9,7 +9,7 @@
         </div>
         <my-recipes @get-meal-plan-recipes="refreshMealPlans()" @update-my-recipe-list="refreshPage()"></my-recipes>
         <br>
-        <add-recipe />
+        <add-recipe @added-recipe-update-page="refreshPage()"/>
         
     </div>
 </template>

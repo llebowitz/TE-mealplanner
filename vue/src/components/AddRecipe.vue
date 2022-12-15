@@ -125,6 +125,7 @@ export default {
 			AppService.addRecipe(this.newRecipe).then((response) => {
 				if (response.status === 201) {
 					this.resetRecipeForm();
+					this.$emit('added-recipe-update-page')
 				}
 			});
 		},
