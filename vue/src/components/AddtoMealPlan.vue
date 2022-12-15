@@ -108,9 +108,7 @@ export default {
  /* background-color: rgb(9, 128, 76);
  color: rgb(255, 255, 255); */
 
-#add-to-meal-plan:visited {
-    background-color: blue;
-}
+
 
 #add-to-meal-plan:hover {
     color: rgb(255, 255, 255);
