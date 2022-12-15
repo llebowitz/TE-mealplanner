@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="clear-btn" v-on:click="clearMealPlan()">Clear Meal Plan</button>
+    <v-btn color="primary" dark v-on:click="clearMealPlan()">Clear Meal Plan</v-btn>
 
   </div>
 </template>
@@ -25,11 +25,6 @@ export default {
 </script>
 
 <style scoped>
-.clear-btn{
-    padding: 2px;
-    border-radius: 5px;
-    background-color: #1976D2;
-    font-size: 12pt;
-}
+
 
 </style>

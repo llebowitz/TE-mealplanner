@@ -18,7 +18,7 @@
               </div>
               
               <div>
-              <save-recipe v-bind:recipe="recipe" v-on:update-my-recipe-list="refreshMyRecipes" />
+              <save-recipe v-bind:recipe="recipe" :style="styleObject" v-on:update-my-recipe-list="refreshMyRecipes" />
               </div>
           </div>
     </div>
@@ -38,6 +38,25 @@ export default {
         },
         refreshMyRecipes(){
             this.$emit('update-my-recipe-list');
+        }
+    },
+    data(){
+        return{
+            styleObject:{
+            display: "inline-block",
+            outline: "0",
+            padding: "0px 09px",
+            border: "0px solid transparent",
+            borderRadius: "4px",
+            textDecoration: "none",
+            cursor: "pointer",
+            backgroundColor: "rgb(17, 97, 73)",
+            color: "rgb(255, 255, 255)",
+            fontSize: "12pt",
+            height: "25px",
+            boxShadow: "rgb(19 170 82 / 40%) 0px 2px 3px, rgb(195 231 202) 0px 0px 0px 3px",
+            fontStyle: "Roboto"
+            }
         }
     }  
 
@@ -74,11 +93,8 @@ export default {
 
 
 .saved-container {
-
     height: auto;
     width: 100%;
-    
-    
 }
  p{
     font-size: 14px;

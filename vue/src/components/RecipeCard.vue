@@ -6,7 +6,7 @@
 					<v-row class="fill-height ma-0" align="center" justify="center"><v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular> </v-row></template></v-img
 		></router-link>
 		<div>
-			<save-recipe v-bind:recipe="recipe" :key="recipe.id"/>
+			<save-recipe v-bind:recipe="recipe" :key="recipe.id" :style="styleObject"/>
 		</div>
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }"
 			><v-card-title class="card-title mb-n5 align-self-start">{{ recipe.name }}</v-card-title></router-link
@@ -55,6 +55,16 @@ export default {
 	props: ['recipe'],
 	data: () => ({
 		show: false,
+		styleObject:{	
+			padding: "2px",
+			borderRadius: "5px",
+			backgroundColor: "darkseagreen",
+			fontSize: "14pt",
+			textAlign: "center",
+			fontFamily: "Roboto",
+			color: "darkslategray",
+			fontWeight: "bold"
+		}
 	}),
 	methods:{
 		searchByTag(tagWord){
@@ -72,13 +82,9 @@ export default {
 
 .tags {
 	display: flex;
-	/* flex-direction: row; */
 	justify-content: space-around;
 	align-items: center;
 	flex-wrap: wrap;
-	/* flex-basis: 300px; */
-	/* padding: 10px;
-	margin: 10px; */
 }
 
 .tags p {
