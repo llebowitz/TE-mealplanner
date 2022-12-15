@@ -150,11 +150,13 @@ a:link{
 	height: auto;
 	grid-area: img;
 	margin-top: auto;
-	margin-bottom: auto;
+	margin: auto;
 }
 #facts-container{
 	display: grid;
 	grid-template-columns: 1fr 4fr;
 	grid-template-areas: "img random-facts";
+	margin-left: auto;
+	margin-right: auto;
 }
 </style>
