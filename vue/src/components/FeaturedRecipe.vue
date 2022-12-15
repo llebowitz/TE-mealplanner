@@ -1,5 +1,6 @@
 <template>
 	<div class="text-center fill-height">
+		<br>
 		<h2>Featured Recipe</h2>
 		<br>
 		<router-link v-bind:to="{ name: 'singleRecipe', params: { recipeId: recipe.id } }">
