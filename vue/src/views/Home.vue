@@ -1,12 +1,17 @@
 <template>
-	<v-container>
-		<v-sheet class="d-flex flex-column align-center"> </v-sheet>
-		<div id="banner">
-			<h1 id="header">
-				{{ $store.state.token != '' ? `Hello, ${$store.state.user.username}!` : 'Welcome to' }}
-			</h1>
-			<v-img id="bannerImg" src="../assets/logo.png" />
-		</div>
+  <v-container>
+    <!-- <v-sheet class="d-flex flex-row align-center justify-space-around"> -->
+    <div id="banner">
+      <h1 id="header">
+        {{
+          $store.state.token != ""
+            ? `Hello, ${$store.state.user.username}!`
+            : "Welcome to"
+        }}
+      </h1>
+      <img id="bannerImg" src="../assets/logo.png" />
+    </div>
+    <!-- </v-sheet> -->
 		<div>
 			<router-link v-bind:to="{ name: 'recipes' }">
 				<div id="search">
@@ -25,16 +30,22 @@
 			</router-link>
 		</div>
 
-		<v-spacer></v-spacer>
-		<div id="facts-container">
-			<img id="img" class="ml-5" src="../assets/cartoonfood-cutout-cropped.png" />
-			<p class="my-10 text-left" id="random-facts">
-				<strong>Did you know?</strong>
-				<span class="font-italic">{{ foodFacts[generateRandomFact()] }}</span>
-			</p>
-		</div>
+    <v-spacer></v-spacer>
+    <div id="facts-container">
+      <img
+        id="img"
+        class="ml-5"
+        src="../assets/cartoonfood-cutout-cropped.png"
+      />
+      <p class="my-10 text-left" id="random-facts">
+        <strong>Did you know? </strong>
+        <span class="font-italic">{{ foodFacts[generateRandomFact()] }}</span>
+      </p>
+    </div>
+    <!-- <p>Jokes about our team, bullet pointed. // Man bites dog, Zac bites backend // Katy commits grand theft auto and terrorizes the city; </p> -->
+  </v-container>
+
 		<!-- <p>Jokes about our team, bullet pointed. // Man bites dog, Zac bites backend // Katy commits grand theft auto and terrorizes the city; </p> -->
-	</v-container>
 </template>
 
 <script>
@@ -78,6 +89,7 @@ export default {
 </script>
 
 <style scoped>
+
 #search {
 	text-align: center;
 	padding: 50px;
@@ -157,22 +169,22 @@ export default {
 }
 
 #header {
-	grid-area: header;
-	margin-top: auto;
-	margin-bottom: auto;
+  grid-area: header;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 #banner {
-	display: grid;
-	grid-template-areas: 'header logo';
+	display: flex;
+	justify-content: space-evenly;
+
 }
 
 #bannerImg {
-	grid-area: logo;
-	height: 130px;
-	width: auto;
-	margin-top: auto;
-	margin-bottom: auto;
+  height: auto;
+  width: 200px !important;
+  /* margin-top: auto;
+	margin-bottom: auto; */
 }
 
 a:link {
@@ -187,4 +199,5 @@ a:hover {
 a:active {
 	text-decoration: none;
 }
+
 </style>

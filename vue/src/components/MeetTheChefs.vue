@@ -107,7 +107,7 @@ export default {
 	text-align: center;
 	font-weight: bold;
 	margin-top: 10px;
-	font-size: 20px;
+	font-size: 22px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     grid-area: name;
 }

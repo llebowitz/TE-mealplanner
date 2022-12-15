@@ -159,4 +159,6 @@ export default {
 ul{
 	list-style-image: url(./assets/carrot.png);
 }
+
+
 </style>
