@@ -8,7 +8,7 @@
         <button v-on:click="printGroceryList">Print   <img src="../assets/printer.png" height="20px" width="auto"> </button>
         <br>
       
-        <label v-for="ingredient in groceryList" v-bind:key="ingredient.id" class="strikethrough"> <input type="checkbox" v-bind:checked="textDecoration=strikethrough"  id="check"> {{ingredient.name}} <br> </label>
+        <label v-for="ingredient in groceryList" v-bind:key="ingredient.id" class="strikethrough"> <input type="checkbox" v-bind:checked="textDecoration=line-through"  id="check"> {{ingredient.name}} <br> </label>
         
 
 
