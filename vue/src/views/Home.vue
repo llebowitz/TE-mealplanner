@@ -1,8 +1,6 @@
 <template>
   <v-container>
-    <v-sheet class="d-flex flex-column align-center">
-     
-    </v-sheet>
+    <!-- <v-sheet class="d-flex flex-row align-center justify-space-around"> -->
     <div id="banner">
       <h1 id="header">
         {{
@@ -11,8 +9,9 @@
             : "Welcome to"
         }}
       </h1>
-      <v-img id="bannerImg" src="../assets/logo.png" />
+      <img id="bannerImg" src="../assets/logo.png" />
     </div>
+    <!-- </v-sheet> -->
     <div>
       <div id="search">
         <h2 class="text"><span>Search for a Recipe</span></h2>
@@ -161,22 +160,21 @@ export default {
 }
 
 #header {
-	grid-area: header;
-	margin-top: auto;
-	margin-bottom: auto;
+  grid-area: header;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 #banner {
-	display: grid;
-	grid-template-areas: "header logo";
+	display: flex;
+	justify-content: space-evenly;
+
 }
 
 #bannerImg {
-	grid-area: logo;
-	height: 130px;
-	width: auto;
-	margin-top: auto;
-	margin-bottom: auto;
+  height: auto;
+  width: 200px !important;
+  /* margin-top: auto;
+	margin-bottom: auto; */
 }
-
 </style>
