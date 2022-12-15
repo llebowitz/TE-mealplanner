@@ -81,39 +81,20 @@
 					</v-col>
 				</v-row>
 			</v-container>
-<<<<<<< HEAD
-			<div id="meet-chefs">
-				<h1>Meet the Chefs</h1>
-				<div id="headshots">
-					<img class="chef-hat" id="chef1" src="./assets/chef-hat.png" />
-					<p class="name" id="name-k">Katy Powers</p>
-					<img class="us" id="katy" src="./assets/Katy.png" />
-					<img class="chef-hat" id="chef2" src="./assets/chef-hat.png" />
-					<p class="name" id="name-l">Liora Lebowitz</p>
-					<img class="us" id="liora" src="./assets/Liora.png" />
-					<img class="chef-hat" id="chef3" src="./assets/chef-hat.png" />
-					<p class="name" id="name-q">Quoc Pham</p>
-					<img class="us" id="q" src="./assets/Q.png" />
-					<img class="chef-hat" id="chef4" src="./assets/chef-hat.png" />
-					<p class="name" id="name-z">Zac Luchette</p>
-					<img class="us" id="zac" src="./assets/Zac.png" />
-				</div>
-			</div>
-=======
 			<meet-the-chefs v-if="isHome()" />
->>>>>>> d29db982d984f4fcdc1474e7a6468196256f0b39
 		</v-main>
 	</v-app>
 </template>
 
 <script>
-<<<<<<< HEAD
 import FeaturedRecipe from './components/FeaturedRecipe.vue';
+import MeetTheChefs from './components/MeetTheChefs.vue';
 
 export default {
 	name: 'App',
 	components: {
 		FeaturedRecipe,
+		MeetTheChefs,
 	},
 	methods: {
 		isHome() {
@@ -139,41 +120,6 @@ export default {
 		],
 		//
 	}),
-=======
-import FeaturedRecipe from "./components/FeaturedRecipe.vue";
-import MeetTheChefs from './components/MeetTheChefs.vue';
-
-export default {
-  name: "App",
-  components: {
-    FeaturedRecipe,
-    MeetTheChefs,
-  },
-  methods: {
-    isHome() {
-      let routeName = this.$route.name;
-      let isHome = routeName == "home";
-      return isHome;
-    },
-  },
-  data: () => ({
-    links: [
-      {
-        title: "Home",
-        routeName: "home",
-      },
-      {
-        title: "Search Recipes",
-        routeName: "recipes",
-      },
-      {
-        title: "User Portal",
-        routeName: "user-portal",
-      },
-    ],
-    //
-  }),
->>>>>>> d29db982d984f4fcdc1474e7a6468196256f0b39
 };
 </script>
 
@@ -199,10 +145,6 @@ export default {
 .stuff {
 	background-color: #c8e6c9;
 }
-ul {
-	list-style-type: none;
-	list-style-image: url(./assets/carrot.png);
-}
 </style>
 
 <style>
@@ -215,11 +157,7 @@ ul {
 	padding: 5px;
 }
 
-<<<<<<< HEAD
-#meet-chefs {
-=======
 /* #meet-chefs{
->>>>>>> d29db982d984f4fcdc1474e7a6468196256f0b39
 	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
@@ -297,13 +235,8 @@ ul {
 	margin-top: 10px;
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-<<<<<<< HEAD
-}
-ul {
-=======
 } */
-ul{
->>>>>>> d29db982d984f4fcdc1474e7a6468196256f0b39
+ul {
 	list-style-image: url(./assets/carrot.png);
 }
 </style>
