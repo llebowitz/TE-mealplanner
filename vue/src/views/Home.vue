@@ -2,39 +2,23 @@
 	<v-container>
 		<v-sheet class="d-flex flex-column align-center">
 			<h1>{{ $store.state.token != '' ? `Hello, ${$store.state.user.username}!` : 'Welcome to [logo for Too Many Cooks]!' }}</h1>
-			<!-- <h2>Version 1.0 of Too Many Cooks is live! We've got all kinds of features:</h2>
-			<ul>
-				<li v-if="$store.state.token != ''">Click in the top right corner to logout, or <router-link v-bind:to="{ name: 'logout' }">click here.</router-link></li>
-				<li v-else>Click in the top right corner to login, or <router-link v-bind:to="{ name: 'login' }">click here.</router-link></li>
-				<li>Check out the box to the left for a <strong>Featured Recipe</strong>!</li>
-				<li>Check out the box to the right for links to help <strong>up your cooking game</strong>!</li>
-				<li>Click the <strong>Search Recipes</strong> tab above to browse our full collection of recipes, filter by keywords, save recipes with the click of a button, and more!</li>
-				<li>
-					Click the <strong>User Portal</strong> tab above to browse your saved recipes, add them to a 7 day meal plan, view and print a grocery list, add a new recipe or modify an existing one, and
-					more!
-				</li>
-				<li>Don't forget that you can open a more <strong>detailed view</strong> of any recipe on our site by clicking the picture wherever you find it.</li>
-			</ul>
-
-			<h3 class="my-4">Changelog from previous version:</h3>
-			<ul>
-				<li>Steve's think-aloud frequency increased by 22%.</li>
-				<li>Rolling pin easter egg added by Liora. Probably.</li>
-				<li>Man bites dog, Zac bites backend.</li>
-				<li>Accuracy of Katy's assertion "It'll all be fine!" still awaiting testing.</li>
-				<li>More updates to follow; follow Q's Queue on Twitter for the latest.</li>
-			</ul> -->
 			
 		</v-sheet>
 	<div>
 		<div id="search">
-		<h2 class="text"><span>Search for a Recipe</span></h2>
+			<router-link to="recipes">
+			<h2 class="text"><span>Search for a Recipe</span></h2>
+			</router-link>
 		</div>
 		<div id="save">
+			<router-link to="/users">
 		<h2 class="text"><span>Save Your Favorites</span></h2>
+			</router-link>
 		</div>
 		<div id="mealplan">
+			<router-link to="/users">
 		<h2 class="text"><span>Create a Weekly Meal Plan</span></h2>
+			</router-link>
 		</div>
 	</div>
 
@@ -53,6 +37,8 @@
 // import AppService from '../services/AppService';
 
 export default {
+	components: {
+	},
 	name: 'home',
 	data: () => ({
 		foodFacts: [
@@ -117,6 +103,9 @@ export default {
 
 .text{
 	color: white;
+}
+a:link{
+	text-decoration: none;
 }
 
 #search .text span{
