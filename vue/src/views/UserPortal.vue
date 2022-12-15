@@ -3,7 +3,7 @@
     <div>
     
         <meal-plan ref="mealPlan" />
-        
+        <clear-meal-plan v-on:cleared="refreshMealPlans()"/>
         <view-grocery-list />
         <my-recipes @get-meal-plan-recipes="refreshMealPlans()"></my-recipes>
         <br>
@@ -14,6 +14,7 @@
 
 <script>
 import AddRecipe from '../components/AddRecipe.vue';
+import ClearMealPlan from '../components/ClearMealPlan.vue';
 import MealPlan from "../components/MealPlan.vue";
 import MyRecipes from '../components/MyRecipes.vue';
 // import SavedRecipeCard from '../components/SavedRecipeCard.vue';
@@ -27,7 +28,8 @@ export default {
     MyRecipes,
     ViewGroceryList,
     // SavedRecipeCard,
-    AddRecipe
+    AddRecipe,
+    ClearMealPlan
    
   
     }, 

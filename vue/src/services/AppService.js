@@ -52,6 +52,10 @@ export default {
 	},
 
 	getGroceryList() {
-		return axios.get('users/mealplan/grocerylist');
+		return axios.get('/users/mealplan/grocerylist');
+	},
+
+	deleteMealPlan() {
+		return axios.delete('/users/mealplan/removeall');
 	}
 };
