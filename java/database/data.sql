@@ -1429,8 +1429,6 @@ INSERT INTO public.ingredients VALUES (1389, 'chicharrones');
 -- Data for Name: recipes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.recipes VALUES (1, 'Apple, Celery Root and Fennel Salad with Hazelnuts', 'Serves 6', 'A winter salad with bold and bright flavors', 'In a large bowl, combine the shallot and vinegar. Let sit for 10 minutes.  Whisk in the horseradish, oil and honey. 1 teaspoon salt and 1/2 teaspoon pepper.  Add the apple, celery root and fennel and toss. Stir in the parsley and mint then sprinkle with hazelnuts', NULL, false, false);
-INSERT INTO public.recipes VALUES (2, 'Welsh Rarebit', 'Serves 4', 'A traditional British supper of bread and beer cheese', '1. In a bowl, toss the cheese with 1 tablespoon of the flour.  In a medium saucepan over medium heat, melt the butter. Add the remaining 1 tablespoon of flour, 1/2 teaspoon black pepper and the cayenne.  Cook, whisking constantly, for 1 minute.  Stir in the mustard and Worcestershire then slowly stir in the beer.  Bring to a simmer and cook over medium-low, stirring, until thickened, about 3 minutes.\n\n 2. Reduce the heat to low and add the cheese a handful at a time, whisking until smooth after each addition.  Off heat, season with salt and pepper. To serve, spoon the sauce over the toast and sprinkle with the chives.', NULL, false, false);
 INSERT INTO public.recipes VALUES (3, 'Egg Salad Grilled Cheese Sandwich Featuring Mccormick(r)''''s Flavor Of The Year', 'Servings: 5', 'McCormick(r) just released their 2023 Flavor of the Year: Vietnamese x Cajun Style. You can pair these amazing flavors with hundreds of savory and sweet dishes, like this egg salad grilled cheese with a flavor kick!', 'Halve the hard-boiled eggs lengthwise, separate the yolks from the whites, and add the yolks to a large bowl. Reserve the whites.
 
 Add the mayonnaise, Dijon mustard, shallot, green onion, dill, capers, and McCormick(r) Flavor of the Year seasoning to the egg yolks and mix until smooth and evenly combined.
@@ -2019,19 +2017,6 @@ Bake the cookies for 10-12 minutes, or until the edges are golden brown. Remove 
 Leftover cookies will keep in an airtight container in the refrigerator.
 
 Enjoy!', 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/401397.jpg', true, false);
-INSERT INTO public.recipes VALUES (40, 'Eat Your Feed Fest Pizza', 'Servings: 8', 'Join Tasty & First We Feast for Eat Your Feed Fest, our first-ever food festival, November 19 and 20, 2022 in Long Beach, California! Want to attend the fest as our guest? Leave a comment on this recipe letting us know what you''''d like to try at Eat Your Feed Fest and fill out our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJkPFqODH2GRe_gb_2Bs0MuuMFLKFRjiWmmctlX6UyeJXNEg/viewform?usp=sf_link">official entry form</a>. The winner will receive two General Admission 2-Day Tickets to ComplexCon. Winners will be selected at random and notified by November 10, 2022.', 'Tap the "I made this!" button on this recipe.
-
-Leave a comment letting us know which Tasty recipe you''''''''d like to enjoy at Eat Your Feed Fest or why you love Tasty with the hashtag #EatYourFeedFest.
-
-Let us know how to contact you using the official entry form (link is located in the tip section).
-
-Mark your calendars for November 19 and 20.
-
-Keep an eye out for our ticket winner announcement by November 10, 2022.
-
-Enjoy live cooking demos hosted by your favorite creators, try some of Tasty''''''''s most popular recipes, and eat your way through some of LA''''''''s most iconic restaurants and food trucks!
-
-Have fun!', 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/402248.jpg', true, false);
 INSERT INTO public.recipes VALUES (41, 'Spicy Mango Sangria', 'Servings: 4–6', 'This content is intended solely for users of legal drinking age. Drink responsibly.', 'Make the spicy jam: In a small bowl, mix together the apricot jam, tajin seasoning, and lime juice.
 
 Make the mango sangria: Add the chopped mango, Stella Rosa(r) Tropical Mango Wine, Stella Rosa(r) Tropical Passion Brandy, mango nectar, chili powder, and lime juice to the pitcher and stir to combine. Refrigerate for at least 1 hour, or up to overnight.
@@ -6206,29 +6191,6 @@ INSERT INTO public.tags VALUES (47, 'Christmas Cookies');
 -- Data for Name: recipes_ingredients; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.recipes_ingredients VALUES (1, 1, 1, 'small, grated');
-INSERT INTO public.recipes_ingredients VALUES (1, 2, 1.5, 'tablespoons');
-INSERT INTO public.recipes_ingredients VALUES (1, 3, 3, 'tablespoons, grated, lightly packed');
-INSERT INTO public.recipes_ingredients VALUES (1, 4, 3, 'tablespoons');
-INSERT INTO public.recipes_ingredients VALUES (1, 5, 1, 'teaspoon');
-INSERT INTO public.recipes_ingredients VALUES (1, 6, 1, 'medium size, cored and cut into matchsticks');
-INSERT INTO public.recipes_ingredients VALUES (1, 7, 0.5, 'small root, peeled, cut into matchsticks');
-INSERT INTO public.recipes_ingredients VALUES (1, 8, 1, 'medium bulb trimmed, thinly sliced');
-INSERT INTO public.recipes_ingredients VALUES (1, 9, 0.5, 'cup, chopped');
-INSERT INTO public.recipes_ingredients VALUES (1, 10, 0.25, 'cup, chopped');
-INSERT INTO public.recipes_ingredients VALUES (1, 11, 0.5, 'cup, toasted and rough chopped');
-INSERT INTO public.recipes_ingredients VALUES (1, 12, 1, 'teaspoon');
-INSERT INTO public.recipes_ingredients VALUES (1, 13, 0.5, 'teaspoon');
-INSERT INTO public.recipes_ingredients VALUES (2, 14, 8, 'ounces, grated');
-INSERT INTO public.recipes_ingredients VALUES (2, 15, 2, 'tablespoons');
-INSERT INTO public.recipes_ingredients VALUES (2, 16, 2, 'tablespoons');
-INSERT INTO public.recipes_ingredients VALUES (2, 13, 0.5, 'teaspoon');
-INSERT INTO public.recipes_ingredients VALUES (2, 17, 0.25, 'teaspoon');
-INSERT INTO public.recipes_ingredients VALUES (2, 18, 1, 'teaspoon');
-INSERT INTO public.recipes_ingredients VALUES (2, 19, 1, 'teaspoon');
-INSERT INTO public.recipes_ingredients VALUES (2, 20, 1, 'cup');
-INSERT INTO public.recipes_ingredients VALUES (2, 21, 4, 'slices, cut thick');
-INSERT INTO public.recipes_ingredients VALUES (2, 22, 2, 'tablespoons, minced');
 INSERT INTO public.recipes_ingredients VALUES (3, 23, 12, '');
 INSERT INTO public.recipes_ingredients VALUES (3, 24, 0.33, 'cup');
 INSERT INTO public.recipes_ingredients VALUES (3, 18, 1, 'teaspoon');
@@ -6673,11 +6635,6 @@ INSERT INTO public.recipes_ingredients VALUES (39, 44, 1, 'teaspoon');
 INSERT INTO public.recipes_ingredients VALUES (39, 81, 0.5, 'cup');
 INSERT INTO public.recipes_ingredients VALUES (39, 262, 0.33, 'cup');
 INSERT INTO public.recipes_ingredients VALUES (39, 263, 0.33, 'cup');
-INSERT INTO public.recipes_ingredients VALUES (40, 264, 0, '');
-INSERT INTO public.recipes_ingredients VALUES (40, 265, 8, '');
-INSERT INTO public.recipes_ingredients VALUES (40, 266, 1, 'package');
-INSERT INTO public.recipes_ingredients VALUES (40, 267, 285, 'gram');
-INSERT INTO public.recipes_ingredients VALUES (40, 268, 0, '');
 INSERT INTO public.recipes_ingredients VALUES (41, 90, 120, 'milliliter');
 INSERT INTO public.recipes_ingredients VALUES (41, 269, 2, 'tablespoon');
 INSERT INTO public.recipes_ingredients VALUES (41, 233, 2, 'tablespoon');
@@ -10405,15 +10362,7 @@ INSERT INTO public.recipes_tags VALUES (38, 12);
 INSERT INTO public.recipes_tags VALUES (38, 5);
 INSERT INTO public.recipes_tags VALUES (39, 7);
 INSERT INTO public.recipes_tags VALUES (39, 9);
-INSERT INTO public.recipes_tags VALUES (39, 5);
-INSERT INTO public.recipes_tags VALUES (40, 15);
-INSERT INTO public.recipes_tags VALUES (40, 1);
-INSERT INTO public.recipes_tags VALUES (40, 26);
-INSERT INTO public.recipes_tags VALUES (40, 27);
-INSERT INTO public.recipes_tags VALUES (40, 28);
-INSERT INTO public.recipes_tags VALUES (40, 17);
-INSERT INTO public.recipes_tags VALUES (40, 3);
-INSERT INTO public.recipes_tags VALUES (40, 14);
+INSERT INTO public.recipes_tags VALUES (39, 5)
 INSERT INTO public.recipes_tags VALUES (41, 13);
 INSERT INTO public.recipes_tags VALUES (41, 25);
 INSERT INTO public.recipes_tags VALUES (41, 9);

@@ -1,16 +1,6 @@
 <template>
   <v-container>
     <v-sheet class="d-flex flex-column align-center">
-      <v-container class="d-flex">
-        <h1>
-          {{
-            $store.state.token != ""
-              ? `Hello, ${$store.state.user.username}!`
-              : "Welcome to"
-          }}
-        </h1>
-        <v-img id="bannerImg" src="../assets/LogoSample_ByTailorBrands.png" />
-      </v-container>
       <!-- <h2>Version 1.0 of Too Many Cooks is live! We've got all kinds of features:</h2>
 			<ul>
 				<li v-if="$store.state.token != ''">Click in the top right corner to logout, or <router-link v-bind:to="{ name: 'logout' }">click here.</router-link></li>
@@ -34,6 +24,16 @@
 				<li>More updates to follow; follow Q's Queue on Twitter for the latest.</li>
 			</ul> -->
     </v-sheet>
+    <div id="banner">
+      <h1 id="header">
+        {{
+          $store.state.token != ""
+            ? `Hello, ${$store.state.user.username}!`
+            : "Welcome to"
+        }}
+      </h1>
+      <v-img id="bannerImg" src="../assets/LogoSample_ByTailorBrands.png" />
+    </div>
     <div>
       <div id="search">
         <h2 class="text"><span>Search for a Recipe</span></h2>
@@ -181,10 +181,19 @@ export default {
   grid-template-areas: "img random-facts";
 }
 
-#bannerImg {
-	width: 120px;
-	height: 120px;
+#header {
+	grid-area: header;
+}
 
+#banner {
+	display: grid;
+	grid-template-areas: "header logo";
+}
+
+#bannerImg {
+	grid-area: logo;
+	width: 10;
+	height: 200;
 }
 
 </style>

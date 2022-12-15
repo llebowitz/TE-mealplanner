@@ -21,7 +21,7 @@
         <br />
         <router-link
           v-bind:to="{ name: 'modify-recipe', params: { recipeId: recipe.id } }"
-          ><button>Edit Recipe</button>
+          ><button v-if="this.$store.state.token != ''">Edit Recipe</button>
         </router-link>
         <br />
         <save-recipe v-bind:recipe="recipe" :style="styleObject" />
