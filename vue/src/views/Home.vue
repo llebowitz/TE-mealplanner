@@ -15,7 +15,8 @@
     </div>
     <div>
       <div id="search">
-        <h2 class="text"><span>Search for a Recipe</span></h2>
+        <h2 class="text">
+			<span>Search for a Recipe</span></h2>
       </div>
       <div id="save">
         <h2 class="text"><span>Save Your Favorites</span></h2>

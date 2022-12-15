@@ -10,7 +10,7 @@
 
 	<v-app id="inspire">
 		<v-app-bar app color="white" flat hide-on-scroll>
-			<router-link v-bind:to="{ name: 'home' }"><v-img width="130" src="./assets/logo.png" /></router-link>
+			<router-link v-bind:to="{ name: 'home' }"><v-img width="130" height="auto" src="./assets/logo.png" /></router-link>
 			<v-tabs centered class="ml-n9" color="grey darken-1">
 				<v-tab class="hide-slider" v-for="link in links" :key="link.title" router-link v-bind:to="{ name: `${link.routeName}` }">
 					{{ link.title }}
