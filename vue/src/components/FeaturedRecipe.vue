@@ -41,6 +41,7 @@ export default {
 <style scoped>
 h2{
 	text-decoration: underline;
+	
 }
 
 </style>
