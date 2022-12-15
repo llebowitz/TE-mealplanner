@@ -7,7 +7,7 @@
         <view-grocery-list />
         <clear-meal-plan v-on:cleared="refreshMealPlans()"/>
         </div>
-        <my-recipes @get-meal-plan-recipes="refreshMealPlans()"></my-recipes>
+        <my-recipes @get-meal-plan-recipes="refreshMealPlans()" @update-my-recipe-list="refreshPage()"></my-recipes>
         <br>
         <add-recipe />
         
@@ -38,6 +38,9 @@ export default {
     methods: {
         refreshMealPlans() {
             this.$refs.mealPlan.getMealPlanRecipes();
+        },
+        refreshPage(){
+            this.$router.go();
         }
     }
 
