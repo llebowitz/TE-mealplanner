@@ -5,6 +5,7 @@ import com.techelevator.model.Recipe;
 import com.techelevator.model.RecipeDto;
 import com.techelevator.services.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@PreAuthorize("isAuthenticated()")
 //COMPLETED: Figure out role name for @PreAuthorize
 public class UserController {
 

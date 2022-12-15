@@ -6,6 +6,7 @@ import com.techelevator.model.ExternalRecipeModel;
 import com.techelevator.model.Recipe;
 import com.techelevator.services.RecipeService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -41,12 +42,14 @@ public class RecipeController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/recipes/{recipeId}", method = RequestMethod.PUT)
     public void updateRecipe(@RequestBody Recipe recipe, Principal principal){
         recipeService.updateRecipe(recipe, principal.getName());
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path= "/recipes", method = RequestMethod.POST)
     public void addRecipe(@RequestBody Recipe recipe, Principal principal){
         recipeService.updateRecipe(recipe, principal.getName());

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button id="save-button" v-on:click="flipStatus()">
+    <button id="save-button" @click="flipStatus()">
       {{ isRecipeInList ? "Remove from my recipes" : "Save to my recipes" }}
     </button>
   </div>
@@ -36,19 +36,17 @@ export default {
       if (this.isRecipeInList) {
         AppService.unsaveRecipe(this.recipe.id).then((response) => {
           if (response.status === 204) {
-              this.savedRecipe.status = "unsaved";
               this.updatedRecipeList();
-              this.$emit('update-my-recipe-list');
           }
         });
       } else {
         AppService.saveRecipe(this.recipe.id).then((response) => {
           if (response.status === 201) {
-            this.savedRecipe.status = "saved";
             this.updatedRecipeList();
           }
         });
-      }     
+      }
+      this.$emit('update-my-recipe-list');
 
     },
     output() {
