@@ -53,6 +53,8 @@
 // import AppService from '../services/AppService';
 
 export default {
+	components: {
+	},
 	name: 'home',
 	data: () => ({
 		foodFacts: [

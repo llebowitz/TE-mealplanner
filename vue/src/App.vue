@@ -81,6 +81,7 @@
 					</v-col>
 				</v-row>
 			</v-container>
+<<<<<<< HEAD
 			<div id="meet-chefs">
 				<h1>Meet the Chefs</h1>
 				<div id="headshots">
@@ -98,11 +99,15 @@
 					<img class="us" id="zac" src="./assets/Zac.png" />
 				</div>
 			</div>
+=======
+			<meet-the-chefs v-if="isHome()" />
+>>>>>>> d29db982d984f4fcdc1474e7a6468196256f0b39
 		</v-main>
 	</v-app>
 </template>
 
 <script>
+<<<<<<< HEAD
 import FeaturedRecipe from './components/FeaturedRecipe.vue';
 
 export default {
@@ -134,6 +139,41 @@ export default {
 		],
 		//
 	}),
+=======
+import FeaturedRecipe from "./components/FeaturedRecipe.vue";
+import MeetTheChefs from './components/MeetTheChefs.vue';
+
+export default {
+  name: "App",
+  components: {
+    FeaturedRecipe,
+    MeetTheChefs,
+  },
+  methods: {
+    isHome() {
+      let routeName = this.$route.name;
+      let isHome = routeName == "home";
+      return isHome;
+    },
+  },
+  data: () => ({
+    links: [
+      {
+        title: "Home",
+        routeName: "home",
+      },
+      {
+        title: "Search Recipes",
+        routeName: "recipes",
+      },
+      {
+        title: "User Portal",
+        routeName: "user-portal",
+      },
+    ],
+    //
+  }),
+>>>>>>> d29db982d984f4fcdc1474e7a6468196256f0b39
 };
 </script>
 
@@ -175,7 +215,11 @@ ul {
 	padding: 5px;
 }
 
+<<<<<<< HEAD
 #meet-chefs {
+=======
+/* #meet-chefs{
+>>>>>>> d29db982d984f4fcdc1474e7a6468196256f0b39
 	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
@@ -253,8 +297,13 @@ ul {
 	margin-top: 10px;
 	font-size: 20px;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+<<<<<<< HEAD
 }
 ul {
+=======
+} */
+ul{
+>>>>>>> d29db982d984f4fcdc1474e7a6468196256f0b39
 	list-style-image: url(./assets/carrot.png);
 }
 </style>
