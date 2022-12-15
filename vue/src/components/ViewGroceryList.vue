@@ -16,8 +16,13 @@ export default {
 
 <style scoped>
 .button {
-  border: 1px black solid,
-  
+  border: 2px;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: #1976D2;
+    font-size: 12pt;
+    color: white;
+    font-weight: bold;
 }
 
 </style>

@@ -3,8 +3,10 @@
     <div>
     
         <meal-plan ref="mealPlan" />
-        <clear-meal-plan v-on:cleared="refreshMealPlans()"/>
+        <div class="mp-buttons">
         <view-grocery-list />
+        <clear-meal-plan v-on:cleared="refreshMealPlans()"/>
+        </div>
         <my-recipes @get-meal-plan-recipes="refreshMealPlans()"></my-recipes>
         <br>
         <add-recipe />
@@ -45,4 +47,9 @@ export default {
 
 </script>
 
-<style></style>
+<style scoped>
+.mp-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+</style>
