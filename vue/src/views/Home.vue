@@ -11,7 +11,7 @@
             : "Welcome to"
         }}
       </h1>
-      <v-img id="bannerImg" src="../assets/Logo.png" />
+      <v-img id="bannerImg" src="../assets/logo.png" />
     </div>
     <div>
       <div id="search">
